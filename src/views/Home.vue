@@ -27,6 +27,7 @@
           .hamburger-line
           .hamburger-line
     .jumbotron
+    .about-section
 </template>
 
 <script lang="ts">
@@ -41,9 +42,7 @@ export default class Home extends Vue {
 <style lang="scss" scoped>
 .big-header {
   header {
-    // background-color: #333;
-    // color: #fff;
-    position: absolute;
+    position: fixed;
     width: 100%;
     padding: 10px 0;
     display: flex;
@@ -68,10 +67,13 @@ export default class Home extends Vue {
     }
   }
 }
-
+.scrolled-header {
+  background-color: #333;
+  color: #fff;
+}
 .mobile-header {
   header {
-    position: absolute;
+    position: fixed;
     padding: 10px 0;
     width: 100%;
     background-color: #333;
@@ -97,7 +99,7 @@ export default class Home extends Vue {
     }
   }
   .pop-out-menu {
-    position: absolute;
+    position: fixed;
     top: 40px;
     background-color: #333;
     opacity: 0.9;
@@ -127,6 +129,10 @@ export default class Home extends Vue {
 }
 .jumbotron {
   background-image: url('../assets/desk-one.jpeg');
+}
+
+.about-section {
+  height: 2000px;
 }
 
 @media (min-width: 551px) {
