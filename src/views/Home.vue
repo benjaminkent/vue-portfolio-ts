@@ -11,20 +11,21 @@
           li Resume
           li Blog
     .mobile-header
+      transition(name='slide-down')
+        .pop-out-menu(v-if='showMenu')
+          ul
+            li Home
+            li About
+            li Portfolio
+            li Resume
+            li Blog
       header
         .logo
           i.fad.fa-narwhal
-        .hamburger
+        .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
           .hamburger-line
           .hamburger-line
           .hamburger-line
-      .pop-out-menu
-        ul
-          li Home
-          li About
-          li Portfolio
-          li Resume
-          li Blog
     .jumbotron
 </template>
 
@@ -88,6 +89,7 @@ export default class Home extends Vue {
       flex-direction: column;
       justify-content: space-between;
       margin: 4px 20px 0 0;
+      cursor: pointer;
       .hamburger-line {
         border: 1px solid #fff;
         border-radius: 5px;
@@ -107,10 +109,21 @@ export default class Home extends Vue {
       list-style-type: none;
       border-bottom: 5px solid #ffd263;
       li {
-        margin: 8px 0;
+        margin: 10px 0;
       }
     }
   }
+}
+.slide-down-enter-active {
+  transition: all 0.5s cubic-bezier(0.2, 0.3, 0.7, 0.8);
+}
+.slide-down-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-down-enter,
+.slide-down-leave-to {
+  transform: translateY(-300px);
+  // opacity: 0;
 }
 .jumbotron {
   background-image: url('../assets/desk-one.jpeg');
