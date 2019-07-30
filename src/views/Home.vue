@@ -1,7 +1,7 @@
 <template lang="pug">
   .home-container
     .big-header
-      header
+      header(:class="{ 'scrolled-header': scrolledPosition > 150}")
         .logo
           i.fad.fa-narwhal
         ul
@@ -35,13 +35,23 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Home extends Vue {
-  showMenu: boolean = false
+  public showMenu: boolean = false
+  public scrolledPosition: number | null = null
+
+  public mounted(): void {
+    window.addEventListener('scroll', this.updateScroll)
+  }
+
+  public updateScroll(): void {
+    this.scrolledPosition = window.scrollY
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .big-header {
   header {
+    transition: 0.4s all ease;
     position: fixed;
     width: 100%;
     padding: 10px 0;
@@ -70,6 +80,7 @@ export default class Home extends Vue {
 .scrolled-header {
   background-color: #333;
   color: #fff;
+  transition: 0.4s all ease;
 }
 .mobile-header {
   header {
@@ -129,6 +140,9 @@ export default class Home extends Vue {
 }
 .jumbotron {
   background-image: url('../assets/desk-one.jpeg');
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .about-section {
@@ -145,9 +159,6 @@ export default class Home extends Vue {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: repeat(5, 1fr);
   }
 }
 
