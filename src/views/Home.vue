@@ -18,7 +18,7 @@
           .hamburger-line
           .hamburger-line
           .hamburger-line
-      .pop-out-menu(v-if='showMenu')
+      .pop-out-menu
         ul
           li Home
           li About
@@ -97,7 +97,6 @@ export default class Home extends Vue {
   .pop-out-menu {
     position: absolute;
     top: 40px;
-    // top: -300px;
     background-color: #333;
     opacity: 0.9;
     color: #fff;
