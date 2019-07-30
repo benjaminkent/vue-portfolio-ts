@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home-container
+  .header-container
     .big-header
       header(:class="{ 'scrolled-header': scrolledPosition > 150}")
         .logo
@@ -26,15 +26,13 @@
           .hamburger-line
           .hamburger-line
           .hamburger-line
-    .jumbotron
-    .about-section
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
-export default class Home extends Vue {
+export default class AppHeader extends Vue {
   public showMenu: boolean = false
   public scrolledPosition: number | null = null
 
@@ -139,40 +137,15 @@ export default class Home extends Vue {
 .slide-down-leave-to {
   transform: translateY(-300px);
 }
-.jumbotron {
-  background-image: url('../assets/desk-one.jpeg');
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.about-section {
-  height: 2000px;
-}
 
 @media (min-width: 551px) {
   .mobile-header {
     display: none;
   }
-
-  .jumbotron {
-    height: 1000px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
 }
-
 @media (max-width: 550px) {
   .big-header {
     display: none;
-  }
-
-  .jumbotron {
-    height: 500px;
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: 20px;
   }
 }
 </style>
