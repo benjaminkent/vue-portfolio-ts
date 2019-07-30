@@ -18,6 +18,13 @@
           .hamburger-line
           .hamburger-line
           .hamburger-line
+      .pop-out-menu(v-if='showMenu')
+        ul
+          li Home
+          li About
+          li Portfolio
+          li Resume
+          li Blog
     .jumbotron
 </template>
 
@@ -25,7 +32,9 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  showMenu: boolean = false
+}
 </script>
 
 <style lang="scss" scoped>
@@ -60,13 +69,48 @@ export default class Home extends Vue {}
 }
 
 .mobile-header {
-  position: absolute;
-  padding: 10px 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  i {
-    margin-left: 20px;
+  header {
+    position: absolute;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+
+    i {
+      margin-left: 20px;
+    }
+    .hamburger {
+      height: 12px;
+      width: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 4px 20px 0 0;
+      .hamburger-line {
+        border: 1px solid #fff;
+        border-radius: 5px;
+      }
+    }
+  }
+  .pop-out-menu {
+    position: absolute;
+    top: 40px;
+    // top: -300px;
+    background-color: #333;
+    opacity: 0.9;
+    color: #fff;
+    width: 100%;
+    ul {
+      margin: 0;
+      padding: 10px 20px;
+      list-style-type: none;
+      border-bottom: 5px solid #ffd263;
+      li {
+        margin: 8px 0;
+      }
+    }
   }
 }
 .jumbotron {
@@ -97,7 +141,8 @@ export default class Home extends Vue {}
   .jumbotron {
     height: 500px;
     background-size: cover;
-    background-position: center;
+    background-position-x: center;
+    background-position-y: 20px;
   }
 }
 </style>
