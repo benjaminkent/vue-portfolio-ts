@@ -12,7 +12,7 @@
           li Blog
     .mobile-header
       transition(name='slide-down')
-        .pop-out-menu(v-if='showMenu')
+        .pop-out-menu(v-if='showMenu' @click='showMenu = false')
           ul
             li Home
             li About
@@ -66,7 +66,7 @@ export default class Home extends Vue {
       }
     }
     ul {
-      margin: 0;
+      margin: 0 30px 0 0;
       padding: 0;
       list-style-type: none;
       display: flex;
@@ -112,17 +112,19 @@ export default class Home extends Vue {
   .pop-out-menu {
     position: fixed;
     top: 40px;
-    background-color: #333;
     opacity: 0.9;
     color: #fff;
     width: 100%;
+    height: 100vh;
     ul {
+      background-color: #333;
       margin: 0;
       padding: 10px 20px;
       list-style-type: none;
       border-bottom: 5px solid #ffd263;
       li {
         margin: 10px 0;
+        border-bottom: 1px solid #22222290;
       }
     }
   }
