@@ -130,10 +130,10 @@ export default class Home extends Vue {
   }
 }
 .slide-down-enter-active {
-  transition: all 0.5s cubic-bezier(0.2, 0.3, 0.7, 0.8);
+  transition: all 0.3s ease-out;
 }
 .slide-down-leave-active {
-  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.3s ease-in-out;
 }
 .slide-down-enter,
 .slide-down-leave-to {
