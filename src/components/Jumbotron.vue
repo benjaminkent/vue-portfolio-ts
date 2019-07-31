@@ -35,7 +35,7 @@ export default class Jumbotron extends Vue {}
     background-position-y: -50px;
     background-repeat: no-repeat;
     .background-box-container {
-      grid-area: 2 / 1 / 3 / 6;
+      grid-area: 2 / 1 / 4 / 6;
       justify-self: center;
       align-self: center;
       .background-style-box {
@@ -48,7 +48,7 @@ export default class Jumbotron extends Vue {}
       }
     }
     .name-box {
-      grid-area: 2 / 1 / 3 / 6;
+      grid-area: 2 / 1 / 4 / 6;
       justify-self: center;
       align-self: center;
       z-index: 1;
@@ -59,7 +59,7 @@ export default class Jumbotron extends Vue {}
       }
     }
     .job-title-box {
-      grid-area: 2 / 2 / 3 / 5;
+      grid-area: 2 / 2 / 4 / 5;
       justify-self: center;
       align-self: center;
       margin-top: 60px;
@@ -72,8 +72,7 @@ export default class Jumbotron extends Vue {}
     .call-to-action-box {
       grid-area: 3 / 2 / 4 / 5;
       justify-self: center;
-      align-self: start;
-      margin-top: 40px;
+      align-self: end;
       width: 320px;
       display: flex;
       justify-content: center;
