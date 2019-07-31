@@ -5,8 +5,8 @@
         .logo
           i.fad.fa-narwhal
         ul
-          li Home
-          li About
+          li(@click='goHome') Home
+          li(@click='goAbout') About
           li Portfolio
           li Resume
           li Blog
@@ -14,8 +14,8 @@
       transition(name='slide-down')
         .pop-out-menu(v-if='showMenu' @click='showMenu = false')
           ul
-            li Home
-            li About
+            li(@click='goHome') Home
+            li(@click='mobileGoAbout') About
             li Portfolio
             li Resume
             li Blog
@@ -42,6 +42,27 @@ export default class AppHeader extends Vue {
 
   public updateScroll(): void {
     this.scrolledPosition = window.scrollY
+  }
+
+  public goHome(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  public goAbout(): void {
+    window.scrollTo({
+      top: 860,
+      behavior: 'smooth'
+    })
+  }
+
+  public mobileGoAbout(): void {
+    window.scrollTo({
+      top: 409,
+      behavior: 'smooth'
+    })
   }
 }
 </script>
@@ -72,6 +93,11 @@ export default class AppHeader extends Vue {
       justify-content: flex-end;
       li {
         margin: 0 20px;
+        cursor: pointer;
+      }
+      li:hover {
+        color: $orange;
+        transition: 0.3s all ease;
       }
     }
   }
