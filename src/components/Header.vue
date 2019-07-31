@@ -55,6 +55,8 @@ export default class AppHeader extends Vue {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
+    z-index: 100000;
+    opacity: 0.9;
     .logo {
       display: flex;
       margin-left: 20px;
@@ -89,7 +91,7 @@ export default class AppHeader extends Vue {
     color: #fff;
     display: flex;
     justify-content: space-between;
-
+    z-index: 100000;
     i {
       margin-left: 20px;
     }
@@ -114,6 +116,7 @@ export default class AppHeader extends Vue {
     color: #fff;
     width: 100%;
     height: 100vh;
+    z-index: 100000;
     ul {
       background-color: #333;
       margin: 0;
