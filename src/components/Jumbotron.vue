@@ -73,6 +73,7 @@ export default class Jumbotron extends Vue {}
       grid-area: 3 / 2 / 4 / 5;
       justify-self: center;
       align-self: end;
+      margin-bottom: 20px;
       width: 320px;
       display: flex;
       justify-content: center;
