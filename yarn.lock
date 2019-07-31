@@ -4347,7 +4347,7 @@ is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   dependencies:
     isobject "^3.0.1"
 
-is-promise@^2.0.0:
+is-promise@^2.0.0, is-promise@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
   integrity sha1-eaKp7OfwlugPNtKy87wWwf9L8/o=
@@ -7444,6 +7444,17 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
+style-resources-loader@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/style-resources-loader/-/style-resources-loader-1.2.1.tgz#7679d5dc2f27046b2fc2b83c1d5b6c1b8a9b820c"
+  integrity sha512-ekId7AwZRW429UjQo02CJTt0Y8GwoT9zidvJLq4lRTJbu0cghv9XNRmt9mS4MR41+gZwMRT0EpFzP68HDWLbXQ==
+  dependencies:
+    glob "^7.1.2"
+    is-callable "^1.1.4"
+    is-plain-object "^2.0.4"
+    is-promise "^2.1.0"
+    loader-utils "^1.1.0"
+
 stylehacks@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/stylehacks/-/stylehacks-4.0.3.tgz#6718fcaf4d1e07d8a1318690881e8d96726a71d5"
@@ -8018,6 +8029,11 @@ vue-cli-plugin-pug@^1.0.7:
     pug "^2.0.3"
     pug-plain-loader "^1.0.0"
     raw-loader "^0.5.1"
+
+vue-cli-plugin-style-resources-loader@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/vue-cli-plugin-style-resources-loader/-/vue-cli-plugin-style-resources-loader-0.1.3.tgz#0fed01f429ba4af2f4265161dbeab9e9d233e810"
+  integrity sha512-yUu71+z45AII83QBjL0H5qNumjdnKoMR+2QicP0GCF7nNqCQ8hN4TK7lcYpC9eZrzljZ+Vt8KPhyhMHkvmyTxw==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.3"

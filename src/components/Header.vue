@@ -119,7 +119,7 @@ export default class AppHeader extends Vue {
       margin: 0;
       padding: 10px 20px;
       list-style-type: none;
-      border-bottom: 5px solid #ffd263;
+      border-bottom: 5px solid $orange;
       li {
         margin: 10px 0;
         border-bottom: 1px solid #22222290;
