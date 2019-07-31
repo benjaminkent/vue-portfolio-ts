@@ -54,9 +54,8 @@ export default class AppHeader extends Vue {
     width: 100%;
     padding: 10px 0;
     display: flex;
+    z-index: 100;
     justify-content: space-between;
-    z-index: 100000;
-    opacity: 0.9;
     .logo {
       display: flex;
       margin-left: 20px;
@@ -81,6 +80,8 @@ export default class AppHeader extends Vue {
   background-color: #333;
   color: #fff;
   transition: 0.4s all ease;
+  box-shadow: 0 0 2px 2px #33333370;
+  opacity: 0.9;
 }
 .mobile-header {
   header {
@@ -90,8 +91,9 @@ export default class AppHeader extends Vue {
     background-color: #333;
     color: #fff;
     display: flex;
+    z-index: 100;
     justify-content: space-between;
-    z-index: 100000;
+    box-shadow: 0 0 2px 2px #33333370;
     i {
       margin-left: 20px;
     }
@@ -116,7 +118,7 @@ export default class AppHeader extends Vue {
     color: #fff;
     width: 100%;
     height: 100vh;
-    z-index: 100000;
+    z-index: 99;
     ul {
       background-color: #333;
       margin: 0;
@@ -126,6 +128,11 @@ export default class AppHeader extends Vue {
       li {
         margin: 10px 0;
         border-bottom: 1px solid #22222290;
+        cursor: pointer;
+      }
+      li:hover {
+        color: $orange;
+        transition: 0.3s all ease;
       }
     }
   }
