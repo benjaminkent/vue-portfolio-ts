@@ -128,8 +128,11 @@ export default class Headshot extends Vue {
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 900px) {
   .headshot-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .info {
       width: 90%;
       h3 {
@@ -147,14 +150,6 @@ export default class Headshot extends Vue {
     .headshot {
       height: 450px;
     }
-  }
-}
-
-@media (max-width: 900px) {
-  .headshot-info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 

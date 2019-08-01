@@ -7,9 +7,9 @@
         ul
           li(@click='goHome') Home
           li(@click='goAbout') About
+          li Toolset
           li Portfolio
           li Resume
-          li Blog
     .mobile-header
       transition(name='slide-down')
         .pop-out-menu(v-if='showMenu' @click='showMenu = false')
@@ -18,7 +18,7 @@
             li(@click='mobileGoAbout') About
             li Portfolio
             li Resume
-            li Blog
+            li Toolset
       header
         .logo
           i.fad.fa-narwhal

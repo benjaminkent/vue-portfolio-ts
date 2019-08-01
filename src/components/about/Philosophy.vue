@@ -1,11 +1,11 @@
 <template lang="pug">
   .tech-content
-    .tech-message-header
-      h3 MINDSET
-      h2 Tech Philosophy
     .tech-message-container
       .info
-        p This website was designed, coded and styled completely from scratch by myself using the Vue.js JavaScript framework. With most of my personal projects, I like to write all of the code myself from scratch, although I have used CSS frameworks such as Bulma and Tailwind CSS to style websites as well; in my professional career I work extensivly with Bootstrap. I am extremely excited about where the tech industry is heading and look forward to the many challenges and breakthroughs that lie before us.
+        .tech-message-header
+          h3 MINDSET
+          h2 Tech Philosophy
+        p This website was designed, coded and styled completely from scratch by myself using the Vue.js JavaScript framework. With most of my personal projects, I like to write all of the code myself from scratch, although I have used CSS frameworks such as Bulma and Tailwind CSS to style websites as well; in my professional career I work extensivly with Bootstrap. I believe in solving problems the right way. Which means writing easily maintainable code that doesn't add to tech debt and actively seeks to eliminate it. I am extremely excited about where the tech industry is heading and look forward to the many challenges and breakthroughs that lie before us.
       img.code-img(src='../../assets/code-one.jpeg')
 </template>
 
@@ -17,11 +17,7 @@ export default class Philosophy extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-.tech-phil-container {
-  margin-top: 100px;
-}
 .tech-message-header {
-  margin-top: 100px;
   h3 {
     margin: 0;
     font-weight: 100;
@@ -39,20 +35,17 @@ export default class Philosophy extends Vue {}
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 150px;
+  align-items: center;
   .code-img {
-    height: 600px;
+    height: 300px;
   }
   .info {
     line-height: 30px;
     font-size: 16px;
     color: $grey-text;
     font-weight: 100;
-    width: 50%;
-    h3 {
-      color: #222;
-      margin: 0;
-    }
+    width: 45%;
     .job-title {
       margin: 0;
     }
@@ -90,33 +83,34 @@ export default class Philosophy extends Vue {}
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 900px) {
   .tech-message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
     .info {
       width: 90%;
       h3 {
         margin-top: 20px;
       }
     }
-  }
-}
-
-@media (max-width: 450px) {
-  .tech-message-header {
-    margin-top: 40px;
-  }
-  .tech-message-container {
     .code-img {
-      height: 450px;
+      margin-top: 25px;
+      width: 90%;
+      height: auto;
     }
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 450px) {
   .tech-message-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 50px;
+    .code-img {
+      margin-top: 25px;
+      width: 90%;
+      height: auto;
+    }
   }
 }
 
