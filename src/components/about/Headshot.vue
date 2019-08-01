@@ -70,7 +70,7 @@ export default class Headshot extends Vue {
   h2 {
     margin: 3px 0;
     font-size: 32px;
-    color: $infra-red;
+    color: $accents;
   }
 }
 .headshot-info-container {
@@ -103,7 +103,7 @@ export default class Headshot extends Vue {
         font-size: 14px;
         margin-right: 15px;
         a {
-          color: $infra-red;
+          color: $accents;
         }
       }
     }

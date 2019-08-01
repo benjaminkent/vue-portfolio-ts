@@ -28,7 +28,7 @@ export default class Philosophy extends Vue {}
   h2 {
     margin: 3px 0;
     font-size: 32px;
-    color: $infra-red;
+    color: $accents;
   }
 }
 .tech-message-container {
@@ -58,7 +58,7 @@ export default class Philosophy extends Vue {}
         font-size: 14px;
         margin-right: 15px;
         a {
-          color: $infra-red;
+          color: $accents;
         }
       }
     }
