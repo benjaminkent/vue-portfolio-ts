@@ -53,6 +53,7 @@ export default class Toolset extends Vue {}
       height: 50%;
       transform: skewY(7deg);
       transform-origin: 100%;
+      border-top: 1px solid #007bff50;
     }
   }
   .message-box {
@@ -83,6 +84,16 @@ export default class Toolset extends Vue {}
 @media (max-width: 450px) {
   .toolset-container {
     margin-top: 100px;
+  }
+}
+
+@media (min-width: 1050px) {
+  .toolset-grid {
+    .background-color-box {
+      .background-color:after {
+        border-top: 3px solid $blue;
+      }
+    }
   }
 }
 

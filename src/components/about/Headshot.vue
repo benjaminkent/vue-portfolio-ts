@@ -103,7 +103,7 @@ export default class Headshot extends Vue {
         font-size: 14px;
         margin-right: 15px;
         a {
-          color: $accents;
+          color: $blue;
         }
       }
     }

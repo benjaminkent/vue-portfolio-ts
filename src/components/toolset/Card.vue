@@ -13,6 +13,14 @@ export default class Card extends Vue {}
 
 <style lang="scss" scoped>
 @media (max-width: 500px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .card {
+      width: 90%;
+    }
+  }
 }
 </style>
 
