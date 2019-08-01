@@ -16,9 +16,9 @@
           ul
             li(@click='goHome') Home
             li(@click='mobileGoAbout') About
+            li Toolset
             li Portfolio
             li Resume
-            li Toolset
       header
         .logo
           i.fad.fa-narwhal
