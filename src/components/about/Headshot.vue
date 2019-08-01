@@ -59,7 +59,7 @@ export default class Headshot extends Vue {
 
 <style lang="scss" scoped>
 .about-message {
-  margin-top: 75px;
+  margin-top: 100px;
   h3 {
     margin: 0;
     font-weight: 100;
@@ -89,7 +89,7 @@ export default class Headshot extends Vue {
     width: 50%;
     h3 {
       color: #222;
-      margin-bottom: 0;
+      margin: 0;
     }
     .job-title {
       margin: 0;
@@ -132,6 +132,9 @@ export default class Headshot extends Vue {
   .headshot-info-container {
     .info {
       width: 90%;
+      h3 {
+        margin-top: 20px;
+      }
     }
   }
 }
