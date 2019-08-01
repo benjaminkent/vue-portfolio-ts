@@ -7,6 +7,8 @@
       .headshot-info-container
         img.headshot(src='../assets/headshot.jpg')
         .info
+          h3 Benjamin Kent Jehl
+          p.job-title Software Engineer
           p Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am passionate about designing and building the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
           ul
             li(v-for='word in wordList')
@@ -64,6 +66,13 @@ export default class About extends Vue {
     color: $grey-text;
     font-weight: 100;
     width: 50%;
+    h3 {
+      color: #222;
+      margin-bottom: 0;
+    }
+    .job-title {
+      margin: 0;
+    }
     ul {
       margin: 0;
       padding: 0;
@@ -83,6 +92,9 @@ export default class About extends Vue {
   .about-content {
     width: 90%;
   }
+}
+
+@media (max-width: 899px) {
   .headshot-info-container {
     .info {
       width: 90%;
