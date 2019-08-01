@@ -53,14 +53,14 @@ export default class AppHeader extends Vue {
 
   public goAbout(): void {
     window.scrollTo({
-      top: 860,
+      top: 865,
       behavior: 'smooth'
     })
   }
 
   public mobileGoAbout(): void {
     window.scrollTo({
-      top: 409,
+      top: 412,
       behavior: 'smooth'
     })
   }
@@ -139,7 +139,7 @@ export default class AppHeader extends Vue {
   }
   .pop-out-menu {
     position: fixed;
-    top: 40px;
+    top: 39px;
     opacity: 0.9;
     color: #fff;
     width: 100%;
