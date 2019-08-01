@@ -1,15 +1,18 @@
 <template lang="pug">
   .about-container
     Headshot
+    Philosophy
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Headshot from './Headshot.vue'
+import Philosophy from './Philosophy.vue'
 
 @Component({
   components: {
-    Headshot
+    Headshot,
+    Philosophy
   }
 })
 export default class About extends Vue {}
@@ -19,7 +22,8 @@ export default class About extends Vue {}
 .about-container {
   margin-bottom: 1000px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
 

@@ -1,64 +1,26 @@
 <template lang="pug">
-  .about-content
-    .about-message
-      h3 ABOUT ME
-      h2 Forward Thinking Engineer
-    .headshot-info-container
-      img.headshot(src='../../assets/headshot.jpg')
+  .tech-content
+    .tech-message-header
+      h3 MINDSET
+      h2 Tech Philosophy
+    .tech-message-container
       .info
-        h3 Benjamin Kent Jehl
-        p.job-title Software Engineer
-        p Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am passionate about designing and building the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
-        ul.social-media
-          li(v-for='icon in socialMedia')
-            a(:href='icon.url')
-              i(:class='icon.class')
-        ul.words
-          li(v-for='word in wordList')
-            i.far.fa-check
-            | {{ word }}
+        p This website was designed, coded and styled completely from scratch by myself using the Vue.js JavaScript framework. With most of my personal projects, I like to write all of the code myself from scratch, although I have used CSS frameworks such as Bulma and Tailwind CSS to style websites as well; in my professional career I work extensivly with Bootstrap. I am extremely excited about where the tech industry is heading and look forward to the many challenges and breakthroughs that lie before us.
+      img.code-img(src='../../assets/code-one.jpeg')
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { SocialMedia } from '@/interfaces/interfaces'
 
 @Component({})
-export default class Headshot extends Vue {
-  public wordList: string[] = [
-    'Developer',
-    'Responsive Design',
-    'Full-stack',
-    'Mobile-first',
-    'Learner'
-  ]
-  public socialMedia: SocialMedia[] = [
-    {
-      class: 'fab fa-linkedin-in',
-      url: '#'
-    },
-    {
-      class: 'fab fa-github',
-      url: '#'
-    },
-    {
-      class: 'fab fa-twitter',
-      url: '#'
-    },
-    {
-      class: 'fab fa-facebook-f',
-      url: '#'
-    },
-    {
-      class: 'fab fa-instagram',
-      url: '#'
-    }
-  ]
-}
+export default class Philosophy extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-.about-message {
+.tech-phil-container {
+  margin-top: 100px;
+}
+.tech-message-header {
   margin-top: 100px;
   h3 {
     margin: 0;
@@ -73,12 +35,12 @@ export default class Headshot extends Vue {
     color: $infra-red;
   }
 }
-.headshot-info-container {
+.tech-message-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
-  .headshot {
+  .code-img {
     height: 600px;
   }
   .info {
@@ -123,13 +85,13 @@ export default class Headshot extends Vue {
 }
 
 @media (min-width: 300px) {
-  .about-content {
+  .tech-content {
     width: 90%;
   }
 }
 
 @media (max-width: 899px) {
-  .headshot-info-container {
+  .tech-message-container {
     .info {
       width: 90%;
       h3 {
@@ -140,18 +102,18 @@ export default class Headshot extends Vue {
 }
 
 @media (max-width: 450px) {
-  .about-message {
+  .tech-message-header {
     margin-top: 40px;
   }
-  .headshot-info-container {
-    .headshot {
+  .tech-message-container {
+    .code-img {
       height: 450px;
     }
   }
 }
 
 @media (max-width: 900px) {
-  .headshot-info-container {
+  .tech-message-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,7 +128,7 @@ export default class Headshot extends Vue {
     min-width: 100vw;
     margin-bottom: 1000px;
   }
-  .about-content {
+  .tech-content {
     width: 1000px;
   }
 }
