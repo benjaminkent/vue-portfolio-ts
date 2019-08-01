@@ -7,7 +7,7 @@
         ul
           li(@click='goHome') Home
           li(@click='goAbout') About
-          li Toolset
+          li(@click='goToolset') Toolset
           li Portfolio
           li Resume
     .mobile-header
@@ -16,7 +16,7 @@
           ul
             li(@click='goHome') Home
             li(@click='mobileGoAbout') About
-            li Toolset
+            li(@click='mobileGoToolset') Toolset
             li Portfolio
             li Resume
       header
@@ -33,36 +33,51 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class AppHeader extends Vue {
-  public showMenu: boolean = false
-  public scrolledPosition: number | null = null
+  showMenu: boolean = false
+  scrolledPosition: number | null = null
 
-  public mounted(): void {
+  mounted(): void {
     window.addEventListener('scroll', this.updateScroll)
   }
-
-  public updateScroll(): void {
+  updateScroll(): void {
     this.scrolledPosition = window.scrollY
   }
-
-  public goHome(): void {
+  goHome(): void {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
   }
-
-  public goAbout(): void {
+  goAbout(): void {
     window.scrollTo({
-      top: 865,
+      top: 905,
       behavior: 'smooth'
     })
   }
-
-  public mobileGoAbout(): void {
+  mobileGoAbout(): void {
     window.scrollTo({
-      top: 412,
+      top: 415,
       behavior: 'smooth'
     })
+  }
+  goToolset(): void {
+    window.scrollTo({
+      top: 3250,
+      behavior: 'smooth'
+    })
+  }
+  mobileGoToolset(): void {
+    if (window.innerWidth >= 450 && window.innerWidth <= 550) {
+      window.scrollTo({
+        top: 2850,
+        behavior: 'smooth'
+      })
+    } else {
+      window.scrollTo({
+        top: 2650,
+        behavior: 'smooth'
+      })
+    }
   }
 }
 </script>

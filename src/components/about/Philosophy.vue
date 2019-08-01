@@ -90,14 +90,14 @@ export default class Philosophy extends Vue {}
     align-items: center;
     margin-top: 100px;
     .info {
-      width: 90%;
+      width: 100%;
       h3 {
         margin-top: 20px;
       }
     }
     .code-img {
       margin-top: 25px;
-      width: 90%;
+      width: 100%;
       height: auto;
     }
   }
@@ -108,7 +108,7 @@ export default class Philosophy extends Vue {}
     margin-top: 50px;
     .code-img {
       margin-top: 25px;
-      width: 90%;
+      width: 100%;
       height: auto;
     }
   }

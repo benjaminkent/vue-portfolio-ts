@@ -134,7 +134,7 @@ export default class Headshot extends Vue {
     flex-direction: column;
     align-items: center;
     .info {
-      width: 90%;
+      width: 100%;
       h3 {
         margin-top: 20px;
       }
