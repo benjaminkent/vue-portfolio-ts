@@ -10,7 +10,11 @@
           h3 Benjamin Kent Jehl
           p.job-title Software Engineer
           p Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am passionate about designing and building the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
-          ul
+          ul.social-media
+            li(v-for='icon in socialMedia')
+              a(:href='icon.url')
+                i(:class='icon.class')
+          ul.words
             li(v-for='word in wordList')
               i.far.fa-check
               | {{ word }}
@@ -18,6 +22,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { SocialMedia } from '@/interfaces/interfaces'
 
 @Component({})
 export default class About extends Vue {
@@ -27,6 +32,28 @@ export default class About extends Vue {
     'Full-stack',
     'Mobile-first',
     'Learner'
+  ]
+  public socialMedia: SocialMedia[] = [
+    {
+      class: 'fab fa-linkedin-in',
+      url: '#'
+    },
+    {
+      class: 'fab fa-github',
+      url: '#'
+    },
+    {
+      class: 'fab fa-twitter',
+      url: '#'
+    },
+    {
+      class: 'fab fa-facebook-f',
+      url: '#'
+    },
+    {
+      class: 'fab fa-instagram',
+      url: '#'
+    }
   ]
 }
 </script>
@@ -73,13 +100,26 @@ export default class About extends Vue {
     .job-title {
       margin: 0;
     }
-    ul {
+    .social-media {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      li {
+        font-size: 14px;
+        margin-right: 15px;
+        a {
+          color: $infra-red;
+        }
+      }
+    }
+    .words {
       margin: 0;
       padding: 0;
       list-style-type: none;
       li {
         margin: 20px 0;
-        i {
+        .fa-check {
           margin-right: 15px;
           color: #1aaf3d;
         }
