@@ -3,6 +3,7 @@
     AppHeader
     Jumbotron
     About
+    Toolset
 </template>
 
 <script lang="ts">
@@ -10,12 +11,14 @@ import { Component, Vue } from 'vue-property-decorator'
 import AppHeader from '../components/Header.vue'
 import Jumbotron from '../components/Jumbotron.vue'
 import About from '../components/about/About.vue'
+import Toolset from '../components/Toolset.vue'
 
 @Component({
   components: {
     AppHeader,
     Jumbotron,
-    About
+    About,
+    Toolset
   }
 })
 export default class Home extends Vue {}

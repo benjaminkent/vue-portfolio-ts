@@ -20,7 +20,6 @@ export default class About extends Vue {}
 
 <style lang="scss" scoped>
 .about-container {
-  margin-bottom: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
