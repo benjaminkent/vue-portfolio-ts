@@ -9,7 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import AppHeader from '../components/Header.vue'
 import Jumbotron from '../components/Jumbotron.vue'
-import About from '../components/About.vue'
+import About from '../components/about/About.vue'
 
 @Component({
   components: {

@@ -1,11 +1,10 @@
 <template lang="pug">
-  .about-container
-    .about-content
+  .about-content
       .about-message
         h3 ABOUT ME
         h2 Forward Thinking Engineer
       .headshot-info-container
-        img.headshot(src='../assets/headshot.jpg')
+        img.headshot(src='../../assets/headshot.jpg')
         .info
           h3 Benjamin Kent Jehl
           p.job-title Software Engineer
@@ -25,7 +24,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { SocialMedia } from '@/interfaces/interfaces'
 
 @Component({})
-export default class About extends Vue {
+export default class Headshot extends Vue {
   public wordList: string[] = [
     'Developer',
     'Responsive Design',
@@ -59,11 +58,6 @@ export default class About extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.about-container {
-  margin-bottom: 1000px;
-  display: flex;
-  justify-content: center;
-}
 .about-message {
   margin-top: 75px;
   h3 {
