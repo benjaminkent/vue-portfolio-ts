@@ -40,14 +40,14 @@ export default class About extends Vue {
   h3 {
     margin: 0;
     font-weight: 100;
-    color: #898989;
+    color: $grey-text;
     letter-spacing: 3px;
     font-size: 16px;
   }
   h2 {
     margin: 3px 0;
     font-size: 32px;
-    color: $blue;
+    color: $infra-red;
   }
 }
 .headshot-info-container {
@@ -61,7 +61,7 @@ export default class About extends Vue {
   .info {
     line-height: 30px;
     font-size: 16px;
-    color: #898989;
+    color: $grey-text;
     font-weight: 100;
     width: 50%;
     ul {
@@ -79,9 +79,33 @@ export default class About extends Vue {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 300px) {
   .about-content {
     width: 90%;
+  }
+  .headshot-info-container {
+    .info {
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .about-message {
+    margin-top: 40px;
+  }
+  .headshot-info-container {
+    .headshot {
+      height: 450px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .headshot-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
