@@ -38,8 +38,8 @@ export default class Toolset extends Vue {}
       right: 0;
       content: '';
       display: block;
-      height: 70px;
-      transform: skewY(3deg);
+      height: 50%;
+      transform: skewY(7deg);
       transform-origin: 100%;
     }
   }
