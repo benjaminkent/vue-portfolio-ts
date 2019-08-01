@@ -8,19 +8,28 @@
           h3 EXPERIENCE
           h2 My Current Toolset Includes
       .card-container-box
-        Card
+        Card(v-for='card in cardData' :card='card')
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Card from './Card.vue'
+import { CardInterface } from '@/interfaces/interfaces'
+
+const cardData = require('@/data/card-data.json')
 
 @Component({
   components: {
     Card
   }
 })
-export default class Toolset extends Vue {}
+export default class Toolset extends Vue {
+  cardData: CardInterface[] = []
+
+  mounted() {
+    this.cardData = cardData
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -30,9 +39,7 @@ export default class Toolset extends Vue {}
 }
 .toolset-grid {
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
   grid-template-columns: repeat(3, 1fr);
-  height: 700px;
   .background-color-box {
     grid-area: 2 / 1 / 7 / 4;
     .background-color {
@@ -57,9 +64,10 @@ export default class Toolset extends Vue {}
     }
   }
   .message-box {
-    grid-area: 1 / 1 / 3 / 4;
+    grid-area: 1 / 1 / 2 / 4;
     display: flex;
     justify-content: center;
+    align-self: end;
     .message {
       width: 90%;
       h3 {
@@ -81,9 +89,10 @@ export default class Toolset extends Vue {}
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 550px) {
   .toolset-container {
     margin-top: 100px;
+    grid-template-rows: 0.4fr repeat(5, 1fr);
   }
 }
 

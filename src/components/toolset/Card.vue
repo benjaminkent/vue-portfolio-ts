@@ -2,28 +2,30 @@
   .card-container
     .card
       .card-content
-        img.logo(src='../../assets/vue-logo.png')
-        h3 Vue.js
-        p Vue is a progressive framework for building user interfaces. It is designed from the ground up to be incrementally adoptable.
+        img.logo(v-for='logo in card.logoURL' :src='require(`../../assets/${logo}`)')
+        h3 {{ card.name }}
+        p {{ card.description }}
         .link(@mouseover='showArrow = true' @mouseleave='showArrow = false')
-          a(href='https://vuejs.org/v2/guide/' target='_blank' rel='noreferrer noopener')
+          a(:href='card.linkURL' target='_blank' rel='noreferrer noopener')
             | LEARN MORE
             transition(name='slide-right')
               i.far.fa-arrow-right(v-if='showArrow')
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { CardInterface } from '@/interfaces/interfaces'
 
 @Component({})
 export default class Card extends Vue {
+  @Prop({ default: 'default value' }) readonly card!: CardInterface
   showArrow: boolean = false
 }
 </script>
 
 <style lang="scss" scoped>
 .card-container {
-  margin-top: 25px;
+  margin: 25px 0;
 }
 .card {
   width: 90%;
@@ -35,6 +37,7 @@ export default class Card extends Vue {
     margin: 30px;
     .logo {
       height: 50px;
+      margin-right: 5px;
     }
     h3 {
       margin: 7px 0;
@@ -72,13 +75,16 @@ export default class Card extends Vue {
 }
 .card:hover {
   box-shadow: 2px 3px 6px 5px #22222240;
-  transition: 0.6s all ease-in-out;
+  transition: 0.4s all ease-in-out;
 }
 @media (max-width: 550px) {
   .card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .card {
+      min-height: 280px;
+    }
   }
 }
 </style>
