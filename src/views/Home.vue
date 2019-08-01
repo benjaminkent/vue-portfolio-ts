@@ -2,18 +2,20 @@
   .home-container
     AppHeader
     Jumbotron
-    .about-section
+    About
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import AppHeader from '../components/Header.vue'
 import Jumbotron from '../components/Jumbotron.vue'
+import About from '../components/About.vue'
 
 @Component({
   components: {
     AppHeader,
-    Jumbotron
+    Jumbotron,
+    About
   }
 })
 export default class Home extends Vue {}
