@@ -1,15 +1,14 @@
 <template lang="pug">
-  .card-container
-    .card
-      .card-content
-        img.logo(v-for='logo in card.logoURL' :src='require(`../../assets/${logo}`)')
-        h3 {{ card.name }}
-        p {{ card.description }}
-        .link(@mouseover='showArrow = true' @mouseleave='showArrow = false')
-          a(:href='card.linkURL' target='_blank' rel='noreferrer noopener')
-            | LEARN MORE
-            transition(name='slide-right')
-              i.far.fa-arrow-right(v-if='showArrow')
+  .card
+    .card-content
+      img.logo(v-for='logo in card.logoURL' :src='require(`../../assets/${logo}`)')
+      h3 {{ card.name }}
+      p {{ card.description }}
+      .link(@mouseover='showArrow = true' @mouseleave='showArrow = false')
+        a(:href='card.linkURL' target='_blank' rel='noreferrer noopener')
+          | LEARN MORE
+          transition(name='slide-right')
+            i.far.fa-arrow-right(v-if='showArrow')
 </template>
 
 <script lang="ts">
@@ -24,15 +23,13 @@ export default class Card extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.card-container {
-  margin: 25px 0;
-}
 .card {
   width: 90%;
   background-color: #fff;
   border: 1px solid #ddd;
   border-top: 2px solid $blue;
   transition: 0.3s all ease-in-out;
+  margin: 25px 0;
   .card-content {
     margin: 30px;
     .logo {
@@ -78,14 +75,12 @@ export default class Card extends Vue {
   transition: 0.4s all ease-in-out;
 }
 @media (max-width: 550px) {
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .card {
-      min-height: 280px;
-    }
+  .card {
+    min-height: 280px;
   }
+}
+
+@media (min-width: 551px) {
 }
 </style>
 

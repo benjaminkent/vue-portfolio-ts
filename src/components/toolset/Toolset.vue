@@ -15,8 +15,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import Card from './Card.vue'
 import { CardInterface } from '@/interfaces/interfaces'
-
-const cardData = require('@/data/card-data.json')
+import { cardData } from '@/data/data'
 
 @Component({
   components: {

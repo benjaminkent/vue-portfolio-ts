@@ -1,14 +1,12 @@
-interface SocialMedia {
+export interface SocialMedia {
   class: string
   url: string
 }
 
-interface CardInterface {
+export interface CardInterface {
   id: number
   logoURL: string[]
   name: string
   description: string
   linkURL: string
 }
-
-export { SocialMedia, CardInterface }
