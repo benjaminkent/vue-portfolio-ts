@@ -85,6 +85,7 @@ export default class Toolset extends Vue {
   }
   .card-container-box {
     grid-area: 2 / 1 / 7 / 4;
+    display: flex;
   }
 }
 
@@ -92,6 +93,22 @@ export default class Toolset extends Vue {
   .toolset-container {
     margin-top: 100px;
     grid-template-rows: 0.4fr repeat(5, 1fr);
+  }
+  .toolset-grid {
+    .card-container-box {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media (min-width: 551px) {
+  .toolset-container {
+    .card-container-box {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 }
 
