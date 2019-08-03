@@ -170,11 +170,23 @@ export default class Jumbotron extends Vue {}
           opacity: 0.9;
           border-radius: 3px;
           cursor: pointer;
+          transition: 0.3s all ease-in-out;
+          a {
+            font-size: 14px;
+            color: #222;
+            text-decoration: none;
+            transition: 0.3s all ease-in-out;
+          }
         }
         button:hover {
           background-color: #222;
           border: 1px solid #222;
           color: #fff;
+          transition: 0.3s all ease-in-out;
+        }
+        button:hover > a {
+          color: #fff;
+          transition: 0.3s all ease-in-out;
         }
       }
     }

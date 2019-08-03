@@ -5,20 +5,44 @@
         .logo
           i.fad.fa-narwhal
         ul
-          li(@click='goHome') Home
-          li(@click='goAbout') About
-          li(@click='goToolset') Toolset
-          li(@click='goPortfolio') Portfolio
-          li Resume
+          li 
+            a(
+                href='#'
+                v-scroll-to="'#home'"
+                :class="{'scrolled-a': scrolledPosition > 150}"
+              ) Home
+          li
+            a(
+              href='#'
+              v-scroll-to="'#about'"
+              :class="{'scrolled-a': scrolledPosition > 150}"
+            ) About
+          li
+            a(
+              href='#' 
+              v-scroll-to="{ el: '#toolset', offset: -100 }"
+              :class="{'scrolled-a': scrolledPosition > 150}"
+            ) Toolset
+          li
+            a(
+              href='#'
+              v-scroll-to="'#portfolio'"
+              :class="{'scrolled-a': scrolledPosition > 150}"
+            ) Portfolio
+          li Contact
     .mobile-header
       transition(name='slide-down')
         .pop-out-menu(v-if='showMenu' @click='showMenu = false')
           ul
-            li(@click='goHome') Home
-            li(@click='mobileGoAbout') About
-            li(@click='mobileGoToolset') Toolset
-            li(@click='mobileGoPortfolio') Portfolio
-            li Resume
+            li
+              a(href='#' v-scroll-to="'#home'") Home
+            li
+              a(href='#' v-scroll-to="{ el: '#about', offset: -20 }") About
+            li 
+              a(href='#' v-scroll-to="{ el: '#toolset', offset: -100 }") Toolset
+            li
+              a(href='#' v-scroll-to="{ el: '#portfolio', offset: -20 }") Portfolio
+            li Contact
       header
         .logo
           i.fad.fa-narwhal
@@ -41,76 +65,6 @@ export default class AppHeader extends Vue {
   }
   updateScroll(): void {
     this.scrolledPosition = window.scrollY
-  }
-  goHome(): void {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
-  goAbout(): void {
-    window.scrollTo({
-      top: 905,
-      behavior: 'smooth'
-    })
-  }
-  mobileGoAbout(): void {
-    window.scrollTo({
-      top: 415,
-      behavior: 'smooth'
-    })
-  }
-  goToolset(): void {
-    if (window.innerWidth >= 551 && window.innerWidth <= 901) {
-      window.scrollTo({
-        top: 3250,
-        behavior: 'smooth'
-      })
-    } else {
-      window.scrollTo({
-        top: 2350,
-        behavior: 'smooth'
-      })
-    }
-  }
-  mobileGoToolset(): void {
-    if (window.innerWidth >= 450 && window.innerWidth <= 550) {
-      window.scrollTo({
-        top: 2800,
-        behavior: 'smooth'
-      })
-    } else {
-      window.scrollTo({
-        top: 2650,
-        behavior: 'smooth'
-      })
-    }
-  }
-  goPortfolio(): void {
-    if (window.innerWidth >= 551 && window.innerWidth <= 901) {
-      window.scrollTo({
-        top: 4550,
-        behavior: 'smooth'
-      })
-    } else {
-      window.scrollTo({
-        top: 3250,
-        behavior: 'smooth'
-      })
-    }
-  }
-  mobileGoPortfolio(): void {
-    if (window.innerWidth >= 450 && window.innerWidth <= 550) {
-      window.scrollTo({
-        top: 5000,
-        behavior: 'smooth'
-      })
-    } else {
-      window.scrollTo({
-        top: 4875,
-        behavior: 'smooth'
-      })
-    }
   }
 }
 </script>
@@ -142,10 +96,18 @@ export default class AppHeader extends Vue {
       li {
         margin: 0 20px;
         cursor: pointer;
-      }
-      li:hover {
-        color: $orange;
-        transition: 0.3s all ease;
+        a {
+          text-decoration: none;
+          color: #222;
+          transition: 0.3s all ease;
+        }
+        a:hover {
+          color: $orange;
+          transition: 0.3s all ease;
+        }
+        .scrolled-a {
+          color: #fff;
+        }
       }
     }
   }
@@ -156,6 +118,9 @@ export default class AppHeader extends Vue {
   transition: 0.4s all ease;
   box-shadow: 0 0 2px 2px #33333370;
   opacity: 0.9;
+}
+.scrolled-a {
+  color: #fff;
 }
 .mobile-header {
   header {
@@ -203,10 +168,16 @@ export default class AppHeader extends Vue {
         margin: 10px 0;
         border-bottom: 1px solid #22222290;
         cursor: pointer;
-      }
-      li:hover {
-        color: $orange;
         transition: 0.3s all ease;
+        a {
+          color: #fff;
+          text-decoration: none;
+          transition: 0.3s all ease;
+        }
+        a:hover {
+          color: $orange;
+          transition: 0.3s all ease;
+        }
       }
     }
   }

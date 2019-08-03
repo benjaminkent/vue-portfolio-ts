@@ -1,5 +1,5 @@
 <template lang="pug">
-  .about-container
+  .about-container(id='about')
     Headshot
     Philosophy
 </template>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home-container
+  .home-container(id='home')
     AppHeader
     Jumbotron
     About

@@ -1,5 +1,5 @@
 <template lang="pug">
-  .toolset-container
+  .toolset-container(id='toolset')
     .toolset-grid
       .background-color-box
         .background-color
