@@ -34,7 +34,7 @@ export default class Toolset extends Vue {
 <style lang="scss" scoped>
 .toolset-container {
   margin-top: 150px;
-  margin-bottom: 1000px;
+  margin-bottom: 50px;
 }
 .toolset-grid {
   display: grid;
@@ -109,6 +109,7 @@ export default class Toolset extends Vue {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
+      width: 100%;
     }
   }
 }
