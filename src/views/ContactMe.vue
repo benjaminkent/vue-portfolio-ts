@@ -32,14 +32,13 @@ export default class ContactMe extends Vue {
   grid-template-rows: 0.75fr repeat(5, 1fr) 0.5fr;
   grid-template-columns: 1fr;
   height: 825px;
-  margin-bottom: 500px;
   .contact-form-container {
     grid-area: 2 / 1 / 7 / 2;
     justify-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 4px 1px #33333310;
+    box-shadow: 0 0 10px 1px #33333315;
     background-color: #fff;
   }
   .bottom-background {
@@ -118,7 +117,7 @@ form {
 
 @media (max-width: 550px) {
   .contact-form-container {
-    width: 80%;
+    width: 77%;
   }
   form {
     width: 100%;
