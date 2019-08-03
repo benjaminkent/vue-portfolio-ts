@@ -29,7 +29,12 @@
               v-scroll-to="'#portfolio'"
               :class="{'scrolled-a': scrolledPosition > 150}"
             ) Portfolio
-          li Contact
+          li
+            a(
+              href='#'
+              v-scroll-to="'#contact'"
+              :class="{'scrolled-a': scrolledPosition > 150}"
+            ) Contact
     .mobile-header
       transition(name='slide-down')
         .pop-out-menu(v-if='showMenu' @click='showMenu = false')
@@ -42,7 +47,8 @@
               a(href='#' v-scroll-to="{ el: '#toolset', offset: -100 }") Toolset
             li
               a(href='#' v-scroll-to="{ el: '#portfolio', offset: -20 }") Portfolio
-            li Contact
+            li
+              aa(href='#' v-scroll-to="'#contact'") Contact
       header
         .logo
           i.fad.fa-narwhal

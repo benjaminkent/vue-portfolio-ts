@@ -11,7 +11,7 @@
         button
           a(href='#' v-scroll-to="'#portfolio'") View Portfolio
         button
-          a(href='#') Contact Me
+          a(href='#' v-scroll-to="'#contact'") Contact Me
 </template>
 
 <script lang="ts">

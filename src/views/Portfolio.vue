@@ -33,7 +33,6 @@ export default class Portfolio extends Vue {
 .portfolio-container {
   background-color: #f7f7f7;
   padding-bottom: 75px;
-  margin-bottom: 500px;
   h1 {
     margin: 0;
   }

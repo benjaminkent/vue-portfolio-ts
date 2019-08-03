@@ -5,6 +5,7 @@
     About
     Toolset
     Portfolio
+    ContactMe
 </template>
 
 <script lang="ts">
@@ -14,6 +15,7 @@ import Jumbotron from '@/components/Jumbotron.vue'
 import About from '@/views/About.vue'
 import Toolset from '@/views/Toolset.vue'
 import Portfolio from '@/views/Portfolio.vue'
+import ContactMe from '@/views/ContactMe.vue'
 
 @Component({
   components: {
@@ -21,7 +23,8 @@ import Portfolio from '@/views/Portfolio.vue'
     Jumbotron,
     About,
     Toolset,
-    Portfolio
+    Portfolio,
+    ContactMe
   }
 })
 export default class Home extends Vue {}
