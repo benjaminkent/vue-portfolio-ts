@@ -8,12 +8,12 @@
           h3 EXPERIENCE
           h2 My Current Toolset Includes
       .card-container-box
-        Card(v-for='card in cardData' :card='card')
+        Card(v-for='card in cardData' :card='card' :key='card.id')
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import Card from './Card.vue'
+import Card from '@/components/toolset/Card.vue'
 import { CardInterface } from '@/interfaces/interfaces'
 import { cardData } from '@/data/data'
 

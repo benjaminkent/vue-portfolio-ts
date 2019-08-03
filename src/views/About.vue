@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import Headshot from './Headshot.vue'
-import Philosophy from './Philosophy.vue'
+import Headshot from '@/components/about/Headshot.vue'
+import Philosophy from '@/components/about/Philosophy.vue'
 
 @Component({
   components: {
