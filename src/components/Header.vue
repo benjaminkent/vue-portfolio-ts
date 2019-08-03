@@ -8,7 +8,7 @@
           li(@click='goHome') Home
           li(@click='goAbout') About
           li(@click='goToolset') Toolset
-          li Portfolio
+          li(@click='goPortfolio') Portfolio
           li Resume
     .mobile-header
       transition(name='slide-down')
@@ -17,7 +17,7 @@
             li(@click='goHome') Home
             li(@click='mobileGoAbout') About
             li(@click='mobileGoToolset') Toolset
-            li Portfolio
+            li(@click='mobileGoPortfolio') Portfolio
             li Resume
       header
         .logo
@@ -61,20 +61,53 @@ export default class AppHeader extends Vue {
     })
   }
   goToolset(): void {
-    window.scrollTo({
-      top: 3250,
-      behavior: 'smooth'
-    })
+    if (window.innerWidth >= 551 && window.innerWidth <= 901) {
+      window.scrollTo({
+        top: 3250,
+        behavior: 'smooth'
+      })
+    } else {
+      window.scrollTo({
+        top: 2350,
+        behavior: 'smooth'
+      })
+    }
   }
   mobileGoToolset(): void {
     if (window.innerWidth >= 450 && window.innerWidth <= 550) {
       window.scrollTo({
-        top: 2850,
+        top: 2800,
         behavior: 'smooth'
       })
     } else {
       window.scrollTo({
         top: 2650,
+        behavior: 'smooth'
+      })
+    }
+  }
+  goPortfolio(): void {
+    if (window.innerWidth >= 551 && window.innerWidth <= 901) {
+      window.scrollTo({
+        top: 4550,
+        behavior: 'smooth'
+      })
+    } else {
+      window.scrollTo({
+        top: 3250,
+        behavior: 'smooth'
+      })
+    }
+  }
+  mobileGoPortfolio(): void {
+    if (window.innerWidth >= 450 && window.innerWidth <= 550) {
+      window.scrollTo({
+        top: 5000,
+        behavior: 'smooth'
+      })
+    } else {
+      window.scrollTo({
+        top: 4875,
         behavior: 'smooth'
       })
     }
