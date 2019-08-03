@@ -1,18 +1,19 @@
 <template lang="pug">
   .project-container-grid(
     @click='toggleWords'
-    @mouseover='showWords = true'
-    @mouseleave='showWords = false'
+    @mouseover='showScreen = true'
+    @mouseleave='showScreen = false'
   )
     .image-box
       img(src='../../assets/cycle.jpg')
     .name-box
       transition(name='slide-up')
-        .name-content(v-if='showWords')
+        .name-content(v-if='showScreen')
           h2 BrewLo
           p Brewery Finder App
           a(href='#') brewlo.buzz
-    .screen-box
+    transition(name='fade-in')
+      .screen-box(v-if='showScreen')
 </template>
 
 <script lang="ts">
@@ -20,12 +21,12 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Project extends Vue {
-  showWords: boolean = true
+  showScreen: boolean = false
 
   toggleWords(): void {
-    this.showWords === false
-      ? (this.showWords = true)
-      : (this.showWords = false)
+    this.showScreen === false
+      ? (this.showScreen = true)
+      : (this.showScreen = false)
   }
 }
 </script>
@@ -49,13 +50,6 @@ export default class Project extends Vue {
     grid-area: 1 / 1 / 4 / 4;
     background-color: #00000090;
     transition: 0.4s all ease-in-out;
-    opacity: 0;
-  }
-  .screen-box:hover {
-    opacity: 1;
-  }
-  .name-box:hover + .screen-box {
-    opacity: 1;
   }
   .name-box {
     grid-area: 2 / 1 / 3 / 4;
@@ -94,17 +88,33 @@ export default class Project extends Vue {
   transform: translateY(20px);
   opacity: 0;
 }
+.fade-in-enter-active {
+  transition: all 0.4s ease-out;
+}
+.fade-in-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+.fade-in-enter,
+.fade-in-leave-to {
+  opacity: 0;
+}
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
   .project-container-grid {
     height: 300px;
   }
 }
 
-@media (min-width: 551px) {
+@media (min-width: 651px) {
   .project-container-grid {
     height: 400px;
-    width: 400px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 550px) {
+  .project-container-grid {
+    height: 400px;
   }
 }
 </style>
