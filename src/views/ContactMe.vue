@@ -51,6 +51,7 @@ export default class ContactMe extends Vue {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
   h3 {
     margin: 0;
     font-weight: 100;
@@ -68,7 +69,9 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
+  height: 100%;
   .name-input-container {
     width: 100%;
     display: flex;
@@ -76,20 +79,31 @@ form {
     input {
       width: 100%;
       border: none;
-      background-color: #33333320;
+      background-color: #33333309;
+      padding: 15px 0;
+      font-size: 16px;
+      text-indent: 15px;
     }
   }
   .email {
     width: 100%;
     border: none;
-    background-color: #33333320;
-    padding: 0;
+    background-color: #33333309;
+    padding: 15px 0;
+    font-size: 16px;
+    text-indent: 15px;
   }
   .text-area {
     width: 100%;
     border: none;
-    background-color: #33333320;
+    background-color: #33333309;
     padding: 0;
+    padding: 15px 0;
+    font-size: 16px;
+    text-indent: 15px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    height: 225px;
+    resize: vertical;
   }
   button {
     align-self: flex-start;
