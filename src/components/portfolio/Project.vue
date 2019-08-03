@@ -5,22 +5,25 @@
     @mouseleave='showScreen = false'
   )
     .image-box
-      img(src='../../assets/cycle.jpg')
+      img(:src='require(`../../assets/${project.image}`)')
     .name-box
       transition(name='slide-up')
         .name-content(v-if='showScreen')
-          h2 BrewLo
-          p Brewery Finder App
-          a(href='#') brewlo.buzz
+          h2 {{ project.name }}
+          p {{ project.description }}
+          a(:href='project.linkURL' target='_blank' rel='noreferrer noopener') {{ project.linkName }}
     transition(name='fade-in')
       .screen-box(v-if='showScreen')
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { ProjectInterface } from '@/interfaces/interfaces'
 
 @Component({})
 export default class Project extends Vue {
+  @Prop({ default: {} }) readonly project!: ProjectInterface
+
   showScreen: boolean = false
 
   toggleWords(): void {
@@ -48,7 +51,7 @@ export default class Project extends Vue {
   }
   .screen-box {
     grid-area: 1 / 1 / 4 / 4;
-    background-color: #00000090;
+    background-color: #00000095;
     transition: 0.4s all ease-in-out;
   }
   .name-box {

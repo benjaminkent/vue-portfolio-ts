@@ -1,4 +1,4 @@
-import { CardInterface } from '@/interfaces/interfaces'
+import { CardInterface, ProjectInterface } from '@/interfaces/interfaces'
 
 /* tslint:disable:max-line-length */
 export const cardData: CardInterface[] = [
@@ -43,5 +43,24 @@ export const cardData: CardInterface[] = [
     name: 'Bootstrap',
     description: 'Bootstrap is built on HTML, CSS, and JS to facilitate the development of responsive, mobile-first sites and apps.',
     linkURL: 'https://getbootstrap.com/'
+  }
+]
+
+export const projectData: ProjectInterface[] = [
+  {
+    id: 1,
+    name: 'BrewLo',
+    description: 'Brewery finder app',
+    linkURL: 'https://brewlo.buzz/',
+    linkName: 'brewlo.buzz',
+    image: 'cycle.jpg'
+  },
+  {
+    id: 2,
+    name: 'Grip The Rods',
+    description: 'Foosball team generator',
+    linkURL: 'https://griptherods.com/',
+    linkName: 'griptherods.com',
+    image: 'gtr.png'
   }
 ]

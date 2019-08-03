@@ -10,3 +10,12 @@ export interface CardInterface {
   description: string
   linkURL: string
 }
+
+export interface ProjectInterface {
+  id: number
+  name: string
+  description: string
+  linkURL: string
+  linkName: string
+  image: string
+}

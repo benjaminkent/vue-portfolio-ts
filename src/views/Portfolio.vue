@@ -5,28 +5,34 @@
       h2 A Couple Of My Recent Projects
     .portfolio-content
       ul.portfolio-content-cards
-        li
-          Project
-        li
-          Project
+        li(v-for='project in projects')
+          Project(:project='project')
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Project from '@/components/portfolio/Project.vue'
+import { projectData } from '@/data/data'
+import { ProjectInterface } from '@/interfaces/interfaces'
 
 @Component({
   components: {
     Project
   }
 })
-export default class Portfolio extends Vue {}
+export default class Portfolio extends Vue {
+  projects: ProjectInterface[] = []
+
+  mounted(): void {
+    this.projects = projectData
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .portfolio-container {
   background-color: #f7f7f7;
-  padding-bottom: 50px;
+  padding-bottom: 75px;
   margin-bottom: 500px;
   h1 {
     margin: 0;
