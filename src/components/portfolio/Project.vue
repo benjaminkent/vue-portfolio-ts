@@ -117,5 +117,12 @@ export default class Project extends Vue {
     height: 400px;
   }
 }
+
+@media (min-width: 1000px) {
+  .project-container-grid {
+    width: 490px;
+    height: 490px;
+  }
+}
 </style>
 

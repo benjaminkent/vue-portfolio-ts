@@ -4,9 +4,11 @@
       h3 MY WORK
       h2 A Couple Of My Recent Projects
     .portfolio-content
-      .portfolio-content-cards
-        Project
-        Project
+      ul.portfolio-content-cards
+        li
+          Project
+        li
+          Project
 </template>
 
 <script lang="ts">
@@ -47,8 +49,18 @@ export default class Portfolio extends Vue {}
     color: $accents;
   }
 }
+.portfolio-content-cards {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 
 @media (max-width: 650px) {
+  .portfolio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .portfolio-content {
     width: 100%;
     display: flex;
@@ -57,6 +69,9 @@ export default class Portfolio extends Vue {}
     .portfolio-content-cards {
       width: 90%;
     }
+  }
+  .message {
+    margin-top: 50px;
   }
 }
 
@@ -75,16 +90,21 @@ export default class Portfolio extends Vue {}
 }
 
 @media (min-width: 1000px) {
-  .message {
-    width: 1000px;
-  }
   .portfolio-content {
-    width: 1050px;
+    width: 1000px;
     .portfolio-content-cards {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
       width: 100%;
     }
+  }
+}
+
+@media (min-width: 1200px) {
+  .message {
+    width: 1000px;
   }
 }
 </style>
