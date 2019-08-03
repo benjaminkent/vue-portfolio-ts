@@ -5,7 +5,7 @@
         .tech-message-header
           h3 MINDSET
           h2 Tech Philosophy
-        p This website was designed, coded and styled completely from scratch by myself using the Vue.js JavaScript framework. With most of my personal projects, I like to write all of the code myself from scratch, although I have used CSS frameworks such as Bulma and Tailwind CSS to style websites as well; in my professional career I work extensivly with Bootstrap. I believe in solving problems the right way. Which means writing easily maintainable code that doesn't add to tech debt and actively seeks to eliminate it. I am extremely excited about where the tech industry is heading and look forward to the many challenges and breakthroughs that lie before us.
+        p This website was designed, coded and styled completely from scratch by myself using the Vue.js JavaScript framework. With most of my personal projects, I prefer to write all of the code from scratch, although I have used CSS frameworks such as Bulma and Tailwind CSS to style websites as well; in my professional career I work extensivly with Bootstrap. I believe in solving problems the right way. Which means writing easily maintainable code that doesn't add to tech debt and actively seeks to eliminate it. I am extremely excited about where the tech industry is heading and look forward to the many challenges and breakthroughs that lie before us.
       img.code-img(src='../../assets/code-one.jpeg')
 </template>
 

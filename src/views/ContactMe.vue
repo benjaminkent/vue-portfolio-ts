@@ -116,12 +116,28 @@ form {
   }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 550px) {
   .contact-form-container {
-    width: 90%;
+    width: 80%;
+  }
+  form {
+    width: 100%;
+    .name-input-container {
+      flex-direction: column;
+      align-content: space-between;
+      input:first-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .contact-form-container {
+    padding: 30px;
+  }
+  .message {
+    margin-bottom: 15px;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 551px) {
   .contact-form-container {
     padding: 30px;
     width: 80%;
