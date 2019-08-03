@@ -8,39 +8,17 @@
       h2 Software Engineer
     .call-to-action-box
       .buttons-container
-        button(@click='goPortfolio') View Portfolio
-        button View Resume
+        button
+          a(href='#' v-scroll-to="'#portfolio'") View Portfolio
+        button
+          a(href='#') Contact Me
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
-export default class Jumbotron extends Vue {
-  goPortfolio(): void {
-    if (window.innerWidth < 450) {
-      window.scrollTo({
-        top: 5025,
-        behavior: 'smooth'
-      })
-    } else if (window.innerWidth >= 450 && window.innerWidth <= 550) {
-      window.scrollTo({
-        top: 5000,
-        behavior: 'smooth'
-      })
-    } else if (window.innerWidth >= 551 && window.innerWidth <= 875) {
-      window.scrollTo({
-        top: 4550,
-        behavior: 'smooth'
-      })
-    } else if (window.innerWidth >= 876) {
-      window.scrollTo({
-        top: 3250,
-        behavior: 'smooth'
-      })
-    }
-  }
-}
+export default class Jumbotron extends Vue {}
 </script>
 
 <style lang="scss" scoped>
@@ -114,11 +92,22 @@ export default class Jumbotron extends Vue {
           opacity: 0.9;
           border-radius: 3px;
           cursor: pointer;
+          transition: 0.3s all ease-in-out;
+          a {
+            font-size: 14px;
+            color: #222;
+            text-decoration: none;
+          }
         }
         button:hover {
           background-color: #222;
           border: 1px solid #222;
           color: #fff;
+          transition: 0.3s all ease-in-out;
+        }
+        button:hover > a {
+          color: #fff;
+          transition: 0.3s all ease-in-out;
         }
       }
     }
@@ -181,11 +170,23 @@ export default class Jumbotron extends Vue {
           opacity: 0.9;
           border-radius: 3px;
           cursor: pointer;
+          transition: 0.3s all ease-in-out;
+          a {
+            font-size: 14px;
+            color: #222;
+            text-decoration: none;
+            transition: 0.3s all ease-in-out;
+          }
         }
         button:hover {
           background-color: #222;
           border: 1px solid #222;
           color: #fff;
+          transition: 0.3s all ease-in-out;
+        }
+        button:hover > a {
+          color: #fff;
+          transition: 0.3s all ease-in-out;
         }
       }
     }
