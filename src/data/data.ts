@@ -6,7 +6,7 @@ export const cardData: CardInterface[] = [
     id: 1,
     logoURL: [ 'vue-logo.png' ],
     name: 'Vue.js',
-    description: 'Vue is a progressive framework for building user interfaces. It is designed from the ground up to be incrementally adoptable.',
+    description: 'Vue is a framework for building user interfaces. It is designed from the ground up to be incrementally adoptable.',
     linkURL: 'https://vuejs.org/v2/guide/'
   },
   {
@@ -41,7 +41,7 @@ export const cardData: CardInterface[] = [
     id: 6,
     logoURL: [ 'bootstrap.svg' ],
     name: 'Bootstrap',
-    description: 'Bootstrap is built on HTML, CSS, and JavaScript to facilitate the development of responsive, mobile-first sites and apps.',
+    description: 'Bootstrap is built on HTML, CSS, and JS to facilitate the development of responsive, mobile-first sites and apps.',
     linkURL: 'https://getbootstrap.com/'
   }
 ]

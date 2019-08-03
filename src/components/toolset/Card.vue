@@ -86,5 +86,11 @@ export default class Card extends Vue {
     margin: 20px;
   }
 }
+
+@media (min-width: 1050px) {
+  .card {
+    width: 300px;
+  }
+}
 </style>
 

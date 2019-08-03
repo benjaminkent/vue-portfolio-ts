@@ -45,6 +45,7 @@ export default class Toolset extends Vue {
       height: 100%;
       width: 100%;
       background-color: $orange;
+      padding-bottom: 50px;
       position: relative;
       z-index: -1;
     }
@@ -112,12 +113,21 @@ export default class Toolset extends Vue {
   }
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 850px) {
   .toolset-grid {
     .background-color-box {
       .background-color:after {
         border-top: 3px solid $blue;
       }
+    }
+  }
+}
+
+@media (min-width: 1100px) {
+  .toolset-container {
+    .card-container-box {
+      width: 1100px;
+      margin: 0 auto;
     }
   }
 }
