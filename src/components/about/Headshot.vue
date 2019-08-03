@@ -8,10 +8,11 @@
       .info
         h3 Benjamin Kent Jehl
         p.job-title Software Engineer
-        p Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am passionate about designing and building the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
+        p.about Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am the Creator/Organizer of the Vue.js Tampa Bay meetup group and am passionate about sharing with others the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
+        a.resume-link(href='https://drive.google.com/file/d/1yOrPdfcn2WSZdBOpqOPpoDZB9j8KhpCf/view?usp=sharing' target='_blank' rel='noreferrer noopener') VIEW MY RESUME
         ul.social-media
           li(v-for='icon in socialMedia')
-            a(:href='icon.url')
+            a(:href='icon.url' target='_blank' rel='noreferrer noopener')
               i(:class='icon.class')
         ul.words
           li(v-for='word in wordList')
@@ -29,29 +30,28 @@ export default class Headshot extends Vue {
     'Developer',
     'Responsive Design',
     'Full-stack',
-    'Mobile-first',
-    'Learner'
+    'Avid Learner'
   ]
   public socialMedia: SocialMedia[] = [
     {
       class: 'fab fa-linkedin-in',
-      url: '#'
+      url: 'https://www.linkedin.com/in/benjaminkentjehl'
     },
     {
       class: 'fab fa-github',
-      url: '#'
+      url: 'https://github.com/benjaminkent'
     },
     {
       class: 'fab fa-twitter',
-      url: '#'
+      url: 'https://twitter.com/VuejsTampaBay'
     },
     {
       class: 'fab fa-facebook-f',
-      url: '#'
+      url: 'https://www.facebook.com/vue.js.tampabay/'
     },
     {
       class: 'fab fa-instagram',
-      url: '#'
+      url: 'https://www.instagram.com/benjaminkent7'
     }
   ]
 }
@@ -94,8 +94,20 @@ export default class Headshot extends Vue {
     .job-title {
       margin: 0;
     }
+    .about {
+      margin-bottom: 0;
+    }
+    .resume-link {
+      color: $infra-red;
+      letter-spacing: 1px;
+      transition: 0.3s all ease-in-out;
+    }
+    .resume-link:hover {
+      color: #222;
+      transition: 0.3s all ease-in-out;
+    }
     .social-media {
-      margin: 0;
+      margin: 20px 0 0 0;
       padding: 0;
       list-style-type: none;
       display: flex;

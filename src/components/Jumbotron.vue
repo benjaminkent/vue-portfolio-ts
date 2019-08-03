@@ -8,7 +8,7 @@
       h2 Software Engineer
     .call-to-action-box
       .buttons-container
-        button View Portfolio
+        button(@click='goPortfolio') View Portfolio
         button View Resume
 </template>
 
@@ -16,7 +16,31 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
-export default class Jumbotron extends Vue {}
+export default class Jumbotron extends Vue {
+  goPortfolio(): void {
+    if (window.innerWidth < 450) {
+      window.scrollTo({
+        top: 5025,
+        behavior: 'smooth'
+      })
+    } else if (window.innerWidth >= 450 && window.innerWidth <= 550) {
+      window.scrollTo({
+        top: 5000,
+        behavior: 'smooth'
+      })
+    } else if (window.innerWidth >= 551 && window.innerWidth <= 875) {
+      window.scrollTo({
+        top: 4550,
+        behavior: 'smooth'
+      })
+    } else if (window.innerWidth >= 876) {
+      window.scrollTo({
+        top: 3250,
+        behavior: 'smooth'
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

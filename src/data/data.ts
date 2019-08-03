@@ -58,9 +58,9 @@ export const projectData: ProjectInterface[] = [
   {
     id: 2,
     name: 'Grip The Rods',
-    description: 'Foosball team generator',
+    description: 'Foosball team & name generator',
     linkURL: 'https://griptherods.com/',
     linkName: 'griptherods.com',
-    image: 'gtr.png'
+    image: 'foosball.jpeg'
   }
 ]
