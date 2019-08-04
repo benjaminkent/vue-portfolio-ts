@@ -1,12 +1,24 @@
 <template lang="pug">
   .jumbotron
     .weather-box
-      .weather-content
+      .weather-content(v-if='weatherInfo.city')
         p.city {{ weatherInfo.city }}
         p {{ weatherInfo.temp }}°F
         .weather-condition-container
           p {{ weatherInfo.condition }}
-          img(:src='`http://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png`')
+          i.fad.fa-sun(v-if="weatherInfo.icon === '01d'")
+          i.fad.fa-moon(v-if="weatherInfo.icon === '01n'")
+          i.fad.fa-clouds-sun(v-if="weatherInfo.icon === '02d'")
+          i.fad.fa-clouds-moon(v-if="weatherInfo.icon === '02n'")
+          i.fad.fa-clouds(v-if="weatherInfo.icon === '03d'")
+          i.fad.fa-clouds(v-if="weatherInfo.icon === '03n'")
+          i.fad.fa-clouds(v-if="weatherInfo.icon === '04d'")
+          i.fad.fa-clouds(v-if="weatherInfo.icon === '04n'")
+          i.fad.fa-cloud-drizzle(v-if="weatherInfo.icon === '09d'")
+          i.fad.fa-cloud-showers-heavy(v-if="weatherInfo.icon === '10d'")
+          i.fad.fa-thunderstorm(v-if="weatherInfo.icon === '11d'")
+          i.fad.fa-snowflakes(v-if="weatherInfo.icon === '13d'")
+          i.fad.fa-smoke(v-if="weatherInfo.icon === '50d'")
     .background-box-container
       .background-style-box
     .name-box
@@ -84,13 +96,12 @@ export default class Jumbotron extends Vue {
           margin: 0;
         }
         .city {
-          margin-bottom: 4px;
+          margin-bottom: 3px;
         }
         .weather-condition-container {
           display: flex;
-          align-items: center;
-          img {
-            height: 30px;
+          i {
+            margin-left: 5px;
           }
         }
       }

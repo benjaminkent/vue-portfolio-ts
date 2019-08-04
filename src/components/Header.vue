@@ -3,7 +3,8 @@
     .big-header
       header(:class="{ 'scrolled-header': scrolledPosition > 150}")
         .logo
-          i.fad.fa-narwhal
+          a(href='#' v-scroll-to="'#home'" :class="{'scrolled-a': scrolledPosition > 150}")
+            i.fad.fa-narwhal
         ul
           li 
             a(
@@ -88,9 +89,15 @@ export default class AppHeader extends Vue {
     .logo {
       display: flex;
       margin-left: 20px;
-      i {
-        font-size: 17px;
-        margin-right: 10px;
+      a {
+        color: #222;
+        i {
+          font-size: 17px;
+          margin-right: 10px;
+        }
+      }
+      .scrolled-a {
+        color: #fff;
       }
     }
     ul {
@@ -124,9 +131,6 @@ export default class AppHeader extends Vue {
   transition: 0.4s all ease;
   box-shadow: 0 0 2px 2px #33333370;
   opacity: 0.9;
-}
-.scrolled-a {
-  color: #fff;
 }
 .mobile-header {
   header {
