@@ -1,21 +1,26 @@
 <template lang="pug">
   .admin-container
-    router-link(to='/') Back to main app
-    h1 Admin View
-    form(@submit.prevent='enterAdmin')
-      label(for='password') Password
-      input(id='password', type='password' v-model='password' placeholder='Password')
-      button.margin-top(type='submit') Enter
-    .admin-page
-      button(@click='fetchMessages') Fetch Messages
-      h2 Messages
+    .header
+      router-link(to='/') Back to main app
+      h1 Admin View
+    .enter-password-container(v-if='!showPage')
+      form(@submit.prevent='enterAdmin')
+        label(for='password') Password
+        input(id='password', type='password' v-model='password' placeholder='Password')
+        button.margin-top(type='submit') Enter
+    .admin-page(v-if='showPage')
+      button.margin-left(@click='logOut') Log Out
+      .header
+        button(@click='fetchMessages') Fetch Messages
+        h2 Messages
       .messages-container
-        Message
+        Message(v-for='message in messages' :message='message' :deleteMessage='deleteMessage')
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Message from '@/components/admin/Message.vue'
+import { FetchedMessageInterface } from '@/interfaces/interfaces'
 
 @Component({
   components: {
@@ -26,6 +31,7 @@ export default class Admin extends Vue {
   showPage: boolean = false
   showMessages: boolean = false
   password: string = ''
+  messages: FetchedMessageInterface[] = []
 
   enterAdmin(): void {
     if (this.password === process.env.VUE_APP_ADMIN_PASSWORD) {
@@ -36,16 +42,31 @@ export default class Admin extends Vue {
     this.password = ''
   }
   fetchMessages(): void {
-    console.log('foo')
+    const baseURL = 'https://morning-stream-79145.herokuapp.com'
+    this.$http
+      .get(`${baseURL}/messages`)
+      .then(resp => (this.messages = resp.data.messages))
+  }
+  logOut(): void {
+    this.showPage = false
+  }
+  deleteMessage(message: FetchedMessageInterface): void {
+    const baseURL = 'https://morning-stream-79145.herokuapp.com'
+    this.$http.delete(`${baseURL}/messages/${message.id}`)
+    this.messages.splice(this.messages.indexOf(message), 1)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.admin-container {
+.header {
   margin: 20px;
+  a {
+    color: $infra-red;
+  }
 }
 form {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   input {
@@ -74,6 +95,14 @@ button:hover {
 }
 .margin-top {
   margin-top: 20px;
+}
+.margin-left {
+  margin-left: 20px;
+}
+.messages-container {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
 

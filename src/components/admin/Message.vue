@@ -1,15 +1,21 @@
 <template lang="pug">
   .message
-    p Name:
-    p Email:
-    p Message:
+    .name-delete
+      p Name: {{ message.firstName }} {{ message.lastName }}
+      i.fad.fa-trash(@click='deleteMessage(message)')
+    p Email: {{ message.email }}
+    p Message: {{ message.messageText }}
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { FetchedMessageInterface } from '@/interfaces/interfaces'
 
 @Component({})
-export default class Message extends Vue {}
+export default class Message extends Vue {
+  @Prop({ default: {} }) readonly message!: FetchedMessageInterface
+  @Prop(Function) readonly deleteMessage!: Function
+}
 </script>
 
 <style lang="scss" scoped>
@@ -18,8 +24,20 @@ export default class Message extends Vue {}
   width: 350px;
   background-color: #33333309;
   box-shadow: 0 0 5px 1px #33333320;
-  p:first-child {
-    margin-top: 0;
+  margin: 10px;
+  .name-delete {
+    display: flex;
+    justify-content: space-between;
+    p {
+      margin: 0;
+    }
+    i {
+      color: #ff0000;
+      cursor: pointer;
+    }
+    i:hover {
+      color: #a30000;
+    }
   }
   p:last-child {
     margin-bottom: 0;
