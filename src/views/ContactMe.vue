@@ -5,24 +5,51 @@
       .message
         h3 GET IN TOUCH
         h2 Contact Me
-      form
+      form(@submit.prevent='sendMessage')
         .name-input-container
-          input(v-model='firstName' type='text' placeholder='First Name')
-          input(v-model='lastName' type='text' placeholder='Last Name')
-        input.email(v-model='email' type='email' placeholder='Email')
-        textarea.text-area(v-model='message' placeholder='Message')
-        button(type='submit') Send Message
+          input(v-model='message.firstName' type='text' placeholder='First Name')
+          input(v-model='message.lastName' type='text' placeholder='Last Name')
+        input.email(v-model='message.email' type='email' placeholder='Email')
+        textarea.text-area(v-model='message.messageText' placeholder='Message')
+        button(type='submit' @click.prevent='showMessageAlert') Send Message
+    .message-box
+      transition(name='slide-up')
+        .good-message(v-if='messageSent')
+          p Thank you for your message!
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { MessageInterface } from '@/interfaces/interfaces'
 
 @Component({})
 export default class ContactMe extends Vue {
-  firstName: string = ''
-  lastName: string = ''
-  email: string = ''
-  message: string = ''
+  message: MessageInterface = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    messageText: ''
+  }
+  messageSent: boolean = false
+
+  sendMessage(): void {
+    this.message = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      messageText: ''
+    }
+    this.showMessageAlert()
+  }
+  showMessageAlert(): void {
+    if (this.messageSent === true) {
+      return
+    }
+    this.messageSent = true
+    setTimeout(() => {
+      this.messageSent = false
+    }, 5000)
+  }
 }
 </script>
 
@@ -44,6 +71,23 @@ export default class ContactMe extends Vue {
   .bottom-background {
     grid-area: 6 / 1 / 8 / 2;
     background-color: #333;
+  }
+  .message-box {
+    grid-area: 3 / 1 / 4 / 2;
+    justify-self: center;
+    .good-message {
+      height: 60%;
+      width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $success;
+      border-radius: 3px;
+      p {
+        margin: 0;
+        color: #fff;
+      }
+    }
   }
 }
 .message {
@@ -112,7 +156,24 @@ form {
     color: #fff;
     padding: 20px 30px;
     border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
   }
+  button:hover {
+    background-color: #333;
+    transition: 0.3s all ease-in-out;
+  }
+}
+.slide-up-enter-active {
+  transition: all 0.4s ease-out;
+}
+.slide-up-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+.slide-up-enter,
+.slide-up-leave-to {
+  transform: translateY(-100px);
+  opacity: 0;
 }
 
 @media (max-width: 550px) {

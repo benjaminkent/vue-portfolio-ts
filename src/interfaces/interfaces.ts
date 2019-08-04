@@ -19,3 +19,10 @@ export interface ProjectInterface {
   linkName: string
   image: string
 }
+
+export interface MessageInterface {
+  firstName: string
+  lastName: string
+  email: string
+  messageText: string
+}

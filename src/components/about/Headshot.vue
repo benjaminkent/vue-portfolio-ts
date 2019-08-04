@@ -127,7 +127,7 @@ export default class Headshot extends Vue {
         margin: 20px 0;
         .fa-check {
           margin-right: 15px;
-          color: #1aaf3d;
+          color: $success;
         }
       }
     }
