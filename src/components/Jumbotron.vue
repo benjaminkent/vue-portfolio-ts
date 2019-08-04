@@ -18,7 +18,36 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
-export default class Jumbotron extends Vue {}
+export default class Jumbotron extends Vue {
+  lat: number | null = null
+  long: number | null = null
+  temp: number | null = null
+  condition: string | null = null
+
+  mounted() {
+    this.fetchLocation()
+    setTimeout(() => {
+      this.fetchWeather()
+    }, 2000)
+  }
+  fetchLocation(): void {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setLocation(position.coords.latitude, position.coords.longitude)
+    })
+  }
+  setLocation(lat: number, long: number): void {
+    this.lat = Math.floor(lat)
+    this.long = Math.floor(long)
+  }
+  fetchWeather() {
+    const baseURL = 'https://api.openweathermap.org/data/2.5'
+    this.$http
+      .get(
+        `${baseURL}/weather?lat=${this.lat}&lon=${this.long}&APPID=ab775780f3f23d518c06143e1db7c763`
+      )
+      .then(resp => console.log(resp))
+  }
+}
 </script>
 
 <style lang="scss" scoped>
