@@ -30,7 +30,7 @@
         |  in St. Petersburg, FL
       p
         | 2019 Benjamin Kent. 
-        a(href='https://www.benjaminkent.io/' target='_blank' rel='noreferrer noopener') benjaminkent.io
+        a(href='https://www.benkent.io/' target='_blank' rel='noreferrer noopener') benkent.io
 </template>
 
 <script lang="ts">
