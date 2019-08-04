@@ -31,15 +31,25 @@ export default class ContactMe extends Vue {
     messageText: ''
   }
   messageSent: boolean = false
+  response = {}
 
   sendMessage(): void {
+    const baseURL = 'http://localhost:3000'
+    this.$http
+      .post(`${baseURL}/messages`, {
+        first_name: this.message.firstName,
+        last_name: this.message.lastName,
+        email: this.message.email,
+        message_text: this.message.messageText
+      })
+      .then(resp => (this.response = resp))
+    this.showMessageAlert()
     this.message = {
       firstName: '',
       lastName: '',
       email: '',
       messageText: ''
     }
-    this.showMessageAlert()
   }
   showMessageAlert(): void {
     if (this.messageSent === true) {
