@@ -23,37 +23,21 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { SocialMedia } from '@/interfaces/interfaces'
+import { socialMediaData } from '@/data/data'
 
 @Component({})
 export default class Headshot extends Vue {
-  public wordList: string[] = [
+  wordList: string[] = [
     'Developer',
     'Responsive Design',
     'Full-stack',
     'Avid Learner'
   ]
-  public socialMedia: SocialMedia[] = [
-    {
-      class: 'fab fa-linkedin-in',
-      url: 'https://www.linkedin.com/in/benjaminkentjehl'
-    },
-    {
-      class: 'fab fa-github',
-      url: 'https://github.com/benjaminkent'
-    },
-    {
-      class: 'fab fa-twitter',
-      url: 'https://twitter.com/VuejsTampaBay'
-    },
-    {
-      class: 'fab fa-facebook-f',
-      url: 'https://www.facebook.com/vue.js.tampabay/'
-    },
-    {
-      class: 'fab fa-instagram',
-      url: 'https://www.instagram.com/benjaminkent7'
-    }
-  ]
+  socialMedia: SocialMedia[] = []
+
+  mounted(): void {
+    this.socialMedia = socialMediaData
+  }
 }
 </script>
 

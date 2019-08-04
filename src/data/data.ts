@@ -1,4 +1,4 @@
-import { CardInterface, ProjectInterface } from '@/interfaces/interfaces'
+import { CardInterface, ProjectInterface, SocialMedia } from '@/interfaces/interfaces'
 
 /* tslint:disable:max-line-length */
 export const cardData: CardInterface[] = [
@@ -62,5 +62,28 @@ export const projectData: ProjectInterface[] = [
     linkURL: 'https://griptherods.com/',
     linkName: 'griptherods.com',
     image: 'foosball.jpeg'
+  }
+]
+
+export const socialMediaData: SocialMedia[] = [
+  {
+    class: 'fab fa-linkedin-in',
+    url: 'https://www.linkedin.com/in/benjaminkentjehl'
+  },
+  {
+    class: 'fab fa-github',
+    url: 'https://github.com/benjaminkent'
+  },
+  {
+    class: 'fab fa-twitter',
+    url: 'https://twitter.com/VuejsTampaBay'
+  },
+  {
+    class: 'fab fa-facebook-f',
+    url: 'https://www.facebook.com/vue.js.tampabay/'
+  },
+  {
+    class: 'fab fa-instagram',
+    url: 'https://www.instagram.com/benjaminkent7'
   }
 ]

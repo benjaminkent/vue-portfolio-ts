@@ -211,7 +211,7 @@ form {
 
 @media (min-width: 1200px) {
   .contact-form-container {
-    width: 1000px;
+    width: 940px;
   }
 }
 </style>

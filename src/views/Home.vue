@@ -6,6 +6,7 @@
     Toolset
     Portfolio
     ContactMe
+    AppFooter
 </template>
 
 <script lang="ts">
@@ -16,6 +17,7 @@ import About from '@/views/About.vue'
 import Toolset from '@/views/Toolset.vue'
 import Portfolio from '@/views/Portfolio.vue'
 import ContactMe from '@/views/ContactMe.vue'
+import AppFooter from '@/components/Footer.vue'
 
 @Component({
   components: {
@@ -24,7 +26,8 @@ import ContactMe from '@/views/ContactMe.vue'
     About,
     Toolset,
     Portfolio,
-    ContactMe
+    ContactMe,
+    AppFooter
   }
 })
 export default class Home extends Vue {}
