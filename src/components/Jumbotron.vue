@@ -198,13 +198,12 @@ export default class Jumbotron extends Vue {
           margin: 0;
         }
         .city {
-          margin-bottom: 4px;
+          margin-bottom: 3px;
         }
         .weather-condition-container {
           display: flex;
-          align-items: center;
-          img {
-            height: 30px;
+          i {
+            margin-left: 5px;
           }
         }
       }
