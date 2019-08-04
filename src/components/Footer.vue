@@ -145,6 +145,9 @@ export default class AppFooter extends Vue {
   .logo {
     margin-top: 20px;
   }
+  .about-content {
+    width: 100%;
+  }
 }
 
 @media (min-width: 1200px) {
