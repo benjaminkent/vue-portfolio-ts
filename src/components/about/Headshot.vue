@@ -9,7 +9,7 @@
         h3 Benjamin Kent Jehl
         p.job-title Software Engineer
         p.about Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am the Creator/Organizer of the Vue.js Tampa Bay meetup group and am passionate about sharing with others the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
-        a.resume-link(href='https://drive.google.com/file/d/1yOrPdfcn2WSZdBOpqOPpoDZB9j8KhpCf/view?usp=sharing' target='_blank' rel='noreferrer noopener') VIEW MY RESUME
+        a.resume-link(href='https://drive.google.com/file/d/12wQpOYLzCr2g-NFXRhQJ231e64GICOQM/view?usp=sharing' target='_blank' rel='noreferrer noopener') VIEW MY RESUME
         ul.social-media
           li(v-for='icon in socialMedia')
             a(:href='icon.url' target='_blank' rel='noreferrer noopener')
