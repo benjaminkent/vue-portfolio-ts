@@ -26,3 +26,10 @@ export interface MessageInterface {
   email: string
   messageText: string
 }
+
+export interface WeatherDataInterface {
+  city: string
+  temp: number
+  condition: string
+  icon: string
+}

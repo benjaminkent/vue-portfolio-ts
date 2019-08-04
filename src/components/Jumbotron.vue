@@ -1,5 +1,12 @@
 <template lang="pug">
   .jumbotron
+    .weather-box
+      .weather-content
+        p.city {{ weatherInfo.city }}
+        p {{ weatherInfo.temp }}°F
+        .weather-condition-container
+          p {{ weatherInfo.condition }}
+          img(:src='`http://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png`')
     .background-box-container
       .background-style-box
     .name-box
@@ -16,30 +23,40 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { WeatherDataInterface } from '@/interfaces/interfaces'
 
 @Component({})
 export default class Jumbotron extends Vue {
-  temp: number | null = null
-  condition: string | null = null
-
-  mounted() {
-    this.fetchLocation()
+  weatherInfo: WeatherDataInterface = {
+    temp: 0,
+    condition: '',
+    city: '',
+    icon: ''
   }
-  fetchLocation(): void {
+
+  mounted(): void {
+    this.fetchLocationAndWeather()
+  }
+  fetchLocationAndWeather(): void {
     navigator.geolocation.getCurrentPosition(position => {
-      this.fetchWeather(
-        Math.floor(position.coords.latitude),
-        Math.floor(position.coords.longitude)
-      )
+      this.fetchWeather(position.coords.latitude, position.coords.longitude)
     })
   }
-  fetchWeather(lat: number, long: number) {
+  fetchWeather(lat: number, long: number): void {
     const baseURL = 'https://api.openweathermap.org/data/2.5'
+    const key = 'ab775780f3f23d518c06143e1db7c763'
     this.$http
       .get(
-        `${baseURL}/weather?lat=${lat}&lon=${long}&APPID=ab775780f3f23d518c06143e1db7c763`
+        `${baseURL}/weather?lat=${lat}&lon=${long}&units=imperial&APPID=${key}`
       )
-      .then(resp => console.log(resp))
+      .then(resp => {
+        this.weatherInfo = {
+          temp: Math.floor(resp.data.main.temp),
+          city: resp.data.name,
+          condition: resp.data.weather[0].main,
+          icon: resp.data.weather[0].icon
+        }
+      })
   }
 }
 </script>
@@ -59,6 +76,25 @@ export default class Jumbotron extends Vue {
     background-position-x: center;
     background-position-y: -50px;
     background-repeat: no-repeat;
+    .weather-box {
+      grid-area: 1 / 1 / 2 / 3;
+      .weather-content {
+        margin: 50px 0 0 20px;
+        p {
+          margin: 0;
+        }
+        .city {
+          margin-bottom: 4px;
+        }
+        .weather-condition-container {
+          display: flex;
+          align-items: center;
+          img {
+            height: 30px;
+          }
+        }
+      }
+    }
     .background-box-container {
       grid-area: 2 / 1 / 4 / 6;
       justify-self: center;
@@ -143,6 +179,25 @@ export default class Jumbotron extends Vue {
     background-size: cover;
     background-position-x: center;
     background-position-y: 25px;
+    .weather-box {
+      grid-area: 1 / 1 / 2 / 3;
+      .weather-content {
+        margin: 50px 0 0 20px;
+        p {
+          margin: 0;
+        }
+        .city {
+          margin-bottom: 4px;
+        }
+        .weather-condition-container {
+          display: flex;
+          align-items: center;
+          img {
+            height: 30px;
+          }
+        }
+      }
+    }
     .background-box-container {
       grid-area: 2 / 1 / 4 / 6;
       justify-self: center;
