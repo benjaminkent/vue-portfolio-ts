@@ -34,7 +34,9 @@ export default class ContactMe extends Vue {
   response = {}
 
   sendMessage(): void {
-    const baseURL = 'http://localhost:3000'
+    // for testing
+    // const baseURL = 'http://localhost:3000'
+    const baseURL = 'https://morning-stream-79145.herokuapp.com'
     this.$http
       .post(`${baseURL}/messages`, {
         first_name: this.message.firstName,
