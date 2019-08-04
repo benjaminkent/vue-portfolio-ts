@@ -11,7 +11,7 @@
           input(v-model='message.lastName' type='text' placeholder='Last Name')
         input.email(v-model='message.email' type='email' placeholder='Email')
         textarea.text-area(v-model='message.messageText' placeholder='Message')
-        button(type='submit' @click.prevent='showMessageAlert') Send Message
+        button(type='submit') Send Message
     .message-box
       transition(name='slide-up')
         .good-message(v-if='messageSent')
