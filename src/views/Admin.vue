@@ -14,7 +14,12 @@
         button(@click='fetchMessages') Fetch Messages
         h2 Messages
       .messages-container
-        Message(v-for='message in messages' :message='message' :deleteMessage='deleteMessage')
+        Message(
+          v-for='message in messages'
+          :message='message'
+          :deleteMessage='deleteMessage'
+          :key='message.id'
+        )
 </template>
 
 <script lang="ts">
