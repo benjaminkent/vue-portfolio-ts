@@ -14,7 +14,7 @@ import { FetchedMessageInterface } from '@/interfaces/interfaces'
 @Component({})
 export default class Message extends Vue {
   @Prop({ default: {} }) readonly message!: FetchedMessageInterface
-  @Prop(Function) readonly deleteMessage!: Function
+  @Prop(Function) readonly deleteMessage!: () => void
 }
 </script>
 
