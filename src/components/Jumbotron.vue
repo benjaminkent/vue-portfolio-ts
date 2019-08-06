@@ -191,7 +191,7 @@ export default class Jumbotron extends Vue {
     background-position-x: center;
     background-position-y: 25px;
     .weather-box {
-      grid-area: 1 / 1 / 2 / 3;
+      grid-area: 1 / 1 / 3 / 3;
       .weather-content {
         margin: 50px 0 0 20px;
         p {
