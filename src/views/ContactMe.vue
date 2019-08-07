@@ -21,6 +21,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { MessageInterface } from '@/interfaces/interfaces'
+import { postMessage } from '@/api/api'
 
 @Component({})
 export default class ContactMe extends Vue {
@@ -34,23 +35,19 @@ export default class ContactMe extends Vue {
   response = {}
 
   sendMessage(): void {
-    console.log('send message')
-    // const baseURL = 'https://morning-stream-79145.herokuapp.com'
-    // this.$http
-    //   .post(`${baseURL}/messages`, {
-    //     first_name: this.message.firstName,
-    //     last_name: this.message.lastName,
-    //     email: this.message.email,
-    //     message_text: this.message.messageText
-    //   })
-    //   .then(resp => (this.response = resp))
-    // this.showMessageAlert()
-    // this.message = {
-    //   firstName: '',
-    //   lastName: '',
-    //   email: '',
-    //   messageText: ''
-    // }
+    postMessage({
+      first_name: this.message.firstName,
+      last_name: this.message.lastName,
+      email: this.message.email,
+      message_text: this.message.messageText
+    })
+    this.showMessageAlert()
+    this.message = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      messageText: ''
+    }
   }
   showMessageAlert(): void {
     if (this.messageSent === true) {

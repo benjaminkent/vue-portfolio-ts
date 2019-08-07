@@ -35,6 +35,13 @@ export interface FetchedMessageInterface {
   messageText: string
 }
 
+export interface PostMessage {
+  first_name: string
+  last_name: string
+  email: string
+  message_text: string
+}
+
 export interface WeatherDataInterface {
   city: string
   temp: number
