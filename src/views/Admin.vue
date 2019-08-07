@@ -26,6 +26,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import Message from '@/components/admin/Message.vue'
 import { FetchedMessageInterface } from '@/interfaces/interfaces'
+import { loadMessages, deleteMessage } from '@/api/api'
 
 @Component({
   components: {
@@ -46,18 +47,15 @@ export default class Admin extends Vue {
     }
     this.password = ''
   }
-  fetchMessages(): void {
-    const baseURL = 'https://morning-stream-79145.herokuapp.com'
-    this.$http
-      .get(`${baseURL}/messages`)
-      .then(resp => (this.messages = resp.data.messages))
+  async fetchMessages() {
+    const response = await loadMessages()
+    this.messages = response.data.messages
   }
   logOut(): void {
     this.showPage = false
   }
-  deleteMessage(message: FetchedMessageInterface): void {
-    const baseURL = 'https://morning-stream-79145.herokuapp.com'
-    this.$http.delete(`${baseURL}/messages/${message.id}`)
+  deleteMessage(message: FetchedMessageInterface) {
+    deleteMessage(message.id)
     this.messages.splice(this.messages.indexOf(message), 1)
   }
 }

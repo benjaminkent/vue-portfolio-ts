@@ -36,6 +36,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { WeatherDataInterface } from '@/interfaces/interfaces'
+import { loadWeatherData } from '@/api/api'
 
 @Component({})
 export default class Jumbotron extends Vue {
@@ -54,21 +55,18 @@ export default class Jumbotron extends Vue {
       this.fetchWeather(position.coords.latitude, position.coords.longitude)
     })
   }
-  fetchWeather(lat: number, long: number): void {
-    const baseURL = 'https://api.openweathermap.org/data/2.5'
-    const key = 'ab775780f3f23d518c06143e1db7c763'
-    this.$http
-      .get(
-        `${baseURL}/weather?lat=${lat}&lon=${long}&units=imperial&APPID=${key}`
-      )
-      .then(resp => {
-        this.weatherInfo = {
-          temp: Math.floor(resp.data.main.temp),
-          city: resp.data.name,
-          condition: resp.data.weather[0].main,
-          icon: resp.data.weather[0].icon
-        }
-      })
+  async fetchWeather(lat: number, long: number): Promise<void> {
+    const response = await loadWeatherData(
+      lat,
+      long,
+      process.env.VUE_APP_WEATHER_KEY
+    )
+    this.weatherInfo = {
+      temp: Math.floor(response.data.main.temp),
+      city: response.data.name,
+      condition: response.data.weather[0].main,
+      icon: response.data.weather[0].icon
+    }
   }
 }
 </script>

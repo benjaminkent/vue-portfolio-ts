@@ -34,22 +34,23 @@ export default class ContactMe extends Vue {
   response = {}
 
   sendMessage(): void {
-    const baseURL = 'https://morning-stream-79145.herokuapp.com'
-    this.$http
-      .post(`${baseURL}/messages`, {
-        first_name: this.message.firstName,
-        last_name: this.message.lastName,
-        email: this.message.email,
-        message_text: this.message.messageText
-      })
-      .then(resp => (this.response = resp))
-    this.showMessageAlert()
-    this.message = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      messageText: ''
-    }
+    console.log('send message')
+    // const baseURL = 'https://morning-stream-79145.herokuapp.com'
+    // this.$http
+    //   .post(`${baseURL}/messages`, {
+    //     first_name: this.message.firstName,
+    //     last_name: this.message.lastName,
+    //     email: this.message.email,
+    //     message_text: this.message.messageText
+    //   })
+    //   .then(resp => (this.response = resp))
+    // this.showMessageAlert()
+    // this.message = {
+    //   firstName: '',
+    //   lastName: '',
+    //   email: '',
+    //   messageText: ''
+    // }
   }
   showMessageAlert(): void {
     if (this.messageSent === true) {
