@@ -23,6 +23,9 @@
         li(v-for='icon in socialMedia')
            a(:href='icon.url' target='_blank' rel='noreferrer noopener')
               i(:class='icon.class')
+        li
+          router-link(to='/ee')
+            i.far.fa-egg
     .me
       p
         | Made with 

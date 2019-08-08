@@ -87,3 +87,18 @@ export const socialMediaData: SocialMedia[] = [
     url: 'https://www.instagram.com/benjaminkent7'
   }
 ]
+
+export const cats: string[] = [
+  '2-cat-laser-eye.gif',
+  'astro-cat.gif',
+  'cat-back-pizza.gif',
+  'cat-city.gif',
+  'cat-glasses.gif',
+  'cat-laser-eye.gif',
+  'cat-pickle.gif',
+  'cat-pizza.gif',
+  'cat-unicorn.gif',
+  'cat-wings.gif',
+  'scared-cat.gif',
+  'space-cat.gif',
+]
