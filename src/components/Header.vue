@@ -52,7 +52,11 @@
               aa(href='#' v-scroll-to="'#contact'") Contact
       header
         .logo
-          i.fad.fa-narwhal
+          a(
+            href='#'
+            v-scroll-to="'#home'"
+          )
+            i.fad.fa-narwhal
         .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
           .hamburger-line
           .hamburger-line
@@ -145,6 +149,7 @@ export default class AppHeader extends Vue {
     box-shadow: 0 0 2px 2px #33333370;
     i {
       margin-left: 20px;
+      color: #fff;
     }
     .hamburger {
       height: 12px;
