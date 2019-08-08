@@ -187,6 +187,7 @@ form {
 @media (max-width: 550px) {
   .contact-form-container {
     width: 77%;
+    padding: 30px;
   }
   form {
     width: 100%;
@@ -198,8 +199,11 @@ form {
       }
     }
   }
-  .contact-form-container {
-    padding: 30px;
+  .contact-container-grid {
+    .message-box {
+      grid-area: 4 / 1 / 5 / 2;
+      margin-top: 30px;
+    }
   }
   .message {
     margin-bottom: 15px;
