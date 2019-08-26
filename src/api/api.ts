@@ -2,7 +2,7 @@ import axios from 'axios'
 import { PostMessage } from '@/interfaces/interfaces'
 
 export const weatherApi = axios.create({
-  baseURL: 'https://api.openweathermap.org/data/2.5'
+  baseURL: 'https://api.openweathermap.org/data/2.5',
 })
 
 export const loadWeatherData = (lat: number, long: number, key: string) => {
@@ -10,18 +10,18 @@ export const loadWeatherData = (lat: number, long: number, key: string) => {
 }
 
 export const contactApi = axios.create({
-  baseURL: 'https://morning-stream-79145.herokuapp.com'
+  baseURL: `${process.env.VUE_APP_CONTACT_API}`,
 })
 
 export const localContactApi = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'http://localhost:3000',
 })
 
 export const loadMessages = () => {
   return contactApi.get('/messages')
 }
 
-export const deleteMessage = (id: number ) => {
+export const deleteMessage = (id: number) => {
   contactApi.delete(`/messages/${id}`)
 }
 
