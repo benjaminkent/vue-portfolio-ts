@@ -6,7 +6,7 @@
       .message-box
         .message
           h3 EXPERIENCE
-          h2 My Current Toolset Includes
+          h2 A few technologies in my toolset
       .card-container-box
         Card(v-for='card in cardData' :card='card' :key='card.id')
 </template>
@@ -19,8 +19,8 @@ import { cardData } from '@/data/data'
 
 @Component({
   components: {
-    Card
-  }
+    Card,
+  },
 })
 export default class Toolset extends Vue {
   cardData: CardInterface[] = []
@@ -143,4 +143,3 @@ export default class Toolset extends Vue {
   }
 }
 </style>
-
