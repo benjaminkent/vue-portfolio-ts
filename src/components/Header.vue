@@ -119,7 +119,7 @@ export default class AppHeader extends Vue {
           transition: 0.3s all ease;
         }
         a:hover {
-          color: $orange;
+          color: $primary;
           transition: 0.3s all ease;
         }
         .scrolled-a {
@@ -178,7 +178,7 @@ export default class AppHeader extends Vue {
       margin: 0;
       padding: 10px 20px;
       list-style-type: none;
-      border-bottom: 5px solid $orange;
+      border-bottom: 5px solid $primary;
       li {
         margin: 10px 0;
         border-bottom: 1px solid #22222290;
@@ -190,7 +190,7 @@ export default class AppHeader extends Vue {
           transition: 0.3s all ease;
         }
         a:hover {
-          color: $orange;
+          color: $primary;
           transition: 0.3s all ease;
         }
       }
@@ -219,4 +219,3 @@ export default class AppHeader extends Vue {
   }
 }
 </style>
-

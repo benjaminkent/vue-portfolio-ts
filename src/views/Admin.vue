@@ -30,8 +30,8 @@ import { loadMessages, deleteMessage } from '@/api/api'
 
 @Component({
   components: {
-    Message
-  }
+    Message,
+  },
 })
 export default class Admin extends Vue {
   showPage: boolean = false
@@ -65,7 +65,7 @@ export default class Admin extends Vue {
 .header {
   margin: 20px;
   a {
-    color: $infra-red;
+    color: $secondary;
   }
 }
 form {
@@ -85,7 +85,7 @@ button {
   align-self: flex-start;
   font-size: 16px;
   border: none;
-  background-color: $infra-red;
+  background-color: $secondary;
   color: #fff;
   padding: 20px 30px;
   border-radius: 30px;
@@ -108,4 +108,3 @@ button:hover {
   flex-wrap: wrap;
 }
 </style>
-

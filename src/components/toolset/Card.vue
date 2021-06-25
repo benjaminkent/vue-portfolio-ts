@@ -27,7 +27,7 @@ export default class Card extends Vue {
   width: 90%;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-top: 2px solid $blue;
+  border-top: 2px solid $accents;
   transition: 0.3s all ease-in-out;
   margin: 25px 0;
   .card-content {
@@ -48,11 +48,11 @@ export default class Card extends Vue {
       flex-direction: row;
       align-items: center;
       font-size: 14px;
-      color: $blue;
+      color: $accents;
       margin-top: 25px;
       width: 120px;
       a {
-        color: $blue;
+        color: $accents;
         text-decoration: none;
         font-weight: bold;
       }

@@ -44,7 +44,7 @@ export default class Toolset extends Vue {
     .background-color {
       height: 100%;
       width: 100%;
-      background-color: $orange;
+      background-color: $primary;
       padding-bottom: 50px;
       position: relative;
       z-index: -1;
@@ -80,7 +80,7 @@ export default class Toolset extends Vue {
       h2 {
         margin: 3px 0;
         font-size: 32px;
-        color: $accents;
+        color: $secondary;
       }
     }
   }
@@ -118,7 +118,7 @@ export default class Toolset extends Vue {
   .toolset-grid {
     .background-color-box {
       .background-color:after {
-        border-top: 3px solid $blue;
+        border-top: 3px solid $accents;
       }
     }
   }

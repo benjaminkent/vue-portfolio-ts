@@ -29,7 +29,7 @@ export default class ContactMe extends Vue {
     firstName: '',
     lastName: '',
     email: '',
-    messageText: ''
+    messageText: '',
   }
   messageSent: boolean = false
   response = {}
@@ -39,14 +39,14 @@ export default class ContactMe extends Vue {
       first_name: this.message.firstName,
       last_name: this.message.lastName,
       email: this.message.email,
-      message_text: this.message.messageText
+      message_text: this.message.messageText,
     })
     this.showMessageAlert()
     this.message = {
       firstName: '',
       lastName: '',
       email: '',
-      messageText: ''
+      messageText: '',
     }
   }
   showMessageAlert(): void {
@@ -113,7 +113,7 @@ export default class ContactMe extends Vue {
   h2 {
     margin: 3px 0;
     font-size: 32px;
-    color: $accents;
+    color: $secondary;
   }
 }
 form {
@@ -160,7 +160,7 @@ form {
     align-self: flex-start;
     font-size: 16px;
     border: none;
-    background-color: $infra-red;
+    background-color: $secondary;
     color: #fff;
     padding: 20px 30px;
     border-radius: 30px;
@@ -227,4 +227,3 @@ form {
   }
 }
 </style>
-

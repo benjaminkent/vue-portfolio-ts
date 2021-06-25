@@ -22,7 +22,7 @@
     .background-box-container
       .background-style-box
     .name-box
-      h1 Benjamin Kent
+      h1 Benjamin Jehl
     .job-title-box
       h2 Software Engineer
     .call-to-action-box
@@ -44,7 +44,7 @@ export default class Jumbotron extends Vue {
     temp: 0,
     condition: '',
     city: '',
-    icon: ''
+    icon: '',
   }
 
   mounted(): void {
@@ -65,7 +65,7 @@ export default class Jumbotron extends Vue {
       temp: Math.floor(response.data.main.temp),
       city: response.data.name,
       condition: response.data.weather[0].main,
-      icon: response.data.weather[0].icon
+      icon: response.data.weather[0].icon,
     }
   }
 }
@@ -109,7 +109,7 @@ export default class Jumbotron extends Vue {
       justify-self: center;
       align-self: center;
       .background-style-box {
-        background-color: $orange;
+        background-color: $primary;
         height: 100px;
         width: 450px;
         transform: rotate(-10deg);
@@ -155,8 +155,8 @@ export default class Jumbotron extends Vue {
         button {
           font-size: 14px;
           padding: 8px 22px;
-          border: 1px solid $orange;
-          background-color: $orange;
+          border: 1px solid $primary;
+          background-color: $primary;
           opacity: 0.9;
           border-radius: 3px;
           cursor: pointer;
@@ -212,7 +212,7 @@ export default class Jumbotron extends Vue {
       align-self: center;
     }
     .background-style-box {
-      background-color: $orange;
+      background-color: $primary;
       height: 70px;
       width: 300px;
       transform: rotate(-10deg);
@@ -251,8 +251,8 @@ export default class Jumbotron extends Vue {
         button {
           font-size: 12px;
           padding: 8px 22px;
-          border: 1px solid $orange;
-          background-color: $orange;
+          border: 1px solid $primary;
+          background-color: $primary;
           opacity: 0.9;
           border-radius: 3px;
           cursor: pointer;
@@ -279,4 +279,3 @@ export default class Jumbotron extends Vue {
   }
 }
 </style>
-
