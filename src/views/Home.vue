@@ -19,6 +19,8 @@ import Portfolio from '@/views/Portfolio.vue'
 import ContactMe from '@/views/ContactMe.vue'
 import AppFooter from '@/components/Footer.vue'
 
+Component.registerHooks(['metaInfo'])
+
 @Component({
   components: {
     AppHeader,
@@ -27,12 +29,42 @@ import AppFooter from '@/components/Footer.vue'
     Toolset,
     Portfolio,
     ContactMe,
-    AppFooter
-  }
+    AppFooter,
+  },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  public metaInfo() {
+    return {
+      title: 'Ben Jehl',
+      titleTemplate: '%s | Software Engineer',
+      meta: [
+        {
+          name: 'description',
+          content: "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
+        },
+        { property: 'og:title', content: 'Ben Jehl | Software Engineer' },
+        { property: 'og:site_name', content: 'Ben Jehl' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://benkent.io' },
+        { property: 'og:description', content: 'I have things here on my site.' },
+        { name: 'twitter:card', content: "Ben Jehl's portfolio website." },
+        { name: 'twitter:site', content: 'https://benkent.io' },
+        { name: 'twitter:title', content: 'Ben Jehl | Software Engineer' },
+        {
+          name: 'twitter:description',
+          content: "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
+        },
+        { name: 'twitter:creator', content: '@BenjaminJehl' },
+        { itemprop: 'name', content: 'Ben Jehl | Software Engineer' },
+        {
+          itemprop: 'description',
+          content: "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
+        },
+      ],
+      link: [{ rel: 'canonical', href: 'https://benkent.io' }],
+    }
+  }
+}
 </script>
 
-<style lang="scss" scoped>
-</style>
-
+<style lang="scss" scoped></style>
