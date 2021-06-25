@@ -31,7 +31,7 @@ export default class Headshot extends Vue {
     'Developer',
     'Responsive Design',
     'Full-stack',
-    'Avid Learner'
+    'Avid Learner',
   ]
   socialMedia: SocialMedia[] = []
 
@@ -54,7 +54,7 @@ export default class Headshot extends Vue {
   h2 {
     margin: 3px 0;
     font-size: 32px;
-    color: $accents;
+    color: $secondary;
   }
 }
 .headshot-info-container {
@@ -82,7 +82,7 @@ export default class Headshot extends Vue {
       margin-bottom: 0;
     }
     .resume-link {
-      color: $infra-red;
+      color: $secondary;
       letter-spacing: 1px;
       transition: 0.3s all ease-in-out;
     }
@@ -99,7 +99,7 @@ export default class Headshot extends Vue {
         font-size: 14px;
         margin-right: 15px;
         a {
-          color: $blue;
+          color: $accents;
         }
       }
     }
@@ -162,4 +162,3 @@ export default class Headshot extends Vue {
   }
 }
 </style>
-

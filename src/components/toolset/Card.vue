@@ -7,8 +7,8 @@
       .link(@mouseover='showArrow = true' @mouseleave='showArrow = false')
         a(:href='card.linkURL' target='_blank' rel='noreferrer noopener')
           | LEARN MORE
-          transition(name='slide-right')
-            i.far.fa-arrow-right(v-if='showArrow')
+        transition(name='slide-right')
+          i.far.fa-arrow-right(v-if='showArrow')
 </template>
 
 <script lang="ts">
@@ -27,7 +27,7 @@ export default class Card extends Vue {
   width: 90%;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-top: 2px solid $blue;
+  border-top: 2px solid $accents;
   transition: 0.3s all ease-in-out;
   margin: 25px 0;
   .card-content {
@@ -44,17 +44,21 @@ export default class Card extends Vue {
       font-weight: 100;
     }
     .link {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       font-size: 14px;
-      color: $blue;
+      color: $accents;
       margin-top: 25px;
       width: 120px;
       a {
-        color: $blue;
+        color: $accents;
         text-decoration: none;
         font-weight: bold;
       }
       i {
         margin-left: 15px;
+        margin-bottom: 2px;
       }
     }
   }
@@ -93,4 +97,3 @@ export default class Card extends Vue {
   }
 }
 </style>
-

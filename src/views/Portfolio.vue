@@ -17,8 +17,8 @@ import { ProjectInterface } from '@/interfaces/interfaces'
 
 @Component({
   components: {
-    Project
-  }
+    Project,
+  },
 })
 export default class Portfolio extends Vue {
   projects: ProjectInterface[] = []
@@ -51,7 +51,7 @@ export default class Portfolio extends Vue {
   h2 {
     margin: 3px 0;
     font-size: 32px;
-    color: $accents;
+    color: $secondary;
   }
 }
 .portfolio-content-cards {
@@ -113,4 +113,3 @@ export default class Portfolio extends Vue {
   }
 }
 </style>
-

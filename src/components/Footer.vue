@@ -76,7 +76,7 @@ export default class AppFooter extends Vue {
         transition: 0.3s all ease-in-out;
       }
       a:hover {
-        color: $orange;
+        color: $primary;
         transition: 0.3s all ease-in-out;
       }
     }
@@ -159,4 +159,3 @@ export default class AppFooter extends Vue {
   }
 }
 </style>
-
