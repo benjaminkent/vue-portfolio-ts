@@ -40,25 +40,32 @@ export default class Home extends Vue {
       meta: [
         {
           name: 'description',
-          content: "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
+          content:
+            "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
         },
         { property: 'og:title', content: 'Ben Jehl | Software Engineer' },
         { property: 'og:site_name', content: 'Ben Jehl' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://benkent.io' },
-        { property: 'og:description', content: 'I have things here on my site.' },
+        {
+          property: 'og:description',
+          content:
+            "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
+        },
         { name: 'twitter:card', content: "Ben Jehl's portfolio website." },
         { name: 'twitter:site', content: 'https://benkent.io' },
         { name: 'twitter:title', content: 'Ben Jehl | Software Engineer' },
         {
           name: 'twitter:description',
-          content: "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
+          content:
+            "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
         },
         { name: 'twitter:creator', content: '@BenjaminJehl' },
         { itemprop: 'name', content: 'Ben Jehl | Software Engineer' },
         {
           itemprop: 'description',
-          content: "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
+          content:
+            "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
         },
       ],
       link: [{ rel: 'canonical', href: 'https://benkent.io' }],
