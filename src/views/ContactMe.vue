@@ -79,9 +79,23 @@ export default Vue.extend({
   .contact-form-container {
     background-color: #222;
     box-shadow: 0 0 10px 1px #00000070;
+    .message {
+      h3 {
+        color: $dm-text;
+      }
+      h2 {
+        color: $dm-secondary;
+      }
+    }
     form {
       input {
-        color: #eee;
+        color: #ccc;
+      }
+      input::placeholder {
+        color: #aaa;
+      }
+      .text-area::placeholder {
+        color: #aaa;
       }
       button {
         background-color: $dm-secondary;
@@ -89,7 +103,7 @@ export default Vue.extend({
       }
       button:hover {
         background-color: #333;
-        color: #eee;
+        color: #ddd;
       }
     }
   }
@@ -148,7 +162,7 @@ export default Vue.extend({
     color: $secondary;
   }
 }
-blue form {
+form {
   display: flex;
   flex-direction: column;
   align-items: center;

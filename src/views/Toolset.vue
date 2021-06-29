@@ -48,7 +48,7 @@ export default Vue.extend({
     }
     .background-color-box {
       .background-color {
-        background-color: #777;
+        background-color: #555;
       }
     }
   }
