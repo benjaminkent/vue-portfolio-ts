@@ -50,7 +50,7 @@ export default class Card extends Vue {
       font-size: 14px;
       color: $accents;
       margin-top: 25px;
-      width: 120px;
+      width: 140px;
       a {
         color: $accents;
         text-decoration: none;
