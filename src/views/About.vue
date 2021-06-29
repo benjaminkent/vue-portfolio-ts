@@ -18,7 +18,7 @@ export default Vue.extend({
   },
   computed: {
     ...darkModeGetters,
-    backgroundColor(): string {
+    backgroundColor(): string | undefined {
       if (this.isDarkModeEnabled) {
         return `background-color: ${this.darkModeBackgroundColor};`
       }
