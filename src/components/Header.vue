@@ -48,8 +48,9 @@
         .logo
           i.fad.fa-narwhal(v-scroll-to="'#home'")
         .right-content
-          p.dark-mode-copy Dark Mode
-          toggle-switch(v-model="isDarkModeSelected" @toggled="handleToggle")
+          .dark-mode-container(v-if="darkModeEnabled")
+            p.dark-mode-copy Dark Mode
+            toggle-switch(v-model="isDarkModeSelected" @toggled="handleToggle")
           .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
             .hamburger-line
             .hamburger-line
@@ -58,6 +59,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { featureFlags } from '@/observables/featureFlags'
 import ToggleSwitch from '@/components/ToggleSwitch.vue'
 
 export default Vue.extend({
@@ -92,6 +94,11 @@ export default Vue.extend({
         'darkModeEnabled',
         `${this.isDarkModeSelected}`
       )
+    },
+  },
+  computed: {
+    darkModeEnabled(): boolean {
+      return featureFlags.darkModeEnabled
     },
   },
 })
@@ -171,8 +178,12 @@ export default Vue.extend({
     .right-content {
       display: flex;
       align-items: center;
-      .dark-mode-copy {
-        margin: 0 5px 0 0;
+      .dark-mode-container {
+        display: flex;
+        align-items: center;
+        .dark-mode-copy {
+          margin: 0 5px 0 0;
+        }
       }
       .hamburger {
         height: 12px;
