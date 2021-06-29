@@ -1,37 +1,44 @@
 <template lang="pug">
   .project-container-grid(
-    @click='toggleWords'
-    @mouseover='showScreen = true'
-    @mouseleave='showScreen = false'
+    @click='toggleCopy'
+    @mouseover='showCopy = true'
+    @mouseleave='showCopy = false'
   )
     .image-box
       img(:src='require(`../../assets/${project.image}`)')
     .name-box
       transition(name='slide-up')
-        .name-content(v-if='showScreen')
+        .name-content(v-if='showCopy')
           h2 {{ project.name }}
           p {{ project.description }}
           a(:href='project.linkURL' target='_blank' rel='noreferrer noopener') {{ project.linkName }}
     transition(name='fade-in')
-      .screen-box(v-if='showScreen')
+      .screen-box(v-if='showCopy')
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import Vue, { PropType } from 'vue'
 import { ProjectInterface } from '@/interfaces/interfaces'
 
-@Component({})
-export default class Project extends Vue {
-  @Prop({ default: {} }) readonly project!: ProjectInterface
-
-  showScreen: boolean = false
-
-  toggleWords(): void {
-    this.showScreen === false
-      ? (this.showScreen = true)
-      : (this.showScreen = false)
-  }
-}
+export default Vue.extend({
+  name: 'Portfolio',
+  props: {
+    project: {
+      type: Object as PropType<ProjectInterface>,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      showCopy: false,
+    }
+  },
+  methods: {
+    toggleCopy(): void {
+      this.showCopy = !this.showCopy
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>
@@ -128,4 +135,3 @@ export default class Project extends Vue {
   }
 }
 </style>
-
