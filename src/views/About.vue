@@ -12,8 +12,8 @@ import Philosophy from '@/components/about/Philosophy.vue'
 @Component({
   components: {
     Headshot,
-    Philosophy
-  }
+    Philosophy,
+  },
 })
 export default class About extends Vue {}
 </script>
@@ -25,4 +25,3 @@ export default class About extends Vue {}
   align-items: center;
 }
 </style>
-

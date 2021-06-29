@@ -47,27 +47,54 @@
       header
         .logo
           i.fad.fa-narwhal(v-scroll-to="'#home'")
-        .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
-          .hamburger-line
-          .hamburger-line
-          .hamburger-line
+        .right-content
+          p.dark-mode-copy Dark Mode
+          toggle-switch(v-model="isDarkModeSelected" @toggled="handleToggle")
+          .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
+            .hamburger-line
+            .hamburger-line
+            .hamburger-line
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import ToggleSwitch from '@/components/ToggleSwitch.vue'
 
-@Component({})
-export default class AppHeader extends Vue {
-  showMenu: boolean = false
-  scrolledPosition: number | null = null
-
-  mounted(): void {
+export default Vue.extend({
+  name: 'AppHeader',
+  components: {
+    ToggleSwitch,
+  },
+  data() {
+    return {
+      showMenu: false,
+      scrolledPosition: null as number | null,
+      isDarkModeSelected: false,
+    }
+  },
+  mounted() {
     window.addEventListener('scroll', this.updateScroll)
-  }
-  updateScroll(): void {
-    this.scrolledPosition = window.scrollY
-  }
-}
+
+    const savedDarkModePreference = window.localStorage.getItem(
+      'darkModeEnabled'
+    )
+
+    savedDarkModePreference
+      ? (this.isDarkModeSelected = JSON.parse(savedDarkModePreference))
+      : false
+  },
+  methods: {
+    updateScroll(): void {
+      this.scrolledPosition = window.scrollY
+    },
+    handleToggle(): void {
+      window.localStorage.setItem(
+        'darkModeEnabled',
+        `${this.isDarkModeSelected}`
+      )
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>
@@ -141,18 +168,25 @@ export default class AppHeader extends Vue {
       color: #fff;
       cursor: pointer;
     }
-    .hamburger {
-      height: 12px;
-      width: 15px;
+    .right-content {
       display: flex;
-      padding: 5px;
-      flex-direction: column;
-      justify-content: space-between;
-      margin: 0 15px 0 0;
-      cursor: pointer;
-      .hamburger-line {
-        border: 1px solid #fff;
-        border-radius: 5px;
+      align-items: center;
+      .dark-mode-copy {
+        margin: 0 5px 0 0;
+      }
+      .hamburger {
+        height: 12px;
+        width: 15px;
+        display: flex;
+        padding: 5px;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0 15px 0 1rem;
+        cursor: pointer;
+        .hamburger-line {
+          border: 1px solid #fff;
+          border-radius: 5px;
+        }
       }
     }
   }
