@@ -2,7 +2,7 @@
   .message
     .name-delete
       p Name: {{ message.firstName }} {{ message.lastName }}
-      i.fad.fa-trash(@click='deleteMessage(message)')
+      fa-icon.trash-can(:icon="['fad', 'trash']" @click='deleteMessage(message)')
     p Email: {{ message.email }}
     p Message: {{ message.messageText }}
 </template>
@@ -31,11 +31,11 @@ export default class Message extends Vue {
     p {
       margin: 0;
     }
-    i {
+    .trash-can {
       color: #ff0000;
       cursor: pointer;
     }
-    i:hover {
+    .trash-can:hover {
       color: #a30000;
     }
   }
@@ -44,4 +44,3 @@ export default class Message extends Vue {
   }
 }
 </style>
-

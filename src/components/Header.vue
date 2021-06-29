@@ -3,7 +3,7 @@
     .big-header
       header(:class="{ 'scrolled-header': scrolledPosition > 150}")
         .logo
-          i.fad.fa-narwhal(v-scroll-to="'#home'" :class="{'scrolled-nav-content': scrolledPosition > 150}")
+          fa-icon(:icon="['fad', 'narwhal']" v-scroll-to="'#home'" :class="['logo-icon', {'scrolled-nav-content': scrolledPosition > 150}]")
         ul
           li
             .dark-mode-container(v-if="darkModeEnabled")
@@ -50,7 +50,7 @@
               p Contact
       header
         .logo
-          i.fad.fa-narwhal(v-scroll-to="'#home'")
+          fa-icon.logo-icon(:icon="['fad', 'narwhal']" v-scroll-to="'#home'")
         .right-content
           .dark-mode-container(v-if="darkModeEnabled")
             p.dark-mode-copy Dark Mode
@@ -135,8 +135,8 @@ export default Vue.extend({
     .logo {
       display: flex;
       margin-left: 20px;
-      i {
-        color: #222;
+      .logo-icon {
+        color: $secondary;
         font-size: 17px;
         margin-right: 10px;
         cursor: pointer;
@@ -200,7 +200,7 @@ export default Vue.extend({
     z-index: 100;
     justify-content: space-between;
     box-shadow: 0 0 2px 2px #33333370;
-    i {
+    .logo-icon {
       margin-left: 20px;
       color: #fff;
       cursor: pointer;
