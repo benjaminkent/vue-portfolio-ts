@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "yarn build && aws s3 sync ./dist s3://benjamin-kent-jehl-portfolio-v3-vue-ts"
+    "deploy": "yarn build && aws s3 sync ./dist s3://benjamin-kent-jehl-portfolio-v3-vue-ts",
+    "sync": "git push && yarn deploy"
   },
   "dependencies": {
     "@types/vue": "^2.0.0",
