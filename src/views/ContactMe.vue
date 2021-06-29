@@ -1,5 +1,5 @@
 <template lang="pug">
-  .contact-container-grid(id='contact')
+  .contact-container-grid(id='contact' :class="{'dark-mode': isDarkModeEnabled}")
     .bottom-background
     .contact-form-container
       .message
@@ -19,49 +19,95 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 import { MessageInterface } from '@/interfaces/interfaces'
 import { postMessage } from '@/api/api'
 
-@Component({})
-export default class ContactMe extends Vue {
-  message: MessageInterface = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    messageText: '',
-  }
-  messageSent: boolean = false
-  response = {}
+export default Vue.extend({
+  name: 'ContactMe',
+  data() {
+    return {
+      message: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        messageText: '',
+      },
+      messageSent: false,
+    }
+  },
+  methods: {
+    sendMessage(): void {
+      postMessage({
+        first_name: this.message.firstName,
+        last_name: this.message.lastName,
+        email: this.message.email,
+        message_text: this.message.messageText,
+      })
 
-  sendMessage(): void {
-    postMessage({
-      first_name: this.message.firstName,
-      last_name: this.message.lastName,
-      email: this.message.email,
-      message_text: this.message.messageText,
-    })
-    this.showMessageAlert()
-    this.message = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      messageText: '',
-    }
-  }
-  showMessageAlert(): void {
-    if (this.messageSent === true) {
-      return
-    }
-    this.messageSent = true
-    setTimeout(() => {
-      this.messageSent = false
-    }, 5000)
-  }
-}
+      this.showMessageAlert()
+
+      this.message = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        messageText: '',
+      }
+    },
+    showMessageAlert(): void {
+      if (this.messageSent === true) {
+        return
+      }
+
+      this.messageSent = true
+
+      setTimeout(() => {
+        this.messageSent = false
+      }, 5000)
+    },
+  },
+  computed: {
+    ...darkModeGetters,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
+.contact-container-grid.dark-mode {
+  background-color: #222;
+  .contact-form-container {
+    background-color: #222;
+    box-shadow: 0 0 10px 1px #00000070;
+    .message {
+      h3 {
+        color: $dm-text;
+      }
+      h2 {
+        color: $dm-secondary;
+      }
+    }
+    form {
+      input {
+        color: #ccc;
+      }
+      input::placeholder {
+        color: #aaa;
+      }
+      .text-area::placeholder {
+        color: #aaa;
+      }
+      button {
+        background-color: $dm-secondary;
+        color: #222;
+      }
+      button:hover {
+        background-color: #333;
+        color: #ddd;
+      }
+    }
+  }
+}
 .contact-container-grid {
   display: grid;
   grid-template-rows: 0.75fr repeat(5, 1fr) 0.5fr;
@@ -145,13 +191,11 @@ form {
     text-indent: 15px;
   }
   .text-area {
-    width: 100%;
+    width: calc(100% - 30px);
     border: none;
     background-color: #33333309;
-    padding: 0;
-    padding: 15px 0;
+    padding: 15px;
     font-size: 16px;
-    text-indent: 15px;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     height: 225px;
     resize: vertical;

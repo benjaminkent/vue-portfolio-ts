@@ -1,73 +1,70 @@
 <template lang="pug">
-  .toolset-container(id='toolset')
+  .toolset-container(id='toolset' :class="{'dark-mode': isDarkModeEnabled}")
     .toolset-grid
-      .background-color-box
-        .background-color
       .message-box
         .message
           h3 EXPERIENCE
           h2 A few technologies in my toolset
       .card-container-box
-        Card(v-for='card in cardData' :card='card' :key='card.id')
+        Card(v-for='card in cards' :card='card' :key='card.id')
+      .background-color-box
+        .background-color
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Card from '@/components/toolset/Card.vue'
+import Vue from 'vue'
 import { CardInterface } from '@/interfaces/interfaces'
 import { cardData } from '@/data/data'
+import { getters as darkModeGetters } from '@/observables/darkMode'
+import Card from '@/components/toolset/Card.vue'
 
-@Component({
+export default Vue.extend({
+  name: 'Toolset',
   components: {
     Card,
   },
+  computed: {
+    ...darkModeGetters,
+    cards(): CardInterface[] {
+      return cardData
+    },
+  },
 })
-export default class Toolset extends Vue {
-  cardData: CardInterface[] = []
-
-  mounted() {
-    this.cardData = cardData
-  }
-}
 </script>
 
 <style lang="scss" scoped>
+.toolset-container.dark-mode {
+  background-color: #222;
+  .toolset-grid {
+    .message-box {
+      .message {
+        h3 {
+          color: $dm-text;
+        }
+        h2 {
+          color: $dm-secondary;
+        }
+      }
+    }
+    .background-color-box {
+      .background-color {
+        background-color: #555;
+      }
+    }
+  }
+}
 .toolset-container {
-  margin-top: 150px;
-  margin-bottom: 50px;
+  padding: 150px 0 50px;
 }
 .toolset-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  .background-color-box {
-    grid-area: 2 / 1 / 7 / 4;
-    .background-color {
-      height: 100%;
-      width: 100%;
-      background-color: $primary;
-      padding-bottom: 50px;
-      position: relative;
-      z-index: -1;
-    }
-    .background-color:after {
-      background: inherit;
-      position: absolute;
-      top: -10px;
-      left: 0;
-      right: 0;
-      content: '';
-      display: block;
-      height: 50%;
-      transform: skewY(7deg);
-      transform-origin: 100%;
-      border-top: 1px solid #007bff50;
-    }
-  }
   .message-box {
     grid-area: 1 / 1 / 2 / 4;
     display: flex;
     justify-content: center;
     align-self: end;
+    z-index: 1;
     .message {
       width: 90%;
       h3 {
@@ -87,12 +84,36 @@ export default class Toolset extends Vue {
   .card-container-box {
     grid-area: 2 / 1 / 7 / 4;
     display: flex;
+    z-index: 1;
+  }
+  .background-color-box {
+    grid-area: 2 / 1 / 7 / 4;
+    .background-color {
+      height: 100%;
+      width: 100%;
+      background-color: $primary;
+      padding-bottom: 50px;
+      position: relative;
+    }
+    .background-color:after {
+      background: inherit;
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      content: '';
+      display: block;
+      height: 50%;
+      transform: skewY(7deg);
+      transform-origin: 100%;
+      border-top: 2px solid $accents;
+    }
   }
 }
 
 @media (max-width: 550px) {
   .toolset-container {
-    margin-top: 100px;
+    padding-top: 100px;
     grid-template-rows: 0.4fr repeat(5, 1fr);
   }
   .toolset-grid {

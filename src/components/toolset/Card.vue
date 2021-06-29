@@ -1,5 +1,5 @@
 <template lang="pug">
-  .card
+  .card(:class="{'dark-mode': isDarkModeEnabled}")
     .card-content
       img.logo(v-for='logo in card.logoURL' :src='require(`../../assets/${logo}`)')
       h3 {{ card.name }}
@@ -12,21 +12,43 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import Vue, { PropType } from 'vue'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 import { CardInterface } from '@/interfaces/interfaces'
 
-@Component({})
-export default class Card extends Vue {
-  @Prop({ default: 'default value' }) readonly card!: CardInterface
-  showArrow: boolean = false
-}
+export default Vue.extend({
+  name: 'Card',
+  props: {
+    card: {
+      type: Object as PropType<CardInterface>,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      showArrow: false,
+    }
+  },
+  computed: {
+    ...darkModeGetters,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
+.card.dark-mode {
+  background-color: #222;
+  border-top: 2px solid $accents;
+  .card-content {
+    color: $dm-text;
+    p {
+      color: $dm-text;
+    }
+  }
+}
 .card {
   width: 90%;
   background-color: #fff;
-  border: 1px solid #ddd;
   border-top: 2px solid $accents;
   transition: 0.3s all ease-in-out;
   margin: 25px 0;

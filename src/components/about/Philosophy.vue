@@ -1,5 +1,5 @@
 <template lang="pug">
-  .tech-content
+  .tech-content(:class="{'dark-mode': isDarkModeEnabled}")
     .tech-message-container
       .info
         .tech-message-header
@@ -10,13 +10,33 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 
-@Component({})
-export default class Philosophy extends Vue {}
+export default Vue.extend({
+  name: 'Philosophy',
+  computed: {
+    ...darkModeGetters,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
+.tech-content.dark-mode {
+  .tech-message-container {
+    .info {
+      color: $dm-text;
+      .tech-message-header {
+        h3 {
+          color: $dm-text;
+        }
+        h2 {
+          color: $dm-secondary;
+        }
+      }
+    }
+  }
+}
 .tech-message-header {
   h3 {
     margin: 0;

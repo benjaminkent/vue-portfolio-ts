@@ -1,3 +1,3 @@
 export const featureFlags = {
-  darkModeEnabled: false,
+  darkModeEnabled: true,
 }

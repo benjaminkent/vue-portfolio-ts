@@ -1,5 +1,5 @@
 <template lang="pug">
-  .about-content
+  .about-content(:class="{'dark-mode': isDarkModeEnabled}")
     .about-message
       h3 ABOUT ME
       h2 Forward Thinking Engineer
@@ -21,27 +21,57 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 import { SocialMedia } from '@/interfaces/interfaces'
 import { socialMediaData } from '@/data/data'
 
-@Component({})
-export default class Headshot extends Vue {
-  wordList: string[] = [
-    'Developer',
-    'Responsive Design',
-    'Full-stack',
-    'Avid Learner',
-  ]
-  socialMedia: SocialMedia[] = []
-
-  mounted(): void {
-    this.socialMedia = socialMediaData
-  }
-}
+export default Vue.extend({
+  name: 'Headshot',
+  data() {
+    return {
+      wordList: [
+        'Developer',
+        'Responsive Design',
+        'Full-stack',
+        'Avid Learner',
+      ],
+    }
+  },
+  computed: {
+    ...darkModeGetters,
+    socialMedia(): SocialMedia[] {
+      return socialMediaData
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>
+.about-content.dark-mode {
+  .about-message {
+    h3 {
+      color: $dm-text;
+    }
+    h2 {
+      color: $dm-secondary;
+    }
+  }
+  .headshot-info-container {
+    .info {
+      color: $dm-text;
+      h3 {
+        color: $dm-text;
+      }
+      .resume-link {
+        color: $dm-secondary;
+      }
+      .resume-link:hover {
+        color: $dm-text;
+      }
+    }
+  }
+}
 .about-message {
   margin-top: 100px;
   h3 {
