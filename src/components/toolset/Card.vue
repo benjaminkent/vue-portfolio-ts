@@ -8,7 +8,7 @@
         a(:href='card.linkURL' target='_blank' rel='noreferrer noopener')
           | LEARN MORE
         transition(name='slide-right')
-          i.far.fa-arrow-right(v-if='showArrow')
+          fa-icon.arrow(v-if='showArrow' :icon="['far', 'arrow-right']")
 </template>
 
 <script lang="ts">
@@ -78,7 +78,7 @@ export default Vue.extend({
         text-decoration: none;
         font-weight: bold;
       }
-      i {
+      .arrow {
         margin-left: 15px;
         margin-bottom: 2px;
       }

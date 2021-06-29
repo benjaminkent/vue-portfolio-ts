@@ -1,5 +1,5 @@
 export interface SocialMedia {
-  class: string
+  class: string[]
   url: string
 }
 

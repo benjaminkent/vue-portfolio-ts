@@ -13,11 +13,11 @@
         ul.social-media
           li(v-for='icon in socialMedia')
             a(:href='icon.url' target='_blank' rel='noreferrer noopener')
-              i(:class='icon.class')
+              fa-icon(:icon='icon.class')
         ul.words
           li(v-for='word in wordList')
-            i.far.fa-check
-            | {{ word }}
+            fa-icon.far.fa-check(:icon="['far', 'check']")
+            p {{ word }}
 </template>
 
 <script lang="ts">
@@ -138,7 +138,12 @@ export default Vue.extend({
       padding: 0;
       list-style-type: none;
       li {
+        display: flex;
+        align-items: center;
         margin: 20px 0;
+        p {
+          margin: 0;
+        }
         .fa-check {
           margin-right: 15px;
           color: $success;

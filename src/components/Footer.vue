@@ -22,14 +22,14 @@
       ul
         li(v-for='icon in socialMedia')
            a(:href='icon.url' target='_blank' rel='noreferrer noopener')
-              i(:class='icon.class')
+              fa-icon(:icon="icon.class")
         li
           router-link(to='/ee')
-            i.far.fa-egg
+            fa-icon(:icon="['far', 'egg']")
     .me
       p
         | Made with 
-        i.fas.fa-heart
+        fa-icon(:icon="['fas', 'heart']")
         |  in St. Petersburg, FL
       p
         | 2019 Benjamin Kent. 

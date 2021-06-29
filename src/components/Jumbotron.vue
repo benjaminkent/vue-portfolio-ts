@@ -6,19 +6,19 @@
         p {{ weatherInfo.temp }}°F
         .weather-condition-container
           p {{ weatherInfo.condition }}
-          i.fad.fa-sun(v-if="weatherInfo.icon === '01d'")
-          i.fad.fa-moon(v-if="weatherInfo.icon === '01n'")
-          i.fad.fa-clouds-sun(v-if="weatherInfo.icon === '02d'")
-          i.fad.fa-clouds-moon(v-if="weatherInfo.icon === '02n'")
-          i.fad.fa-clouds(v-if="weatherInfo.icon === '03d'")
-          i.fad.fa-clouds(v-if="weatherInfo.icon === '03n'")
-          i.fad.fa-clouds(v-if="weatherInfo.icon === '04d'")
-          i.fad.fa-clouds(v-if="weatherInfo.icon === '04n'")
-          i.fad.fa-cloud-drizzle(v-if="weatherInfo.icon === '09d'")
-          i.fad.fa-cloud-showers-heavy(v-if="weatherInfo.icon === '10d'")
-          i.fad.fa-thunderstorm(v-if="weatherInfo.icon === '11d'")
-          i.fad.fa-snowflakes(v-if="weatherInfo.icon === '13d'")
-          i.fad.fa-smoke(v-if="weatherInfo.icon === '50d'")
+          fa-icon(v-if="weatherInfo.icon === '01d'" :icon="['fad', 'sun']" )
+          fa-icon(v-if="weatherInfo.icon === '01n'" :icon="['fad', 'moon']" )
+          fa-icon(v-if="weatherInfo.icon === '02d'" :icon="['fad', 'clouds-sun']" )
+          fa-icon(v-if="weatherInfo.icon === '02n'" :icon="['fad', 'clouds-moon']" )
+          fa-icon(v-if="weatherInfo.icon === '03d'" :icon="['fad', 'clouds']" )
+          fa-icon(v-if="weatherInfo.icon === '03n'" :icon="['fad', 'clouds']" )
+          fa-icon(v-if="weatherInfo.icon === '04d'" :icon="['fad', 'clouds']" )
+          fa-icon(v-if="weatherInfo.icon === '04n'" :icon="['fad', 'clouds']" )
+          fa-icon(v-if="weatherInfo.icon === '09d'" :icon="['fad', 'cloud-drizzle']" )
+          fa-icon(v-if="weatherInfo.icon === '10d'" :icon="['fad', 'cloud-showers-heavy']" )
+          fa-icon(v-if="weatherInfo.icon === '11d'" :icon="['fad', 'thunderstorm']" )
+          fa-icon(v-if="weatherInfo.icon === '13d'" :icon="['fad', 'snowflakes']" )
+          fa-icon(v-if="weatherInfo.icon === '50d'" :icon="['fad', 'smoke']" )
     .background-box-container
       .background-style-box
     .name-box
