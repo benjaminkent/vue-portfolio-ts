@@ -1,13 +1,11 @@
 <template lang="pug">
   .easter-egg-container
+    .ee-welcome
+      h1 I dig your curiosity
+      p Now enjoy some cats!
     .pyro
       .before
       .after
-    .ee-welcome
-      h2 Look at you
-      p Just clicking on stuff
-      p You have a great, curious mind
-      h1 I like your style!
     .cat-image
       button(@click='generateRandomNumber') New Cat
       img.cat(:src='require(`../assets/${catList[randomNumber]}`)')
@@ -61,6 +59,7 @@ export default class EasterEgg extends Vue {
   flex-direction: column;
   align-items: center;
   .cat {
+    border-radius: 5px;
     max-width: 350px;
   }
 }
@@ -84,7 +83,6 @@ $particles: 50;
 $width: 500;
 $height: 500;
 
-// Create the explosion...
 $box-shadow: ();
 $box-shadow2: ();
 @for $i from 0 through $particles {
@@ -98,24 +96,24 @@ $box-shadow2: ();
       hsl(random(360), 100, 50);
   $box-shadow2: $box-shadow2, 0 0 #fff;
 }
-@mixin keyframes($animationName) {
-  @-webkit-keyframes #{$animationName} {
+@mixin keyframes($fireworks) {
+  @-webkit-keyframes #{$fireworks} {
     @content;
   }
 
-  @-moz-keyframes #{$animationName} {
+  @-moz-keyframes #{$fireworks} {
     @content;
   }
 
-  @-o-keyframes #{$animationName} {
+  @-o-keyframes #{$fireworks} {
     @content;
   }
 
-  @-ms-keyframes #{$animationName} {
+  @-ms-keyframes #{$fireworks} {
     @content;
   }
 
-  @keyframes #{$animationName} {
+  @keyframes #{$fireworks} {
     @content;
   }
 }
@@ -214,4 +212,3 @@ $box-shadow2: ();
   }
 }
 </style>
-
