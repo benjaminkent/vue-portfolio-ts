@@ -3,60 +3,50 @@
     .big-header
       header(:class="{ 'scrolled-header': scrolledPosition > 150}")
         .logo
-          a(href='#' v-scroll-to="'#home'" :class="{'scrolled-a': scrolledPosition > 150}")
-            i.fad.fa-narwhal
+          i.fad.fa-narwhal(v-scroll-to="'#home'" :class="{'scrolled-nav-content': scrolledPosition > 150}")
         ul
           li 
-            a(
-                href='#'
-                v-scroll-to="'#home'"
-                :class="{'scrolled-a': scrolledPosition > 150}"
-              ) Home
+            p(
+              v-scroll-to="'#home'"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
+            ) Home
           li
-            a(
-              href='#'
+            p(
               v-scroll-to="'#about'"
-              :class="{'scrolled-a': scrolledPosition > 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             ) About
           li
-            a(
-              href='#' 
+            p(
               v-scroll-to="{ el: '#toolset', offset: -100 }"
-              :class="{'scrolled-a': scrolledPosition > 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             ) Toolset
           li
-            a(
-              href='#'
+            p(
               v-scroll-to="'#portfolio'"
-              :class="{'scrolled-a': scrolledPosition > 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             ) Portfolio
           li
-            a(
-              href='#'
+            p(
               v-scroll-to="'#contact'"
-              :class="{'scrolled-a': scrolledPosition > 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             ) Contact
     .mobile-header
       transition(name='slide-down')
         .pop-out-menu(v-if='showMenu' @click='showMenu = false')
           ul
-            li
-              a(href='#' v-scroll-to="'#home'") Home
-            li
-              a(href='#' v-scroll-to="{ el: '#about', offset: -20 }") About
-            li 
-              a(href='#' v-scroll-to="{ el: '#toolset', offset: -100 }") Toolset
-            li
-              a(href='#' v-scroll-to="{ el: '#portfolio', offset: -20 }") Portfolio
-            li
-              aa(href='#' v-scroll-to="'#contact'") Contact
+            li(v-scroll-to="'#home'")
+              p Home
+            li(v-scroll-to="{ el: '#about', offset: -20 }")
+              p About
+            li(v-scroll-to="{ el: '#toolset', offset: -100 }")
+              p Toolset
+            li(v-scroll-to="{ el: '#portfolio', offset: -20 }")
+              p Portfolio
+            li(v-scroll-to="'#contact'")
+              p Contact
       header
         .logo
-          a(
-            href='#'
-            v-scroll-to="'#home'"
-          )
-            i.fad.fa-narwhal
+          i.fad.fa-narwhal(v-scroll-to="'#home'")
         .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
           .hamburger-line
           .hamburger-line
@@ -93,14 +83,13 @@ export default class AppHeader extends Vue {
     .logo {
       display: flex;
       margin-left: 20px;
-      a {
+      i {
         color: #222;
-        i {
-          font-size: 17px;
-          margin-right: 10px;
-        }
+        font-size: 17px;
+        margin-right: 10px;
+        cursor: pointer;
       }
-      .scrolled-a {
+      .scrolled-nav-content {
         color: #fff;
       }
     }
@@ -113,16 +102,16 @@ export default class AppHeader extends Vue {
       li {
         margin: 0 20px;
         cursor: pointer;
-        a {
-          text-decoration: none;
+        p {
+          margin: 0;
           color: #222;
           transition: 0.3s all ease;
         }
-        a:hover {
+        p:hover {
           color: $primary;
           transition: 0.3s all ease;
         }
-        .scrolled-a {
+        .scrolled-nav-content {
           color: #fff;
         }
       }
@@ -150,14 +139,16 @@ export default class AppHeader extends Vue {
     i {
       margin-left: 20px;
       color: #fff;
+      cursor: pointer;
     }
     .hamburger {
       height: 12px;
       width: 15px;
       display: flex;
+      padding: 5px;
       flex-direction: column;
       justify-content: space-between;
-      margin: 4px 20px 0 0;
+      margin: 0 15px 0 0;
       cursor: pointer;
       .hamburger-line {
         border: 1px solid #fff;
@@ -184,12 +175,13 @@ export default class AppHeader extends Vue {
         border-bottom: 1px solid #22222290;
         cursor: pointer;
         transition: 0.3s all ease;
-        a {
+        p {
           color: #fff;
           text-decoration: none;
           transition: 0.3s all ease;
+          margin: 0;
         }
-        a:hover {
+        p:hover {
           color: $primary;
           transition: 0.3s all ease;
         }
