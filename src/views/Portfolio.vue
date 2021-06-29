@@ -1,5 +1,5 @@
 <template lang="pug">
-  .portfolio-container(id='portfolio')
+  .portfolio-container(id='portfolio' :class="{'dark-mode': isDarkModeEnabled}")
     .message
       h3 MY WORK
       h2 A Couple Of My Recent Projects
@@ -10,26 +10,38 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Project from '@/components/portfolio/Project.vue'
+import Vue from 'vue'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 import { projectData } from '@/data/data'
 import { ProjectInterface } from '@/interfaces/interfaces'
+import Project from '@/components/portfolio/Project.vue'
 
-@Component({
+export default Vue.extend({
+  name: 'Portfolio',
   components: {
     Project,
   },
+  computed: {
+    ...darkModeGetters,
+    projects(): ProjectInterface[] {
+      return projectData
+    },
+  },
 })
-export default class Portfolio extends Vue {
-  projects: ProjectInterface[] = []
-
-  mounted(): void {
-    this.projects = projectData
-  }
-}
 </script>
 
 <style lang="scss" scoped>
+.portfolio-container.dark-mode {
+  background-color: #181616;
+  .message {
+    h3 {
+      color: $dm-text;
+    }
+    h2 {
+      color: $dm-secondary;
+    }
+  }
+}
 .portfolio-container {
   background-color: #f7f7f7;
   padding-bottom: 75px;
