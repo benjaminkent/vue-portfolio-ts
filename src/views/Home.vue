@@ -39,6 +39,10 @@ export default class Home extends Vue {
       titleTemplate: '%s | Software Engineer',
       meta: [
         {
+          name: 'google-site-verification',
+          content: 'hCD3_bNjlgKLJjpISAhNIZ_W2V9DvCAUkZneCkc7BhQ',
+        },
+        {
           name: 'description',
           content:
             "Ben Jehl's portfolio website. Created from scratch with Vue.js and Typescript. Check out the repository on Github at https://github.com/benjaminkent/vue-portfolio-ts.",
