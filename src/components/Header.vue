@@ -5,6 +5,10 @@
         .logo
           i.fad.fa-narwhal(v-scroll-to="'#home'" :class="{'scrolled-nav-content': scrolledPosition > 150}")
         ul
+          li
+            .dark-mode-container(v-if="darkModeEnabled")
+              p.dark-mode-copy(:class="{'scrolled-nav-content': scrolledPosition > 150}") Dark Mode
+              toggle-switch(v-model="isDarkModeSelected" @toggled="handleToggle")
           li 
             p(
               v-scroll-to="'#home'"
@@ -148,6 +152,13 @@ export default Vue.extend({
       display: flex;
       justify-content: flex-end;
       li {
+        .dark-mode-container {
+          display: flex;
+          align-items: center;
+          .dark-mode-copy {
+            margin-right: 5px;
+          }
+        }
         margin: 0 20px;
         cursor: pointer;
         p {
@@ -155,12 +166,17 @@ export default Vue.extend({
           color: #222;
           transition: 0.3s all ease;
         }
-        p:hover {
+        p:hover:not(.dark-mode-copy) {
           color: $primary;
           transition: 0.3s all ease;
         }
         .scrolled-nav-content {
           color: #fff;
+        }
+      }
+      li:first-child {
+        p {
+          cursor: default;
         }
       }
     }
@@ -259,12 +275,12 @@ export default Vue.extend({
   transform: translateY(-300px);
 }
 
-@media (min-width: 551px) {
+@media (min-width: 716px) {
   .mobile-header {
     display: none;
   }
 }
-@media (max-width: 550px) {
+@media (max-width: 715px) {
   .big-header {
     display: none;
   }

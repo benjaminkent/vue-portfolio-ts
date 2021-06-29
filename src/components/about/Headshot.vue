@@ -66,6 +66,9 @@ export default Vue.extend({
       .resume-link {
         color: $dm-secondary;
       }
+      .resume-link:hover {
+        color: $dm-text;
+      }
     }
   }
 }
