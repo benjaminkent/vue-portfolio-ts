@@ -59,6 +59,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import {
+  actions as darkModeActions,
+  getters as darkModeGetters,
+} from '@/observables/darkMode'
 import { featureFlags } from '@/observables/featureFlags'
 import ToggleSwitch from '@/components/ToggleSwitch.vue'
 
@@ -75,17 +79,11 @@ export default Vue.extend({
     }
   },
   mounted() {
+    this.initDarkModePreference()
     window.addEventListener('scroll', this.updateScroll)
-
-    const savedDarkModePreference = window.localStorage.getItem(
-      'darkModeEnabled'
-    )
-
-    savedDarkModePreference
-      ? (this.isDarkModeSelected = JSON.parse(savedDarkModePreference))
-      : false
   },
   methods: {
+    ...darkModeActions,
     updateScroll(): void {
       this.scrolledPosition = window.scrollY
     },
@@ -94,9 +92,25 @@ export default Vue.extend({
         'darkModeEnabled',
         `${this.isDarkModeSelected}`
       )
+      this.setDarkModePreference(this.isDarkModeSelected)
+    },
+    initDarkModePreference(): void {
+      const savedDarkModePreference = window.localStorage.getItem(
+        'darkModeEnabled'
+      )
+
+      if (!savedDarkModePreference) {
+        this.isDarkModeSelected = false
+        this.disableDarkMode()
+        return
+      }
+
+      this.isDarkModeSelected = JSON.parse(savedDarkModePreference)
+      this.setDarkModePreference(JSON.parse(savedDarkModePreference))
     },
   },
   computed: {
+    ...darkModeGetters,
     darkModeEnabled(): boolean {
       return featureFlags.darkModeEnabled
     },
