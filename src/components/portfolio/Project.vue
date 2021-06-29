@@ -1,6 +1,5 @@
 <template lang="pug">
   .project-container-grid(
-    @click='toggleCopy'
     @mouseover='showCopy = true'
     @mouseleave='showCopy = false'
   )
@@ -32,11 +31,6 @@ export default Vue.extend({
     return {
       showCopy: false,
     }
-  },
-  methods: {
-    toggleCopy(): void {
-      this.showCopy = !this.showCopy
-    },
   },
 })
 </script>
