@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 const darkModeState = Vue.observable({
   enabled: false,
+  backgroundColor: '#222',
 })
 
 export const actions = {
@@ -15,4 +16,5 @@ export const actions = {
 
 export const getters = {
   isDarkModeEnabled: () => darkModeState.enabled,
+  darkModeBackgroundColor: () => darkModeState.backgroundColor,
 }
