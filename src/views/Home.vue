@@ -7,6 +7,7 @@
     Portfolio
     ContactMe
     AppFooter
+    fab
 </template>
 
 <script lang="ts">
@@ -18,6 +19,7 @@ import Toolset from '@/views/Toolset.vue'
 import Portfolio from '@/views/Portfolio.vue'
 import ContactMe from '@/views/ContactMe.vue'
 import AppFooter from '@/components/Footer.vue'
+import Fab from '@/components/FloatingActionButton.vue'
 
 Component.registerHooks(['metaInfo'])
 
@@ -30,6 +32,7 @@ Component.registerHooks(['metaInfo'])
     Portfolio,
     ContactMe,
     AppFooter,
+    Fab,
   },
 })
 export default class Home extends Vue {

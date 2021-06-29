@@ -20,6 +20,7 @@ import {
   faThunderstorm as fadThunderstorm,
   faSnowflakes as fadSnowflakes,
   faSmoke as fadSmoke,
+  faLightbulbOn as fadLightbulbOn,
 } from '@fortawesome/pro-duotone-svg-icons'
 import { faHeart as fasHeart } from '@fortawesome/pro-solid-svg-icons'
 import {
@@ -41,6 +42,7 @@ library.add(
   fabInstagram,
   fabLinkedinIn,
   fabTwitter,
+  fadLightbulbOn,
   fadNarwhal,
   fadTrash,
   fadSun,
