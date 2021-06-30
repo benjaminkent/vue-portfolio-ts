@@ -21,12 +21,24 @@ export default Vue.extend({
   border-radius: 50%;
   background-color: #ffffff90;
   cursor: pointer;
+  z-index: 10;
   .icon {
     padding: 1.25rem 1rem;
+    font-size: 40px;
   }
   .light-on {
-    font-size: 40px;
     color: $secondary;
+  }
+}
+
+@media (max-width: 550px) {
+  .fab-button {
+    bottom: 20px;
+    right: 20px;
+    .icon {
+      font-size: 30px;
+      padding: 0.9rem 0.75rem;
+    }
   }
 }
 </style>

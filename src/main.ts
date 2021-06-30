@@ -21,6 +21,7 @@ import {
   faSnowflakes as fadSnowflakes,
   faSmoke as fadSmoke,
   faLightbulbOn as fadLightbulbOn,
+  faLightbulbSlash as fadLightBulbSlash,
 } from '@fortawesome/pro-duotone-svg-icons'
 import { faHeart as fasHeart } from '@fortawesome/pro-solid-svg-icons'
 import {
@@ -43,6 +44,7 @@ library.add(
   fabLinkedinIn,
   fabTwitter,
   fadLightbulbOn,
+  fadLightBulbSlash,
   fadNarwhal,
   fadTrash,
   fadSun,
