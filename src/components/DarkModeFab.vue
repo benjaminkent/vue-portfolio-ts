@@ -1,19 +1,19 @@
 <template>
   <div
-    v-if="darkModeEnabled"
+    v-if="darkModeEnabled && darkModeLoaded"
     :class="[{ 'dark-mode': isDarkModeEnabled }, 'fab-button']"
     @click="fabClicked"
   >
     <transition name="fade" mode="out-in">
       <fa-icon
         v-if="isDarkModeEnabled"
-        class="light-off icon"
+        class="light-off"
         :icon="['fad', 'lightbulb-slash']"
         key="light-off"
       />
       <fa-icon
         v-else
-        class="light-on icon"
+        class="light-on"
         :icon="['fad', 'lightbulb-on']"
         key="light-on"
       />
@@ -34,6 +34,7 @@ export default Vue.extend({
   data() {
     return {
       isDarkModeSelected: false,
+      darkModeLoaded: false,
     }
   },
   computed: {
@@ -44,6 +45,7 @@ export default Vue.extend({
   },
   mounted() {
     this.initDarkModePreference()
+    this.darkModeLoaded = true
   },
   methods: {
     ...darkModeActions,
@@ -62,7 +64,7 @@ export default Vue.extend({
         'darkModeEnabled'
       )
 
-      if (!savedDarkModePreference) {
+      if (!savedDarkModePreference || !this.darkModeEnabled) {
         this.isDarkModeSelected = false
         this.disableDarkMode()
         return
@@ -77,19 +79,22 @@ export default Vue.extend({
 
 .<style lang="scss" scoped>
 .fab-button.dark-mode {
-  border: 3px solid #000;
-  background-color: #cccccc80;
+  .light-off {
+    border: 3px solid #000;
+    background-color: #cccccc80;
+  }
 }
 .fab-button {
   position: fixed;
   bottom: 50px;
   right: 40px;
-  border: 3px solid #555;
-  border-radius: 50%;
-  background-color: #ffffff90;
-  cursor: pointer;
   z-index: 10;
-  .icon {
+  .light-on,
+  .light-off {
+    background-color: #ffffff90;
+    border-radius: 50%;
+    border: 3px solid #555;
+    cursor: pointer;
     padding: 1.25rem 1rem;
     font-size: 40px;
   }
@@ -107,9 +112,7 @@ export default Vue.extend({
 .fade-leave-active {
   transition: all 0.3s ease-in;
 }
-.fade-enter {
-  transform: rotateY(90deg);
-}
+.fade-enter,
 .fade-leave-to {
   transform: rotateY(90deg);
 }
@@ -118,7 +121,8 @@ export default Vue.extend({
   .fab-button {
     bottom: 20px;
     right: 20px;
-    .icon {
+    .light-on,
+    .light-off {
       font-size: 30px;
       padding: 0.9rem 0.75rem;
     }
