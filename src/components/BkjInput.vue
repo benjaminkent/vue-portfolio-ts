@@ -24,6 +24,11 @@
 <script lang="ts">
 import Vue from 'vue'
 
+enum ErrorMessage {
+  Blank = 'This field cannot be blank',
+  Email = 'Must provide a valid email address',
+}
+
 export default Vue.extend({
   name: 'BkjInput',
   props: {
@@ -56,20 +61,41 @@ export default Vue.extend({
     handleInput(event: InputEvent) {
       this.$emit('input', event.target.value)
     },
+    emitError() {
+      this.$emit('error-detected', this.error)
+    },
+    errorCorrected() {
+      this.$emit('error-corrected')
+    },
     errorCheck() {
       if (this.value === '') {
-        this.error = 'This field cannot be blank'
+        if (!this.error) {
+          this.error = ErrorMessage.Blank
+
+          this.emitError()
+        }
         return
       }
 
       if (this.inputType === 'email') {
         if (!this.value.includes('@')) {
-          this.error = 'Must provide a valid email address'
+          if (this.error === ErrorMessage.Blank) {
+            this.errorCorrected()
+          }
+
+          if (!this.error || ErrorMessage.Blank) {
+            this.error = ErrorMessage.Email
+
+            this.emitError()
+          }
           return
         }
       }
 
-      this.error = null
+      if (this.error) {
+        this.errorCorrected()
+        this.error = null
+      }
     },
   },
 })

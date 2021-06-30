@@ -17,18 +17,29 @@
             v-model="message.firstName"
             class="first-name-input"
             placeholder="First Name"
+            @error-detected="errorDetected"
+            @error-corrected="errorCorrected"
           />
-          <bkj-input v-model="message.lastName" placeholder="Last Name" />
+          <bkj-input
+            v-model="message.lastName"
+            placeholder="Last Name"
+            @error-detected="errorDetected"
+            @error-corrected="errorCorrected"
+          />
         </div>
         <bkj-input
           v-model="message.email"
           input-type="email"
           placeholder="Email"
+          @error-detected="errorDetected"
+          @error-corrected="errorCorrected"
         />
         <bkj-input
           v-model="message.messageText"
           :is-text-area="true"
           placeholder="Message"
+          @error-detected="errorDetected"
+          @error-corrected="errorCorrected"
         />
         <button type="submit">Send Message</button>
       </form>
@@ -65,9 +76,16 @@ export default Vue.extend({
         messageText: '',
       },
       messageSent: false,
+      errors: [] as string[],
     }
   },
   methods: {
+    errorDetected(errorMessage: string) {
+      this.errors.push(errorMessage)
+    },
+    errorCorrected() {
+      if (this.errors.length) this.errors.pop()
+    },
     sendMessage(): void {
       postMessage({
         first_name: this.message.firstName,
