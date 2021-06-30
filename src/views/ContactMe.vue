@@ -1,21 +1,56 @@
-<template lang="pug">
-  .contact-container-grid(id='contact' :class="{'dark-mode': isDarkModeEnabled}")
-    .bottom-background
-    .contact-form-container
-      .message
-        h3 GET IN TOUCH
-        h2 Contact Me
-      form(@submit.prevent='sendMessage')
-        .name-input-container
-          input(v-model='message.firstName' type='text' placeholder='First Name')
-          input(v-model='message.lastName' type='text' placeholder='Last Name')
-        input.email(v-model='message.email' type='email' placeholder='Email')
-        textarea.text-area(v-model='message.messageText' placeholder='Message')
-        button(type='submit') Send Message
-    .message-box
-      transition(name='slide-up')
-        .good-message(v-if='messageSent')
-          p Thank you for your message!
+<template>
+  <div
+    class="contact-container-grid"
+    id="contact"
+    :class="{ 'dark-mode': isDarkModeEnabled }"
+  >
+    <div class="bottom-background"></div>
+
+    <div class="contact-form-container">
+      <div class="message">
+        <h3>GET IN TOUCH</h3>
+        <h2>Contact Me</h2>
+      </div>
+      <form @submit.prevent="sendMessage">
+        <div class="name-input-container">
+          <bkj-input
+            v-model="message.firstName"
+            class="first-name-input"
+            placeholder="First Name"
+          />
+          <!-- <input
+            v-model="message.firstName"
+            type="text"
+            placeholder="First Name"
+          /> -->
+          <input
+            v-model="message.lastName"
+            type="text"
+            placeholder="Last Name"
+          />
+        </div>
+        <input
+          class="email"
+          v-model="message.email"
+          type="email"
+          placeholder="Email"
+        /><textarea
+          class="text-area"
+          v-model="message.messageText"
+          placeholder="Message"
+        ></textarea
+        ><button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="message-box">
+      <transition name="slide-up">
+        <div class="good-message" v-if="messageSent">
+          <p>Thank you for your message!</p>
+        </div>
+      </transition>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,9 +58,13 @@ import Vue from 'vue'
 import { getters as darkModeGetters } from '@/observables/darkMode'
 import { MessageInterface } from '@/interfaces/interfaces'
 import { postMessage } from '@/api/api'
+import BkjInput from '@/components/BkjInput.vue'
 
 export default Vue.extend({
   name: 'ContactMe',
+  components: {
+    BkjInput,
+  },
   data() {
     return {
       message: {
@@ -108,6 +147,7 @@ export default Vue.extend({
     }
   }
 }
+
 .contact-container-grid {
   display: grid;
   grid-template-rows: 0.75fr repeat(5, 1fr) 0.5fr;
@@ -259,7 +299,7 @@ form {
     width: 80%;
   }
   .name-input-container {
-    input:first-child {
+    .first-name-input {
       margin-right: 20px;
     }
   }
