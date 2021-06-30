@@ -20,7 +20,11 @@
           />
           <bkj-input v-model="message.lastName" placeholder="Last Name" />
         </div>
-        <bkj-input v-model="message.email" type="email" placeholder="Email" />
+        <bkj-input
+          v-model="message.email"
+          input-type="email"
+          placeholder="Email"
+        />
         <bkj-input
           v-model="message.messageText"
           :is-text-area="true"
@@ -73,7 +77,9 @@ export default Vue.extend({
       })
 
       this.showMessageAlert()
-
+      this.clearForm()
+    },
+    clearForm() {
       this.message = {
         firstName: '',
         lastName: '',

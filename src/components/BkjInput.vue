@@ -2,19 +2,22 @@
   <div class="bkj-input">
     <textarea
       v-if="isTextArea"
-      class="bkj-input__text-area"
+      :class="[{ error: error }, 'bkj-input__text-area']"
       :placeholder="placeholder"
       :value="value"
       @input="handleInput"
+      @blur="errorCheck"
     />
     <input
       v-else
-      class="bkj-input__input"
+      :class="[{ error: error }, 'bkj-input__input']"
       :value="value"
       :type="inputType"
       :placeholder="placeholder"
       @input="handleInput"
+      @blur="errorCheck"
     />
+    <p v-if="error" class="bkj-input__error-message">{{ error }}</p>
   </div>
 </template>
 
@@ -44,9 +47,29 @@ export default Vue.extend({
       default: false,
     },
   },
+  data() {
+    return {
+      error: null as null | string,
+    }
+  },
   methods: {
     handleInput(event: InputEvent) {
       this.$emit('input', event.target.value)
+    },
+    errorCheck() {
+      if (this.value === '') {
+        this.error = 'This field cannot be blank'
+        return
+      }
+
+      if (this.inputType === 'email') {
+        if (!this.value.includes('@')) {
+          this.error = 'Must provide a valid email address'
+          return
+        }
+      }
+
+      this.error = null
     },
   },
 })
@@ -54,6 +77,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .bkj-input {
+  position: relative;
   width: 100%;
   &__input {
     width: 100%;
@@ -73,5 +97,14 @@ export default Vue.extend({
     height: 225px;
     resize: vertical;
   }
+  &__error-message {
+    position: absolute;
+    color: $error;
+    margin: 0;
+    font-size: 14px;
+  }
+}
+.error {
+  outline: 1px solid $error;
 }
 </style>
