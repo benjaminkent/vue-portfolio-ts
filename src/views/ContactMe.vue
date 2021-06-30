@@ -18,28 +18,15 @@
             class="first-name-input"
             placeholder="First Name"
           />
-          <!-- <input
-            v-model="message.firstName"
-            type="text"
-            placeholder="First Name"
-          /> -->
-          <input
-            v-model="message.lastName"
-            type="text"
-            placeholder="Last Name"
-          />
+          <bkj-input v-model="message.lastName" placeholder="Last Name" />
         </div>
-        <input
-          class="email"
-          v-model="message.email"
-          type="email"
-          placeholder="Email"
-        /><textarea
-          class="text-area"
+        <bkj-input v-model="message.email" type="email" placeholder="Email" />
+        <bkj-input
           v-model="message.messageText"
+          :is-text-area="true"
           placeholder="Message"
-        ></textarea
-        ><button type="submit">Send Message</button>
+        />
+        <button type="submit">Send Message</button>
       </form>
     </div>
 
@@ -213,32 +200,6 @@ form {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    input {
-      width: 100%;
-      border: none;
-      background-color: #33333309;
-      padding: 15px 0;
-      font-size: 16px;
-      text-indent: 15px;
-    }
-  }
-  .email {
-    width: 100%;
-    border: none;
-    background-color: #33333309;
-    padding: 15px 0;
-    font-size: 16px;
-    text-indent: 15px;
-  }
-  .text-area {
-    width: calc(100% - 30px);
-    border: none;
-    background-color: #33333309;
-    padding: 15px;
-    font-size: 16px;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    height: 225px;
-    resize: vertical;
   }
   button {
     align-self: flex-start;

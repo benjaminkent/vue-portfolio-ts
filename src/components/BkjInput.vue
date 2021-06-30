@@ -1,7 +1,16 @@
 <template>
   <div class="bkj-input">
+    <textarea
+      v-if="isTextArea"
+      class="bkj-input__text-area"
+      :placeholder="placeholder"
+      :value="value"
+      @input="handleInput"
+    />
     <input
+      v-else
       class="bkj-input__input"
+      :value="value"
       :type="inputType"
       :placeholder="placeholder"
       @input="handleInput"
@@ -16,7 +25,7 @@ export default Vue.extend({
   name: 'BkjInput',
   props: {
     value: {
-      type: String | Number,
+      type: [String, Number],
       required: true,
     },
     inputType: {
@@ -28,6 +37,11 @@ export default Vue.extend({
       type: String,
       required: false,
       default: 'Descriptive Placeholder',
+    },
+    isTextArea: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   methods: {
@@ -48,6 +62,16 @@ export default Vue.extend({
     padding: 15px 0;
     font-size: 16px;
     text-indent: 15px;
+  }
+  &__text-area {
+    width: calc(100% - 30px);
+    border: none;
+    background-color: #33333309;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    height: 225px;
+    resize: vertical;
   }
 }
 </style>
