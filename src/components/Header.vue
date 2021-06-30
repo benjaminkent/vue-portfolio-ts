@@ -5,10 +5,6 @@
         .logo
           fa-icon(:icon="['fad', 'narwhal']" v-scroll-to="'#home'" :class="['logo-icon', {'scrolled-nav-content': scrolledPosition > 150}]")
         ul
-          li
-            .dark-mode-container(v-if="darkModeEnabled")
-              p.dark-mode-copy(:class="{'scrolled-nav-content': scrolledPosition > 150}") Dark Mode
-              toggle-switch(v-model="isDarkModeSelected" @toggled="handleToggle")
           li 
             p(
               v-scroll-to="'#home'"
@@ -52,9 +48,6 @@
         .logo
           fa-icon.logo-icon(:icon="['fad', 'narwhal']" v-scroll-to="'#home'")
         .right-content
-          .dark-mode-container(v-if="darkModeEnabled")
-            p.dark-mode-copy Dark Mode
-            toggle-switch(v-model="isDarkModeSelected" @toggled="handleToggle")
           .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
             .hamburger-line
             .hamburger-line
@@ -63,60 +56,21 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import {
-  actions as darkModeActions,
-  getters as darkModeGetters,
-} from '@/observables/darkMode'
-import { featureFlags } from '@/observables/featureFlags'
-import ToggleSwitch from '@/components/ToggleSwitch.vue'
 
 export default Vue.extend({
   name: 'AppHeader',
-  components: {
-    ToggleSwitch,
-  },
   data() {
     return {
       showMenu: false,
       scrolledPosition: null as number | null,
-      isDarkModeSelected: false,
     }
   },
   mounted() {
-    this.initDarkModePreference()
     window.addEventListener('scroll', this.updateScroll)
   },
   methods: {
-    ...darkModeActions,
     updateScroll(): void {
       this.scrolledPosition = window.scrollY
-    },
-    handleToggle(): void {
-      window.localStorage.setItem(
-        'darkModeEnabled',
-        `${this.isDarkModeSelected}`
-      )
-      this.setDarkModePreference(this.isDarkModeSelected)
-    },
-    initDarkModePreference(): void {
-      const savedDarkModePreference = window.localStorage.getItem(
-        'darkModeEnabled'
-      )
-
-      if (!savedDarkModePreference) {
-        this.isDarkModeSelected = false
-        this.disableDarkMode()
-        return
-      }
-
-      this.isDarkModeSelected = JSON.parse(savedDarkModePreference)
-      this.setDarkModePreference(JSON.parse(savedDarkModePreference))
-    },
-  },
-  computed: {
-    ...darkModeGetters,
-    darkModeEnabled(): boolean {
-      return featureFlags.darkModeEnabled
     },
   },
 })
