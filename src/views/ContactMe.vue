@@ -41,7 +41,7 @@
           @error-detected="errorDetected"
           @error-corrected="errorCorrected"
         />
-        <button type="submit">Send Message</button>
+        <bkj-button>Send Message</bkj-button>
       </form>
     </div>
 
@@ -61,11 +61,13 @@ import { getters as darkModeGetters } from '@/observables/darkMode'
 import { MessageInterface } from '@/interfaces/interfaces'
 import { postMessage } from '@/api/api'
 import BkjInput from '@/components/BkjInput.vue'
+import BkjButton from '@/components/BkjButton.vue'
 
 export default Vue.extend({
   name: 'ContactMe',
   components: {
     BkjInput,
+    BkjButton,
   },
   data() {
     return {
@@ -78,6 +80,12 @@ export default Vue.extend({
       messageSent: false,
       errors: [] as string[],
     }
+  },
+  computed: {
+    ...darkModeGetters,
+    isFormDisabled(): boolean {
+      return this.errors.length
+    },
   },
   methods: {
     errorDetected(errorMessage: string) {
@@ -116,9 +124,6 @@ export default Vue.extend({
         this.messageSent = false
       }, 5000)
     },
-  },
-  computed: {
-    ...darkModeGetters,
   },
 })
 </script>
@@ -224,21 +229,6 @@ form {
     width: 100%;
     display: flex;
     justify-content: space-between;
-  }
-  button {
-    align-self: flex-start;
-    font-size: 16px;
-    border: none;
-    background-color: $secondary;
-    color: #fff;
-    padding: 20px 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s all ease-in-out;
-  }
-  button:hover {
-    background-color: #333;
-    transition: 0.3s all ease-in-out;
   }
 }
 .slide-up-enter-active {
