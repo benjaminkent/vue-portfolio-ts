@@ -1,5 +1,5 @@
 <template>
-  <div class="bkj-input">
+  <div :class="[{ 'dark-mode': isDarkModeEnabled }, 'bkj-input']">
     <textarea
       v-if="isTextArea"
       :class="[{ error: error }, 'bkj-input__text-area']"
@@ -23,10 +23,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 
 enum ErrorMessage {
   Blank = 'This field cannot be blank',
-  Email = 'Must provide a valid email address',
+  Email = 'Please provide a valid email address',
 }
 
 export default Vue.extend({
@@ -57,6 +58,9 @@ export default Vue.extend({
       error: null as null | string,
     }
   },
+  computed: {
+    ...darkModeGetters,
+  },
   methods: {
     handleInput(event: InputEvent) {
       this.$emit('input', event.target.value)
@@ -83,7 +87,7 @@ export default Vue.extend({
             this.errorCorrected()
           }
 
-          if (!this.error || ErrorMessage.Blank) {
+          if (!this.error) {
             this.error = ErrorMessage.Email
 
             this.emitError()
@@ -102,6 +106,20 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.bkj-input.dark-mode {
+  .bkj-input__input {
+    color: #ccc;
+  }
+  .bkj-input__text-area {
+    color: #ccc;
+  }
+  .bkj-input__input::placeholder {
+    color: #aaa;
+  }
+  .bkj-input__text-area::placeholder {
+    color: #aaa;
+  }
+}
 .bkj-input {
   position: relative;
   width: 100%;

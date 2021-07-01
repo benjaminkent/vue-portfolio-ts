@@ -84,7 +84,7 @@ export default Vue.extend({
   computed: {
     ...darkModeGetters,
     isFormDisabled(): boolean {
-      return this.errors.length || Object.values(this.message).includes('')
+      return this.errors.length > 0 || Object.values(this.message).includes('')
     },
   },
   methods: {
@@ -142,25 +142,6 @@ export default Vue.extend({
       }
       h2 {
         color: $dm-secondary;
-      }
-    }
-    form {
-      input {
-        color: #ccc;
-      }
-      input::placeholder {
-        color: #aaa;
-      }
-      .text-area::placeholder {
-        color: #aaa;
-      }
-      button {
-        background-color: $dm-secondary;
-        color: #222;
-      }
-      button:hover {
-        background-color: #333;
-        color: #ddd;
       }
     }
   }

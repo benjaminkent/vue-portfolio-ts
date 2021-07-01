@@ -1,11 +1,17 @@
 <template>
-  <button :class="[{ disabled: disabled }, 'bkj-button']">
+  <button
+    :class="[
+      { disabled: disabled, 'dark-mode': isDarkModeEnabled },
+      'bkj-button',
+    ]"
+  >
     <slot />
   </button>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 
 export default Vue.extend({
   name: 'BkjButton',
@@ -16,10 +22,21 @@ export default Vue.extend({
       default: false,
     },
   },
+  computed: {
+    ...darkModeGetters,
+  },
 })
 </script>
 
 <style lang="scss" scoped>
+.bkj-button.dark-mode {
+  background-color: $dm-secondary;
+  color: #222;
+}
+.bkj-button.dark-mode:hover {
+  background-color: #333;
+  color: #ddd;
+}
 .bkj-button.disabled {
   opacity: 0.6;
   cursor: not-allowed;
