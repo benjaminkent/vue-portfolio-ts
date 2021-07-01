@@ -17,29 +17,24 @@
             v-model="message.firstName"
             class="first-name-input"
             placeholder="First Name"
-            @error-detected="errorDetected"
-            @error-corrected="errorCorrected"
+            :error="errors.firstName"
           />
           <bkj-input
             v-model="message.lastName"
             placeholder="Last Name"
-            @error-detected="errorDetected"
-            @error-corrected="errorCorrected"
+            :error="errors.lastName"
           />
         </div>
         <bkj-input
           v-model="message.email"
-          input-type="email"
           placeholder="Email"
-          @error-detected="errorDetected"
-          @error-corrected="errorCorrected"
+          :error="errors.email"
         />
         <bkj-input
           v-model="message.messageText"
           :is-text-area="true"
           placeholder="Message"
-          @error-detected="errorDetected"
-          @error-corrected="errorCorrected"
+          :error="errors.messageText"
         />
         <bkj-button :disabled="isFormDisabled">Send Message</bkj-button>
       </form>
@@ -63,6 +58,11 @@ import { postMessage } from '@/api/api'
 import BkjInput from '@/components/BkjInput.vue'
 import BkjButton from '@/components/BkjButton.vue'
 
+enum ErrorMessage {
+  Blank = 'This field cannot be blank',
+  Email = 'Please provide a valid email address',
+}
+
 export default Vue.extend({
   name: 'ContactMe',
   components: {
@@ -78,23 +78,50 @@ export default Vue.extend({
         messageText: '',
       },
       messageSent: false,
-      errors: [] as string[],
+      errors: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        messageText: '',
+      },
     }
   },
   computed: {
     ...darkModeGetters,
     isFormDisabled(): boolean {
-      return this.errors.length > 0 || Object.values(this.message).includes('')
+      return !Object.values(this.errors).every(
+        errorMessage => errorMessage === ''
+      )
+    },
+  },
+  watch: {
+    message: {
+      deep: true,
+      handler(newVal, oldVal) {
+        if (newVal.firstName) this.errors.firstName = ''
+        if (newVal.lastName) this.errors.lastName = ''
+        if (newVal.email && newVal.email.includes('@')) this.errors.email = ''
+        if (newVal.messageText) this.errors.messageText = ''
+      },
     },
   },
   methods: {
-    errorDetected(errorMessage: string) {
-      this.errors.push(errorMessage)
-    },
-    errorCorrected() {
-      if (this.errors.length) this.errors.pop()
+    errorCheck(): void {
+      !this.message.firstName
+        ? (this.errors.firstName = ErrorMessage.Blank)
+        : ''
+      !this.message.lastName ? (this.errors.lastName = ErrorMessage.Blank) : ''
+      console.log(this.message.email.includes('@'))
+      !this.message.email.includes('@')
+        ? (this.errors.email = ErrorMessage.Email)
+        : ''
+      !this.message.email ? (this.errors.email = ErrorMessage.Blank) : ''
+      !this.message.messageText
+        ? (this.errors.messageText = ErrorMessage.Blank)
+        : ''
     },
     sendMessage(): void {
+      this.errorCheck()
       if (this.isFormDisabled) return
 
       postMessage({
