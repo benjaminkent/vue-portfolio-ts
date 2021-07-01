@@ -82,7 +82,7 @@ export default Vue.extend({
       }
 
       if (this.inputType === 'email') {
-        if (!this.value.includes('@')) {
+        if (!(this.value as string).includes('@')) {
           if (this.error === ErrorMessage.Blank) {
             this.errorCorrected()
           }
