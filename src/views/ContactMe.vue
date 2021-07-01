@@ -41,7 +41,7 @@
           @error-detected="errorDetected"
           @error-corrected="errorCorrected"
         />
-        <bkj-button>Send Message</bkj-button>
+        <bkj-button :disabled="isFormDisabled">Send Message</bkj-button>
       </form>
     </div>
 
@@ -84,7 +84,7 @@ export default Vue.extend({
   computed: {
     ...darkModeGetters,
     isFormDisabled(): boolean {
-      return this.errors.length
+      return this.errors.length || Object.values(this.message).includes('')
     },
   },
   methods: {
@@ -95,6 +95,8 @@ export default Vue.extend({
       if (this.errors.length) this.errors.pop()
     },
     sendMessage(): void {
+      if (this.isFormDisabled) return
+
       postMessage({
         first_name: this.message.firstName,
         last_name: this.message.lastName,

@@ -1,5 +1,5 @@
 <template>
-  <button class="bkj-button">
+  <button :class="[{ disabled: disabled }, 'bkj-button']">
     <slot />
   </button>
 </template>
@@ -9,10 +9,21 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'BkjButton',
+  props: {
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
 })
 </script>
 
 <style lang="scss" scoped>
+.bkj-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 .bkj-button {
   align-self: flex-start;
   font-size: 16px;
