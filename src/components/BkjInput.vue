@@ -6,7 +6,6 @@
       :placeholder="placeholder"
       :value="value"
       @input="handleInput"
-      @blur="errorCheck"
     />
     <input
       v-else
@@ -15,7 +14,6 @@
       :type="inputType"
       :placeholder="placeholder"
       @input="handleInput"
-      @blur="errorCheck"
     />
     <p v-if="error" class="bkj-input__error-message">{{ error }}</p>
   </div>
@@ -24,11 +22,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { getters as darkModeGetters } from '@/observables/darkMode'
-
-enum ErrorMessage {
-  Blank = 'This field cannot be blank',
-  Email = 'Please provide a valid email address',
-}
 
 export default Vue.extend({
   name: 'BkjInput',
@@ -52,11 +45,11 @@ export default Vue.extend({
       required: false,
       default: false,
     },
-  },
-  data() {
-    return {
-      error: null as null | string,
-    }
+    error: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   computed: {
     ...darkModeGetters,
@@ -64,42 +57,6 @@ export default Vue.extend({
   methods: {
     handleInput(event: any) {
       this.$emit('input', event.target.value)
-    },
-    emitError() {
-      this.$emit('error-detected', this.error)
-    },
-    errorCorrected() {
-      this.$emit('error-corrected')
-    },
-    errorCheck() {
-      if (this.value === '') {
-        if (!this.error) {
-          this.error = ErrorMessage.Blank
-
-          this.emitError()
-        }
-        return
-      }
-
-      if (this.inputType === 'email') {
-        if (!(this.value as string).includes('@')) {
-          if (this.error === ErrorMessage.Blank) {
-            this.errorCorrected()
-          }
-
-          if (!this.error) {
-            this.error = ErrorMessage.Email
-
-            this.emitError()
-          }
-          return
-        }
-      }
-
-      if (this.error) {
-        this.errorCorrected()
-        this.error = null
-      }
     },
   },
 })
