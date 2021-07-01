@@ -37,6 +37,9 @@ export default Vue.extend({
     title: 'Ben Jehl',
     titleTemplate: '%s | Software Engineer',
     meta: [
+      // tslint doesn't like the line length or " " here
+      // but it's fine. turning it off for the rest of this file
+      /* tslint:disable */
       {
         name: 'description',
         content:
