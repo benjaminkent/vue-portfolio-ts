@@ -236,7 +236,7 @@ form {
     .name-input-container {
       flex-direction: column;
       align-content: space-between;
-      input:first-child {
+      .first-name-input {
         margin-bottom: 10px;
       }
     }

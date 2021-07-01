@@ -62,7 +62,7 @@ export default Vue.extend({
     ...darkModeGetters,
   },
   methods: {
-    handleInput(event: InputEvent) {
+    handleInput(event: any) {
       this.$emit('input', event.target.value)
     },
     emitError() {
