@@ -1,21 +1,58 @@
-<template lang="pug">
-  .contact-container-grid(id='contact' :class="{'dark-mode': isDarkModeEnabled}")
-    .bottom-background
-    .contact-form-container
-      .message
-        h3 GET IN TOUCH
-        h2 Contact Me
-      form(@submit.prevent='sendMessage')
-        .name-input-container
-          input(v-model='message.firstName' type='text' placeholder='First Name')
-          input(v-model='message.lastName' type='text' placeholder='Last Name')
-        input.email(v-model='message.email' type='email' placeholder='Email')
-        textarea.text-area(v-model='message.messageText' placeholder='Message')
-        button(type='submit') Send Message
-    .message-box
-      transition(name='slide-up')
-        .good-message(v-if='messageSent')
-          p Thank you for your message!
+<template>
+  <div
+    class="contact-container-grid"
+    id="contact"
+    :class="{ 'dark-mode': isDarkModeEnabled }"
+  >
+    <div class="bottom-background"></div>
+
+    <div class="contact-form-container">
+      <div class="message">
+        <h3>GET IN TOUCH</h3>
+        <h2>Contact Me</h2>
+      </div>
+      <form @submit.prevent="sendMessage">
+        <div class="name-input-container">
+          <bkj-input
+            v-model="message.firstName"
+            class="first-name-input"
+            placeholder="First Name"
+            @error-detected="errorDetected"
+            @error-corrected="errorCorrected"
+          />
+          <bkj-input
+            v-model="message.lastName"
+            placeholder="Last Name"
+            @error-detected="errorDetected"
+            @error-corrected="errorCorrected"
+          />
+        </div>
+        <bkj-input
+          v-model="message.email"
+          input-type="email"
+          placeholder="Email"
+          @error-detected="errorDetected"
+          @error-corrected="errorCorrected"
+        />
+        <bkj-input
+          v-model="message.messageText"
+          :is-text-area="true"
+          placeholder="Message"
+          @error-detected="errorDetected"
+          @error-corrected="errorCorrected"
+        />
+        <bkj-button :disabled="isFormDisabled">Send Message</bkj-button>
+      </form>
+    </div>
+
+    <div class="message-box">
+      <transition name="slide-up">
+        <div class="good-message" v-if="messageSent">
+          <p>Thank you for your message!</p>
+        </div>
+      </transition>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,9 +60,15 @@ import Vue from 'vue'
 import { getters as darkModeGetters } from '@/observables/darkMode'
 import { MessageInterface } from '@/interfaces/interfaces'
 import { postMessage } from '@/api/api'
+import BkjInput from '@/components/BkjInput.vue'
+import BkjButton from '@/components/BkjButton.vue'
 
 export default Vue.extend({
   name: 'ContactMe',
+  components: {
+    BkjInput,
+    BkjButton,
+  },
   data() {
     return {
       message: {
@@ -35,10 +78,25 @@ export default Vue.extend({
         messageText: '',
       },
       messageSent: false,
+      errors: [] as string[],
     }
   },
+  computed: {
+    ...darkModeGetters,
+    isFormDisabled(): boolean {
+      return this.errors.length > 0 || Object.values(this.message).includes('')
+    },
+  },
   methods: {
+    errorDetected(errorMessage: string) {
+      this.errors.push(errorMessage)
+    },
+    errorCorrected() {
+      if (this.errors.length) this.errors.pop()
+    },
     sendMessage(): void {
+      if (this.isFormDisabled) return
+
       postMessage({
         first_name: this.message.firstName,
         last_name: this.message.lastName,
@@ -47,7 +105,9 @@ export default Vue.extend({
       })
 
       this.showMessageAlert()
-
+      this.clearForm()
+    },
+    clearForm() {
       this.message = {
         firstName: '',
         lastName: '',
@@ -67,9 +127,6 @@ export default Vue.extend({
       }, 5000)
     },
   },
-  computed: {
-    ...darkModeGetters,
-  },
 })
 </script>
 
@@ -87,27 +144,9 @@ export default Vue.extend({
         color: $dm-secondary;
       }
     }
-    form {
-      input {
-        color: #ccc;
-      }
-      input::placeholder {
-        color: #aaa;
-      }
-      .text-area::placeholder {
-        color: #aaa;
-      }
-      button {
-        background-color: $dm-secondary;
-        color: #222;
-      }
-      button:hover {
-        background-color: #333;
-        color: #ddd;
-      }
-    }
   }
 }
+
 .contact-container-grid {
   display: grid;
   grid-template-rows: 0.75fr repeat(5, 1fr) 0.5fr;
@@ -173,47 +212,6 @@ form {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    input {
-      width: 100%;
-      border: none;
-      background-color: #33333309;
-      padding: 15px 0;
-      font-size: 16px;
-      text-indent: 15px;
-    }
-  }
-  .email {
-    width: 100%;
-    border: none;
-    background-color: #33333309;
-    padding: 15px 0;
-    font-size: 16px;
-    text-indent: 15px;
-  }
-  .text-area {
-    width: calc(100% - 30px);
-    border: none;
-    background-color: #33333309;
-    padding: 15px;
-    font-size: 16px;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    height: 225px;
-    resize: vertical;
-  }
-  button {
-    align-self: flex-start;
-    font-size: 16px;
-    border: none;
-    background-color: $secondary;
-    color: #fff;
-    padding: 20px 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s all ease-in-out;
-  }
-  button:hover {
-    background-color: #333;
-    transition: 0.3s all ease-in-out;
   }
 }
 .slide-up-enter-active {
@@ -259,7 +257,7 @@ form {
     width: 80%;
   }
   .name-input-container {
-    input:first-child {
+    .first-name-input {
       margin-right: 20px;
     }
   }
