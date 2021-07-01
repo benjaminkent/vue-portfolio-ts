@@ -98,31 +98,44 @@ export default Vue.extend({
     message: {
       deep: true,
       handler(newVal, oldVal) {
-        if (newVal.firstName) this.errors.firstName = ''
-        if (newVal.lastName) this.errors.lastName = ''
-        if (newVal.email && newVal.email.includes('@')) this.errors.email = ''
-        if (newVal.messageText) this.errors.messageText = ''
+        if (newVal.firstName) {
+          this.errors.firstName = ''
+        }
+        if (newVal.lastName) {
+          this.errors.lastName = ''
+        }
+        if (newVal.email && newVal.email.includes('@')) {
+          this.errors.email = ''
+        }
+        if (newVal.messageText) {
+          this.errors.messageText = ''
+        }
       },
     },
   },
   methods: {
     errorCheck(): void {
-      !this.message.firstName
-        ? (this.errors.firstName = ErrorMessage.Blank)
-        : ''
-      !this.message.lastName ? (this.errors.lastName = ErrorMessage.Blank) : ''
-      console.log(this.message.email.includes('@'))
-      !this.message.email.includes('@')
-        ? (this.errors.email = ErrorMessage.Email)
-        : ''
-      !this.message.email ? (this.errors.email = ErrorMessage.Blank) : ''
-      !this.message.messageText
-        ? (this.errors.messageText = ErrorMessage.Blank)
-        : ''
+      if (!this.message.firstName) {
+        this.errors.firstName = ErrorMessage.Blank
+      }
+      if (!this.message.lastName) {
+        this.errors.lastName = ErrorMessage.Blank
+      }
+      if (!this.message.email.includes('@')) {
+        this.errors.email = ErrorMessage.Email
+      }
+      if (!this.message.email) {
+        this.errors.email = ErrorMessage.Blank
+      }
+      if (this.message.messageText) {
+        this.errors.messageText = ErrorMessage.Blank
+      }
     },
     sendMessage(): void {
       this.errorCheck()
-      if (this.isFormDisabled) return
+      if (this.isFormDisabled) {
+        return
+      }
 
       postMessage({
         first_name: this.message.firstName,
