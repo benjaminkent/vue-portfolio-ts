@@ -127,7 +127,7 @@ export default Vue.extend({
       if (!this.message.email) {
         this.errors.email = ErrorMessage.Blank
       }
-      if (this.message.messageText) {
+      if (!this.message.messageText) {
         this.errors.messageText = ErrorMessage.Blank
       }
     },
