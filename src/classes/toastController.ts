@@ -24,6 +24,7 @@ class ToastController {
   private toastState = Vue.observable({
     isActive: false,
     currentToast: null as null | Toast,
+    toastTimeoutId: 0,
   })
 
   public activateToast(toastOptions: ToastOptions) {
@@ -32,9 +33,14 @@ class ToastController {
       toastOptions.type,
       toastOptions.duration
     )
+
+    if (this.toastState.isActive) {
+      clearTimeout(this.toastState.toastTimeoutId)
+    }
+
     this.toastState.isActive = true
 
-    setTimeout(() => {
+    this.toastState.toastTimeoutId = setTimeout(() => {
       this.toastState.isActive = false
     }, this.toastState.currentToast.duration)
   }
