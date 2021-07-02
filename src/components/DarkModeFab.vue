@@ -28,6 +28,7 @@ import {
   getters as darkModeGetters,
 } from '@/observables/darkMode'
 import { featureFlags } from '@/observables/featureFlags'
+import { toastController } from '@/classes/toastController'
 
 export default Vue.extend({
   name: 'FloatingActionButton',
@@ -58,6 +59,13 @@ export default Vue.extend({
       )
 
       this.setDarkModePreference(this.isDarkModeSelected)
+
+      if (this.isDarkModeSelected) {
+        toastController.activateToast({ message: 'Dark mode activated!' })
+        return
+      }
+
+      toastController.activateToast({ message: 'Dark mode turned off' })
     },
     initDarkModePreference(): void {
       const savedDarkModePreference = window.localStorage.getItem(
