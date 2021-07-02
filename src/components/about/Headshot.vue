@@ -1,23 +1,47 @@
-<template lang="pug">
-  .about-content(:class="{'dark-mode': isDarkModeEnabled}")
-    .about-message
-      h3 ABOUT ME
-      h2 Forward Thinking Engineer
-    .headshot-info-container
-      img.headshot(src='../../assets/headshot.jpg')
-      .info
-        h3 Benjamin Kent Jehl
-        p.job-title Software Engineer
-        p.about Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am the Creator/Organizer of the Vue.js Tampa Bay meetup group and am passionate about sharing with others the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
-        a.resume-link(href='https://drive.google.com/file/d/12wQpOYLzCr2g-NFXRhQJ231e64GICOQM/view?usp=sharing' target='_blank' rel='noreferrer noopener') VIEW MY RESUME
-        ul.social-media
-          li(v-for='icon in socialMedia')
-            a(:href='icon.url' target='_blank' rel='noreferrer noopener')
-              fa-icon(:icon='icon.class')
-        ul.words
-          li(v-for='word in wordList')
-            fa-icon.far.fa-check(:icon="['far', 'check']")
-            p {{ word }}
+<template>
+  <div class="about-content" :class="{ 'dark-mode': isDarkModeEnabled }">
+    <div class="about-message">
+      <h3>ABOUT ME</h3>
+      <h2>Forward Thinking Engineer</h2>
+    </div>
+    <div class="headshot-info-container">
+      <cld-image public-id="headshot_llvqua" height="600" quality="auto" />
+      <div class="info">
+        <h3>Benjamin Kent Jehl</h3>
+        <p class="job-title">Software Engineer</p>
+        <p class="about">
+          Located in the Tampa Bay Area and a former Financial Advisor, I have
+          followed my love of the tech industry and learned the skills that
+          enable me to write full stack web applications. I am the
+          Creator/Organizer of the Vue.js Tampa Bay meetup group and am
+          passionate about sharing with others the technologies that will shape
+          the future. When I'm not writing code I enjoy playing guitar, sports,
+          cooking, traveling... and learning how to be a better Software
+          Engineer!
+        </p>
+        <a
+          class="resume-link"
+          href="https://drive.google.com/file/d/12wQpOYLzCr2g-NFXRhQJ231e64GICOQM/view?usp=sharing"
+          target="_blank"
+          rel="noreferrer noopener"
+          >VIEW MY RESUME</a
+        >
+        <ul class="social-media">
+          <li v-for="(icon, index) in socialMedia" :key="index">
+            <a :href="icon.url" target="_blank" rel="noreferrer noopener">
+              <fa-icon :icon="icon.class"></fa-icon>
+            </a>
+          </li>
+        </ul>
+        <ul class="words">
+          <li v-for="(word, index) in wordList" :key="index">
+            <fa-icon class="far fa-check" :icon="['far', 'check']"></fa-icon>
+            <p>{{ word }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

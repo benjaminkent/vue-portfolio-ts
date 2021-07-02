@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import VueScrollTo from 'vue-scrollto'
 import VueMeta from 'vue-meta'
+import Cloudinary, { CldImage, CldTransformation } from 'cloudinary-vue'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -29,6 +30,7 @@ import {
   faCheck as farCheck,
   faArrowRight as farArrowRight,
 } from '@fortawesome/pro-regular-svg-icons'
+
 import {
   faLinkedinIn as fabLinkedinIn,
   faGithub as fabGithub,
@@ -69,6 +71,10 @@ Vue.config.productionTip = false
 
 Vue.use(VueMeta)
 Vue.use(VueScrollTo)
+Vue.use(Cloudinary, {
+  configuration: { cloudName: 'benkent' },
+  components: [CldImage, CldTransformation],
+})
 
 new Vue({
   router,
