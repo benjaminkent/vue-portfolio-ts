@@ -5,7 +5,12 @@
       <h2>Forward Thinking Engineer</h2>
     </div>
     <div class="headshot-info-container">
-      <cld-image public-id="headshot_llvqua" height="600" quality="auto" />
+      <cld-image
+        public-id="headshot_llvqua"
+        quality="auto"
+        class="headshot"
+        alt="Ben Jehl's headshot"
+      />
       <div class="info">
         <h3>Benjamin Kent Jehl</h3>
         <p class="job-title">Software Engineer</p>
