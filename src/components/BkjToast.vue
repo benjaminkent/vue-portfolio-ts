@@ -2,7 +2,7 @@
   <transition name="toast-fade">
     <div
       v-if="toastController.isToastActive"
-      :class="[toastClass, 'bkj-toast']"
+      :class="[{ 'dark-mode': isDarkModeEnabled }, toastClass, 'bkj-toast']"
     >
       <p class="bkj-toast__message">
         {{ toastController.currentToast.message }}
@@ -14,6 +14,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { toastController, ToastType } from '@/classes/toastController'
+import { getters as darkModeGetters } from '@/observables/darkMode'
 
 enum ToastClass {
   Success = 'success',
@@ -29,6 +30,7 @@ export default Vue.extend({
     }
   },
   computed: {
+    ...darkModeGetters,
     toastClass(): ToastClass {
       switch (
         this.toastController.currentToast
@@ -50,6 +52,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.bkj-toast.success.dark-mode {
+  background-color: $dm-success;
+  .bkj-toast__message {
+    color: #eee;
+  }
+}
 .bkj-toast.success {
   background-color: $success;
 }
@@ -68,7 +76,7 @@ export default Vue.extend({
   width: 275px;
   height: 50px;
   position: fixed;
-  bottom: 100px;
+  bottom: 50px;
   left: 0;
   right: 0;
   margin: 0 auto;
