@@ -6,19 +6,19 @@
         p {{ weatherInfo.temp }}°F
         .weather-condition-container
           p {{ weatherInfo.condition }}
-          fa-icon(v-if="weatherInfo.icon === '01d'" :icon="['fad', 'sun']" )
-          fa-icon(v-if="weatherInfo.icon === '01n'" :icon="['fad', 'moon']" )
-          fa-icon(v-if="weatherInfo.icon === '02d'" :icon="['fad', 'clouds-sun']" )
-          fa-icon(v-if="weatherInfo.icon === '02n'" :icon="['fad', 'clouds-moon']" )
-          fa-icon(v-if="weatherInfo.icon === '03d'" :icon="['fad', 'clouds']" )
-          fa-icon(v-if="weatherInfo.icon === '03n'" :icon="['fad', 'clouds']" )
-          fa-icon(v-if="weatherInfo.icon === '04d'" :icon="['fad', 'clouds']" )
-          fa-icon(v-if="weatherInfo.icon === '04n'" :icon="['fad', 'clouds']" )
-          fa-icon(v-if="weatherInfo.icon === '09d'" :icon="['fad', 'cloud-drizzle']" )
-          fa-icon(v-if="weatherInfo.icon === '10d'" :icon="['fad', 'cloud-showers-heavy']" )
-          fa-icon(v-if="weatherInfo.icon === '11d'" :icon="['fad', 'thunderstorm']" )
-          fa-icon(v-if="weatherInfo.icon === '13d'" :icon="['fad', 'snowflakes']" )
-          fa-icon(v-if="weatherInfo.icon === '50d'" :icon="['fad', 'smoke']" )
+          fa-icon(v-if="weatherInfo.icon === '01d'" :icon="['fad', 'sun']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '01n'" :icon="['fad', 'moon']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '02d'" :icon="['fad', 'clouds-sun']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '02n'" :icon="['fad', 'clouds-moon']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '03d'" :icon="['fad', 'clouds']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '03n'" :icon="['fad', 'clouds']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '04d'" :icon="['fad', 'clouds']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '04n'" :icon="['fad', 'clouds']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '09d'" :icon="['fad', 'cloud-drizzle']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '10d'" :icon="['fad', 'cloud-showers-heavy']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '11d'" :icon="['fad', 'thunderstorm']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '13d'" :icon="['fad', 'snowflakes']" class="weather-icon")
+          fa-icon(v-if="weatherInfo.icon === '50d'" :icon="['fad', 'smoke']" class="weather-icon")
     .background-box-container
       .background-style-box
     .name-box
@@ -98,7 +98,7 @@ export default class Jumbotron extends Vue {
         }
         .weather-condition-container {
           display: flex;
-          i {
+          .weather-icon {
             margin-left: 5px;
           }
         }
@@ -200,7 +200,7 @@ export default class Jumbotron extends Vue {
         }
         .weather-condition-container {
           display: flex;
-          i {
+          .weather-icon {
             margin-left: 5px;
           }
         }
