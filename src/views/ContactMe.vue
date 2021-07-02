@@ -53,8 +53,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import { getters as darkModeGetters } from '@/observables/darkMode'
-import { MessageInterface } from '@/interfaces/interfaces'
 import { postMessage } from '@/api/api'
+import { toastController } from '@/classes/toastController'
 import BkjInput from '@/components/BkjInput.vue'
 import BkjButton from '@/components/BkjButton.vue'
 
@@ -137,15 +137,23 @@ export default Vue.extend({
         return
       }
 
-      postMessage({
-        first_name: this.message.firstName,
-        last_name: this.message.lastName,
-        email: this.message.email,
-        message_text: this.message.messageText,
-      })
-
-      this.showMessageAlert()
-      this.clearForm()
+      try {
+        postMessage({
+          first_name: this.message.firstName,
+          last_name: this.message.lastName,
+          email: this.message.email,
+          message_text: this.message.messageText,
+        })
+        toastController.activateToast({
+          message: 'Message sent successfully!',
+        })
+      } catch (error) {
+        toastController.activateToast({
+          message: 'Error! Failed to send message',
+        })
+      } finally {
+        this.clearForm()
+      }
     },
     clearForm() {
       this.message = {
