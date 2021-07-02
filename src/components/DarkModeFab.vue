@@ -96,7 +96,7 @@ export default Vue.extend({
   position: fixed;
   bottom: 50px;
   right: 40px;
-  z-index: 10;
+  z-index: 1010;
   .light-on,
   .light-off {
     background-color: #ffffff90;
