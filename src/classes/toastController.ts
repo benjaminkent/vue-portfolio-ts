@@ -12,7 +12,7 @@ export interface ToastOptions {
   duration?: number
 }
 
-export class Toast {
+class Toast {
   constructor(
     public message: string = 'Plain toast',
     public type: ToastType = ToastType.Success,
