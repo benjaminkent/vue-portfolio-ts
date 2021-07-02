@@ -11,41 +11,36 @@
         <h3>GET IN TOUCH</h3>
         <h2>Contact Me</h2>
       </div>
-      <form @submit.prevent="sendMessage">
+      <form class="contact-form" @submit.prevent="sendMessage">
         <div class="name-input-container">
           <bkj-input
             v-model="message.firstName"
-            class="first-name-input"
+            class="contact-form__first-name-input"
             placeholder="First Name"
             :error="errors.firstName"
           />
           <bkj-input
             v-model="message.lastName"
+            class="contact-form__form-input"
             placeholder="Last Name"
             :error="errors.lastName"
           />
         </div>
         <bkj-input
           v-model="message.email"
+          class="contact-form__form-input"
           placeholder="Email"
           :error="errors.email"
         />
         <bkj-input
           v-model="message.messageText"
+          class="contact-form__form-input"
           :is-text-area="true"
           placeholder="Message"
           :error="errors.messageText"
         />
         <bkj-button :disabled="isFormDisabled">Send Message</bkj-button>
       </form>
-    </div>
-
-    <div class="message-box">
-      <transition name="slide-up">
-        <div class="good-message" v-if="messageSent">
-          <p>Thank you for your message!</p>
-        </div>
-      </transition>
     </div>
   </div>
 </template>
@@ -163,17 +158,6 @@ export default Vue.extend({
         messageText: '',
       }
     },
-    showMessageAlert(): void {
-      if (this.messageSent === true) {
-        return
-      }
-
-      this.messageSent = true
-
-      setTimeout(() => {
-        this.messageSent = false
-      }, 5000)
-    },
   },
 })
 </script>
@@ -213,23 +197,6 @@ export default Vue.extend({
     grid-area: 6 / 1 / 8 / 2;
     background-color: #333;
   }
-  .message-box {
-    grid-area: 3 / 1 / 4 / 2;
-    justify-self: center;
-    .good-message {
-      height: 60%;
-      width: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: $success;
-      border-radius: 3px;
-      p {
-        margin: 0;
-        color: #fff;
-      }
-    }
-  }
 }
 .message {
   display: flex;
@@ -249,7 +216,7 @@ export default Vue.extend({
     color: $secondary;
   }
 }
-form {
+.contact-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,14 +246,15 @@ form {
     width: 77%;
     padding: 30px;
   }
-  form {
+  .contact-form {
     width: 100%;
     .name-input-container {
       flex-direction: column;
       align-content: space-between;
-      .first-name-input {
-        margin-bottom: 10px;
-      }
+    }
+    &__first-name-input,
+    &__form-input {
+      margin-bottom: 20px;
     }
   }
   .contact-container-grid {
@@ -296,7 +264,7 @@ form {
     }
   }
   .message {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 }
 @media (min-width: 551px) {
@@ -304,8 +272,8 @@ form {
     padding: 30px;
     width: 80%;
   }
-  .name-input-container {
-    .first-name-input {
+  .contact-form {
+    &__first-name-input {
       margin-right: 20px;
     }
   }
