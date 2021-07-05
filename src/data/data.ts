@@ -63,7 +63,7 @@ export const projectData: ProjectInterface[] = [
     description: 'Brewery finder app',
     linkURL: 'https://brewlo.buzz/',
     linkName: 'brewlo.buzz',
-    image: 'cycle.jpg',
+    image: 'cycle_kyqnal',
   },
   {
     id: 2,
@@ -71,7 +71,7 @@ export const projectData: ProjectInterface[] = [
     description: 'Foosball team & name generator',
     linkURL: 'https://griptherods.com/',
     linkName: 'griptherods.com',
-    image: 'foosball.jpeg',
+    image: 'foosball_v0rnlx',
   },
 ]
 

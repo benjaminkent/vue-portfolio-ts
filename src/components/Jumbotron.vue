@@ -73,7 +73,7 @@ export default class Jumbotron extends Vue {
 
 <style lang="scss" scoped>
 .jumbotron {
-  background-image: url('../assets/desk-one.jpeg');
+  background-image: url('https://res.cloudinary.com/benkent/image/upload/q_auto/v1625243796/desk-one_q1drxe.jpg');
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(5, 1fr);
