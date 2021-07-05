@@ -17,7 +17,7 @@
             ) About
           li
             p(
-              v-scroll-to="{ el: '#toolset', offset: -100 }"
+              v-scroll-to="'#toolset'"
               :class="{'scrolled-nav-content': scrolledPosition > 150}"
             ) Toolset
           li
@@ -38,7 +38,7 @@
               p Home
             li(v-scroll-to="{ el: '#about', offset: -20 }")
               p About
-            li(v-scroll-to="{ el: '#toolset', offset: -100 }")
+            li(v-scroll-to="'#toolset'")
               p Toolset
             li(v-scroll-to="{ el: '#portfolio', offset: -20 }")
               p Portfolio
