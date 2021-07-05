@@ -106,6 +106,8 @@ export default Vue.extend({
       display: flex;
       justify-content: flex-end;
       li {
+        margin: 0 20px;
+        cursor: pointer;
         .dark-mode-container {
           display: flex;
           align-items: center;
@@ -113,8 +115,6 @@ export default Vue.extend({
             margin-right: 5px;
           }
         }
-        margin: 0 20px;
-        cursor: pointer;
         p {
           margin: 0;
           color: #222;
@@ -126,11 +126,6 @@ export default Vue.extend({
         }
         .scrolled-nav-content {
           color: #fff;
-        }
-      }
-      li:first-child {
-        p {
-          cursor: default;
         }
       }
     }
