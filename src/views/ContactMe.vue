@@ -92,7 +92,7 @@ export default Vue.extend({
   watch: {
     message: {
       deep: true,
-      handler(newVal, oldVal) {
+      handler(newVal) {
         if (newVal.firstName) {
           this.errors.firstName = ''
         }
