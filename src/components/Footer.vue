@@ -41,7 +41,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { socialMediaData } from '@/data/data'
 import { SocialMedia } from '@/interfaces/interfaces'
 
-@Component
+@Component({})
 export default class AppFooter extends Vue {
   socialMedia: SocialMedia[] = []
 
