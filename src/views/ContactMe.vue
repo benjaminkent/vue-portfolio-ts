@@ -254,7 +254,7 @@ export default Vue.extend({
     }
     &__first-name-input,
     &__form-input {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
   }
   .contact-container-grid {
