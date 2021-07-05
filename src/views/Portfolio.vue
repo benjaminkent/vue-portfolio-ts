@@ -1,12 +1,21 @@
-<template lang="pug">
-  .portfolio-container(id='portfolio' :class="{'dark-mode': isDarkModeEnabled}")
-    .message
-      h3 MY WORK
-      h2 A Couple Of My Recent Projects
-    .portfolio-content
-      ul.portfolio-content-cards
-        li(v-for='project in projects')
-          Project(:project='project')
+<template>
+  <div
+    class="portfolio-container"
+    id="portfolio"
+    :class="{ 'dark-mode': isDarkModeEnabled }"
+  >
+    <div class="message">
+      <h3>MY WORK</h3>
+      <h2>A Couple Of My Recent Projects</h2>
+    </div>
+    <div class="portfolio-content">
+      <ul class="portfolio-content-cards">
+        <li v-for="(project, index) in projects" :key="index">
+          <project :project="project"></project>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

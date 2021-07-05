@@ -1,12 +1,41 @@
-<template lang="pug">
-  .tech-content(:class="{'dark-mode': isDarkModeEnabled}")
-    .tech-message-container
-      .info
-        .tech-message-header
-          h3 MINDSET
-          h2 Tech Philosophy
-        p This website was designed, coded and styled completely from scratch by myself using the Vue.js JavaScript framework. With many of my personal projects, I prefer to write all of the code from scratch including CSS. Although I have used CSS and component library frameworks such as Quasar, Vue Bootstrap (Bootstrap), Buefy (Bulma) and Tailwind CSS to style websites as well; in my professional career I have worked extensivly with Bootstrap and Syncfusion. I believe in solving problems the right way. Which means writing easily maintainable code that doesn't add to tech debt and actively seeks to eliminate it. I am extremely excited about where the tech industry is heading and look forward to the many challenges and breakthroughs that lie before us.
-      img.code-img(src='../../assets/code-one.jpeg')
+<template>
+  <div class="tech-content" :class="{ 'dark-mode': isDarkModeEnabled }">
+    <div class="tech-message-container">
+      <div class="info">
+        <div class="tech-message-header">
+          <h3>MINDSET</h3>
+          <h2>Tech Philosophy</h2>
+        </div>
+        <p>
+          This website was designed, coded and styled completely from scratch by
+          myself using the Vue.js JavaScript framework. With many of my personal
+          projects, I prefer to write all of the code from scratch including
+          CSS. Although I have used CSS and component library frameworks such as
+          Quasar, Vue Bootstrap (Bootstrap), Buefy (Bulma) and Tailwind CSS to
+          style websites as well; in my professional career I have worked
+          extensivly with Bootstrap and Syncfusion. I believe in solving
+          problems the right way. Which means writing easily maintainable code
+          that doesn't add to tech debt and actively seeks to eliminate it. I am
+          extremely excited about where the tech industry is heading and look
+          forward to the many challenges and breakthroughs that lie before us.
+        </p>
+      </div>
+      <cld-image
+        v-if="isDarkModeEnabled"
+        public-id="code-three_ilkg16"
+        quality="auto"
+        class="code-img"
+        alt="desk with laptop and pens"
+      />
+      <cld-image
+        v-else
+        public-id="code-one_liu3kq"
+        quality="auto"
+        class="code-img"
+        alt="Desk with laptop"
+      />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

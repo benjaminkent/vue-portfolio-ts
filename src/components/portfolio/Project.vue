@@ -1,18 +1,34 @@
-<template lang="pug">
-  .project-container-grid(
-    @mouseover='showCopy = true'
-    @mouseleave='showCopy = false'
-  )
-    .image-box
-      img(:src='require(`../../assets/${project.image}`)')
-    .name-box
-      transition(name='slide-up')
-        .name-content(v-if='showCopy')
-          h2 {{ project.name }}
-          p {{ project.description }}
-          a(:href='project.linkURL' target='_blank' rel='noreferrer noopener') {{ project.linkName }}
-    transition(name='fade-in')
-      .screen-box(v-if='showCopy')
+<template>
+  <div
+    class="project-container-grid"
+    @mouseover="showCopy = true"
+    @mouseleave="showCopy = false"
+  >
+    <div class="image-box">
+      <cld-image
+        :public-id="project.image"
+        quality="auto"
+        :alt="project.description"
+      />
+    </div>
+    <div class="name-box">
+      <transition name="slide-up">
+        <div class="name-content" v-if="showCopy">
+          <h2>{{ project.name }}</h2>
+          <p>{{ project.description }}</p>
+          <a
+            :href="project.linkURL"
+            target="_blank"
+            rel="noreferrer noopener"
+            >{{ project.linkName }}</a
+          >
+        </div>
+      </transition>
+    </div>
+    <transition name="fade-in">
+      <div class="screen-box" v-if="showCopy"></div>
+    </transition>
+  </div>
 </template>
 
 <script lang="ts">
@@ -20,7 +36,7 @@ import Vue, { PropType } from 'vue'
 import { ProjectInterface } from '@/interfaces/interfaces'
 
 export default Vue.extend({
-  name: 'Portfolio',
+  name: 'Project',
   props: {
     project: {
       type: Object as PropType<ProjectInterface>,
