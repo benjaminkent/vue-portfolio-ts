@@ -1,57 +1,101 @@
-<template lang="pug">
-  .header-container
-    .big-header
-      header(:class="{ 'scrolled-header': scrolledPosition > 150}")
-        .logo
-          fa-icon(:icon="['fad', 'narwhal']" v-scroll-to="'#home'" :class="['logo-icon', {'scrolled-nav-content': scrolledPosition > 150}]")
-        ul
-          li 
-            p(
+<template>
+  <div class="header-container">
+    <div class="big-header">
+      <header :class="{ 'scrolled-header': scrolledPosition &gt; 150}">
+        <div class="logo">
+          <fa-icon
+            :icon="['fad', 'narwhal']"
+            v-scroll-to="'#home'"
+            :class="['logo-icon', {'scrolled-nav-content': scrolledPosition &gt; 150}]"
+          ></fa-icon>
+        </div>
+        <ul>
+          <li>
+            <p
               v-scroll-to="'#home'"
-              :class="{'scrolled-nav-content': scrolledPosition > 150}"
-            ) Home
-          li
-            p(
+              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+            >
+              Home
+            </p>
+          </li>
+          <li>
+            <p
               v-scroll-to="'#about'"
-              :class="{'scrolled-nav-content': scrolledPosition > 150}"
-            ) About
-          li
-            p(
+              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+            >
+              About
+            </p>
+          </li>
+          <li>
+            <p
               v-scroll-to="'#toolset'"
-              :class="{'scrolled-nav-content': scrolledPosition > 150}"
-            ) Toolset
-          li
-            p(
+              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+            >
+              Toolset
+            </p>
+          </li>
+          <li>
+            <p
               v-scroll-to="'#portfolio'"
-              :class="{'scrolled-nav-content': scrolledPosition > 150}"
-            ) Portfolio
-          li
-            p(
+              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+            >
+              Portfolio
+            </p>
+          </li>
+          <li>
+            <p
               v-scroll-to="'#contact'"
-              :class="{'scrolled-nav-content': scrolledPosition > 150}"
-            ) Contact
-    .mobile-header
-      transition(name='slide-down')
-        .pop-out-menu(v-if='showMenu' @click='showMenu = false')
-          ul
-            li(v-scroll-to="'#home'")
-              p Home
-            li(v-scroll-to="{ el: '#about', offset: -20 }")
-              p About
-            li(v-scroll-to="'#toolset'")
-              p Toolset
-            li(v-scroll-to="{ el: '#portfolio', offset: -20 }")
-              p Portfolio
-            li(v-scroll-to="'#contact'")
-              p Contact
-      header
-        .logo
-          fa-icon.logo-icon(:icon="['fad', 'narwhal']" v-scroll-to="'#home'")
-        .right-content
-          .hamburger(@click='showMenu = true ? showMenu === false : showMenu = false')
-            .hamburger-line
-            .hamburger-line
-            .hamburger-line
+              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+            >
+              Contact
+            </p>
+          </li>
+        </ul>
+      </header>
+    </div>
+    <div class="mobile-header">
+      <transition name="slide-down">
+        <div class="pop-out-menu" v-if="showMenu" @click="showMenu = false">
+          <ul>
+            <li v-scroll-to="'#home'">
+              <p>Home</p>
+            </li>
+            <li v-scroll-to="{ el: '#about', offset: -20 }">
+              <p>About</p>
+            </li>
+            <li v-scroll-to="'#toolset'">
+              <p>Toolset</p>
+            </li>
+            <li v-scroll-to="{ el: '#portfolio', offset: -20 }">
+              <p>Portfolio</p>
+            </li>
+            <li v-scroll-to="'#contact'">
+              <p>Contact</p>
+            </li>
+          </ul>
+        </div>
+      </transition>
+      <header>
+        <div class="logo">
+          <fa-icon
+            class="logo-icon"
+            :icon="['fad', 'narwhal']"
+            v-scroll-to="'#home'"
+          ></fa-icon>
+        </div>
+        <div class="right-content">
+          <div
+            class="hamburger"
+            @click="showMenu = true ? showMenu === false : (showMenu = false)"
+          >
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
