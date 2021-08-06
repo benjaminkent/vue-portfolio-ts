@@ -33,10 +33,5 @@ export default Vue.extend({
     AppFooter,
     DarkModeFab,
   },
-  methods: {
-    testSshKey() {
-      return 'foo'
-    },
-  },
 })
 </script>
