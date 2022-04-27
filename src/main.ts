@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './router'
 import VueScrollTo from 'vue-scrollto'
-// import VueMeta from 'vue-meta'
 import Cloudinary, { CldImage, CldTransformation } from 'cloudinary-vue'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -73,19 +72,3 @@ createApp(App)
     })
   .component('fa-icon', FontAwesomeIcon)
   .mount('#app')
-
-// Vue.component('fa-icon', FontAwesomeIcon)
-
-// Vue.config.productionTip = false
-
-// Vue.use(VueMeta)
-// Vue.use(VueScrollTo)
-// Vue.use(Cloudinary, {
-//   configuration: { cloudName: 'benkent' },
-//   components: [CldImage, CldTransformation],
-// })
-
-// new Vue({
-//   router,
-//   render: h => h(App),
-// }).$mount('#app')
