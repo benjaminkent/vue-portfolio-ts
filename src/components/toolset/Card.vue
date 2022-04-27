@@ -1,38 +1,29 @@
-<template lang="pug">
-  .card(:class="{'dark-mode': isDarkModeEnabled}")
-    .card-content
-      img.logo(v-for='logo in card.logoURL' :src='require(`../../assets/${logo}`)')
-      h3 {{ card.name }}
-      p {{ card.description }}
-      .link(@mouseover='showArrow = true' @mouseleave='showArrow = false')
-        a(:href='card.linkURL' target='_blank' rel='noreferrer noopener')
-          | LEARN MORE
-        transition(name='slide-right')
-          fa-icon.arrow(v-if='showArrow' :icon="['far', 'arrow-right']")
+<template>
+<div :class="{card, 'dark-mode': isDarkModeEnabled}">
+    <div class="card-content"><img class="logo" v-for="logo in card.logoURL" :src="require(`../../assets/${logo}`)" />
+        <h3>{{ card.name }}</h3>
+        <p>{{ card.description }}</p>
+        <div class="link" @mouseover="showArrow = true" @mouseleave="showArrow = false"><a :href="card.linkURL" target="_blank" rel="noreferrer noopener">LEARN MORE</a>
+            <transition name="slide-right">
+                <fa-icon class="arrow" v-if="showArrow" :icon="['far', 'arrow-right']" />
+            </transition>
+        </div>
+    </div>
+</div>
 </template>
 
-<script lang="ts">
-import Vue, { PropType } from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useDarkMode } from '@/observables/darkMode'
 import { CardInterface } from '@/interfaces/interfaces'
 
-export default Vue.extend({
-  name: 'Card',
-  props: {
-    card: {
-      type: Object as PropType<CardInterface>,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      showArrow: false,
-    }
-  },
-  computed: {
-    ...darkModeGetters,
-  },
-})
+const { isDarkModeEnabled } = useDarkMode()
+
+defineProps<{
+  card: CardInterface
+}>()
+
+const showArrow = ref(false)
 </script>
 
 <style lang="scss" scoped>

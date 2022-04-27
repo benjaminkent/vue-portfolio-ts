@@ -1,21 +1,21 @@
-<template lang="pug">
-  .message
-    .name-delete
-      p Name: {{ message.firstName }} {{ message.lastName }}
-      fa-icon.trash-can(:icon="['fad', 'trash']" @click='deleteMessage(message)')
-    p Email: {{ message.email }}
-    p Message: {{ message.messageText }}
+<template>
+<div class="message">
+    <div class="name-delete">
+        <p>Name: {{ message.firstName }} {{ message.lastName }}</p>
+        <fa-icon class="trash-can" :icon="['fad', 'trash']" @click="deleteMessage(message)"></fa-icon>
+    </div>
+    <p>Email: {{ message.email }}</p>
+    <p>Message: {{ message.messageText }}</p>
+</div>
 </template>
 
-<script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+<script setup lang="ts">
 import { FetchedMessageInterface } from '@/interfaces/interfaces'
 
-@Component({})
-export default class Message extends Vue {
-  @Prop({ default: {} }) readonly message!: FetchedMessageInterface
-  @Prop(Function) readonly deleteMessage!: () => void
-}
+defineProps<{
+  message: FetchedMessageInterface
+  deleteMessage: (message: FetchedMessageInterface) => void
+}>()
 </script>
 
 <style lang="scss" scoped>
