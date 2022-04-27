@@ -5,11 +5,8 @@
     @mouseleave="showCopy = false"
   >
     <div class="image-box">
-      <cld-image
-        :public-id="project.image"
-        quality="auto"
-        :alt="project.description"
-      />
+      <img v-if="project.name === 'BrewLo'" src="../../assets/cycle.jpg" />
+      <img v-else src="../../assets/gtr.png" />
     </div>
     <div class="name-box">
       <transition name="slide-up">

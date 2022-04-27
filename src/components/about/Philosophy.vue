@@ -20,20 +20,8 @@
           forward to the many challenges and breakthroughs that lie before us.
         </p>
       </div>
-      <cld-image
-        v-if="isDarkModeEnabled"
-        public-id="code-three_ilkg16"
-        quality="auto"
-        class="code-img"
-        alt="desk with laptop and pens"
-      />
-      <cld-image
-        v-else
-        public-id="code-one_liu3kq"
-        quality="auto"
-        class="code-img"
-        alt="Desk with laptop"
-      />
+      <img v-if="isDarkModeEnabled" class="code-img" src="../../assets/code-two.jpeg" />
+      <img v-else class="code-img" src="../../assets/desk-one.jpeg" />
     </div>
   </div>
 </template>

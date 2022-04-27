@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './router'
 import VueScrollTo from 'vue-scrollto'
-import Cloudinary, { CldImage, CldTransformation } from 'cloudinary-vue'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -66,9 +65,5 @@ library.add(
 createApp(App)
   .use(router)
   .use(VueScrollTo)
-  .use(Cloudinary, {
-      configuration: { cloudName: 'benkent' },
-      components: [CldImage, CldTransformation],
-    })
   .component('fa-icon', FontAwesomeIcon)
   .mount('#app')

@@ -2473,7 +2473,7 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-cloudinary-core@^2.10.3, cloudinary-core@^2.6.3:
+cloudinary-core@^2.6.3:
   version "2.11.4"
   resolved "https://registry.yarnpkg.com/cloudinary-core/-/cloudinary-core-2.11.4.tgz#1d191935bcdcd412d499a91b928a94b266fee49d"
   integrity sha512-F1BZczD6f5mB73D0c8gl/iuacVQQO+UhckNZxeeS9ZIVeIHbsfqwWiAZMQmIvEb7Wti/9MLU0xVwaWOak2THHA==
@@ -2502,13 +2502,6 @@ cloudinary-vue@1.0.0:
     cloudinary-core "^2.6.3"
     cloudinary-video-player "^1.1.1"
     vue "^2.6.10"
-
-cloudinary-vue@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/cloudinary-vue/-/cloudinary-vue-1.2.4.tgz#257e1efdfa306d3cacb8460fe08a82f694bd7298"
-  integrity sha512-wHBwxEXQGv7nbQUL7pQITGVeauxPK3CwHllAcIfQpPIdEa8f5F8jIyk6z/bG5rMeZV2NBah0h9lfHDMEv9v2PA==
-  dependencies:
-    cloudinary-core "^2.10.3"
 
 code-point-at@^1.0.0:
   version "1.1.0"
