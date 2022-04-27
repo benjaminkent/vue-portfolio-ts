@@ -5,16 +5,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script setup lang="ts">
 import Toast from '@/components/BkjToast.vue'
-
-export default Vue.extend({
-  name: 'App',
-  components: {
-    Toast,
-  },
-})
 </script>
 
 <style lang="scss">

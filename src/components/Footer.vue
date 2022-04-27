@@ -1,54 +1,77 @@
-<template lang="pug">
-  .footer-container
-    .about-nav-row
-      .about-content
-        h2.header About Me
-        p Located in the Tampa Bay Area and a former Financial Advisor, I have followed my love of the tech industry and learned the skills that enable me to write full stack web applications. I am the Creator/Organizer of the Vue.js Tampa Bay meetup group and am passionate about sharing with others the technologies that will shape the future. When I'm not writing code I enjoy playing guitar, sports, cooking, traveling... and learning how to be a better Software Engineer!
-      .nav-container
-        h2.header Navigation
-        ul
-          li
-            a(href='#' v-scroll-to="'#home'") Home
-          li
-            a(href='#' v-scroll-to="'#about'") About
-          li
-            a(href='#' v-scroll-to="{ el: '#toolset', offset: -70 }") Toolset
-          li
-            a(href='#' v-scroll-to="'#portfolio'") Portfolio
-          li
-            a(href='#' v-scroll-to="'#contact'") Contact
-      img.logo(src='../assets/BKJ.png')
-    .social-media-links
-      ul
-        li(v-for='icon in socialMedia')
-           a(:href='icon.url' target='_blank' rel='noreferrer noopener')
-              fa-icon(:icon="icon.class")
-        li
-          router-link(to='/ee')
-            fa-icon(:icon="['far', 'egg']")
-    .me
-      p
-        | Made with 
-        fa-icon(:icon="['fas', 'heart']")
-        |  in St. Petersburg, FL
-      p
-        | 2019 Benjamin Kent. 
-        a(href='https://www.benkent.io/' target='_blank' rel='noreferrer noopener') benkent.io
+<template>
+  <div class="footer-container">
+    <div class="about-nav-row">
+      <div class="about-content">
+        <h2 class="header">About Me</h2>
+        <p>
+          Located in the Tampa Bay Area and a former Financial Advisor, I have
+          followed my love of the tech industry and learned the skills that
+          enable me to write full stack web applications. I am the
+          Creator/Organizer of the Vue.js Tampa Bay meetup group and am
+          passionate about sharing with others the technologies that will shape
+          the future. When I'm not writing code I enjoy playing guitar, sports,
+          cooking, traveling... and learning how to be a better Software
+          Engineer!
+        </p>
+      </div>
+      <div class="nav-container">
+        <h2 class="header">Navigation</h2>
+        <ul>
+          <li><a href="#" v-scroll-to="'#home'">Home</a></li>
+          <li><a href="#" v-scroll-to="'#about'">About</a></li>
+          <li>
+            <a href="#" v-scroll-to="{ el: '#toolset', offset: -70 }">
+              Toolset
+            </a>
+          </li>
+          <li><a href="#" v-scroll-to="'#portfolio'">Portfolio</a></li>
+          <li><a href="#" v-scroll-to="'#contact'">Contact</a></li>
+        </ul>
+      </div>
+      <img class="logo" src="../assets/BKJ.png" />
+    </div>
+    <div class="social-media-links">
+      <ul>
+        <li v-for="icon in socialMedia">
+          <a :href="icon.url" target="_blank" rel="noreferrer noopener">
+            <fa-icon :icon="icon.class"></fa-icon>
+          </a>
+        </li>
+        <li>
+          <router-link to="/ee">
+            <fa-icon :icon="['far', 'egg']"></fa-icon>
+          </router-link>
+        </li>
+      </ul>
+    </div>
+    <div class="me">
+      <p>
+        Made with
+        <fa-icon :icon="['fas', 'heart']"></fa-icon>
+         in St. Petersburg, FL
+      </p>
+      <p>
+        2019 Benjamin Kent.
+        <a
+          href="https://www.benkent.io/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          benkent.io
+        </a>
+      </p>
+    </div>
+  </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import { socialMediaData } from '@/data/data'
+<script setup lang="ts">
+import { onMounted, ref, Ref } from 'vue'
+import { socialMediaData} from '@/data/data'
 import { SocialMedia } from '@/interfaces/interfaces'
 
-@Component({})
-export default class AppFooter extends Vue {
-  socialMedia: SocialMedia[] = []
+   const socialMedia: Ref<SocialMedia[]> = ref([])
 
-  mounted(): void {
-    this.socialMedia = socialMediaData
-  }
-}
+  onMounted(() => socialMedia.value = socialMediaData)
 </script>
 
 <style lang="scss" scoped>
@@ -159,3 +182,4 @@ export default class AppFooter extends Vue {
   }
 }
 </style>
+

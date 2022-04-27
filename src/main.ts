@@ -1,9 +1,8 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import { router } from './router'
 import VueScrollTo from 'vue-scrollto'
-import VueMeta from 'vue-meta'
+// import VueMeta from 'vue-meta'
 import Cloudinary, { CldImage, CldTransformation } from 'cloudinary-vue'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -65,19 +64,28 @@ library.add(
   fasHeart
 )
 
-Vue.component('fa-icon', FontAwesomeIcon)
+createApp(App)
+  .use(router)
+  .use(VueScrollTo)
+  .use(Cloudinary, {
+      configuration: { cloudName: 'benkent' },
+      components: [CldImage, CldTransformation],
+    })
+  .component('fa-icon', FontAwesomeIcon)
+  .mount('#app')
 
-Vue.config.productionTip = false
+// Vue.component('fa-icon', FontAwesomeIcon)
 
-Vue.use(VueMeta)
-Vue.use(VueScrollTo)
-Vue.use(Cloudinary, {
-  configuration: { cloudName: 'benkent' },
-  components: [CldImage, CldTransformation],
-})
+// Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+// Vue.use(VueMeta)
+// Vue.use(VueScrollTo)
+// Vue.use(Cloudinary, {
+//   configuration: { cloudName: 'benkent' },
+//   components: [CldImage, CldTransformation],
+// })
+
+// new Vue({
+//   router,
+//   render: h => h(App),
+// }).$mount('#app')
