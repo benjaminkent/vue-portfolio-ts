@@ -1,34 +1,35 @@
-<template lang="pug">
-  .easter-egg-container
-    .ee-welcome
-      h1 I dig your curiosity
-      p Now enjoy some cats!
-    .pyro
-      .before
-      .after
-    .cat-image
-      button(@click='generateRandomNumber') New Cat
-      img.cat(:src='require(`../assets/${catList[randomNumber]}`)')
+<template>
+<div class="easter-egg-container">
+    <div class="ee-welcome">
+        <h1>I dig your curiosity</h1>
+        <p>Now enjoy some cats!</p>
+    </div>
+    <div class="pyro">
+        <div class="before"></div>
+        <div class="after"></div>
+    </div>
+    <div class="cat-image">
+      <button @click="generateRandomNumber">New Cat</button>
+      <img class="cat" :src="require(`../assets/${catList[randomNumber]}`)" />
+    </div>
+</div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script setup lang="ts">
+import { ref, Ref, onMounted } from 'vue'
 import { cats } from '@/data/data'
 
-@Component({})
-export default class EasterEgg extends Vue {
-  catList: string[] = []
-  randomNumber: number = 0
+const catList: Ref<string[]> = ref([])
+const randomNumber = ref(0)
 
-  mounted() {
-    this.catList = cats
-    this.generateRandomNumber()
-  }
-
-  generateRandomNumber(): void {
-    this.randomNumber = Math.floor(Math.random() * 12)
-  }
+function generateRandomNumber(): void {
+  randomNumber.value = Math.floor(Math.random() * 12)
 }
+
+onMounted(() => {
+  catList.value = cats
+  generateRandomNumber()
+})
 </script>
 
 <style lang="scss" scoped>

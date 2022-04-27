@@ -1,29 +1,22 @@
-<template lang="pug">
-  .about-container(id='about' :style="backgroundColor")
-    Headshot
-    Philosophy
+<template>
+<div class="about-container" id="about" :style="backgroundColor">
+    <Headshot></Headshot>
+    <Philosophy></Philosophy>
+</div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import {computed} from 'vue'
+import { useDarkMode } from '@/observables/darkMode'
 import Headshot from '@/components/about/Headshot.vue'
 import Philosophy from '@/components/about/Philosophy.vue'
 
-export default Vue.extend({
-  name: 'About',
-  components: {
-    Headshot,
-    Philosophy,
-  },
-  computed: {
-    ...darkModeGetters,
-    backgroundColor(): string | undefined {
-      if (this.isDarkModeEnabled) {
-        return `background-color: ${this.darkModeBackgroundColor};`
+const { isDarkModeEnabled, darkModeBackgroundColor } = useDarkMode()
+
+const backgroundColor = computed(() => {
+  if (isDarkModeEnabled) {
+        return `background-color: ${darkModeBackgroundColor};`
       }
-    },
-  },
 })
 </script>
 

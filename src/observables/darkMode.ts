@@ -14,13 +14,10 @@ export const useDarkMode = () => {
     darkModeState.value.enabled = false
   }
 
-  const isDarkModeEnabled = computed(() => darkModeState.value.enabled)
-  const darkModeBackgroundColor = computed(() => darkModeState.value.backgroundColor)
-
   return {
     setDarkModePreference,
     disableDarkMode,
-    isDarkModeEnabled,
-    darkModeBackgroundColor
+    isDarkModeEnabled: computed(() => darkModeState.value.enabled),
+    darkModeBackgroundColor: computed(() => darkModeState.value.backgroundColor)
   }
 }

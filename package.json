@@ -39,7 +39,6 @@
     "style-resources-loader": "^1.4.1",
     "typescript": "~4.5.5",
     "vue-cli-plugin-cloudinary": "~0.0.6",
-    "vue-cli-plugin-pug": "~2.0.0",
     "vue-cli-plugin-style-resources-loader": "^0.1.3"
   }
 }
