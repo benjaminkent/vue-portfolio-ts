@@ -21,68 +21,56 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import {
-  actions as darkModeActions,
-  getters as darkModeGetters,
-} from '@/observables/darkMode'
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
+import { useDarkMode } from '@/observables/darkMode'
 import { featureFlags } from '@/observables/featureFlags'
 import { toastController } from '@/classes/toastController'
 
-export default Vue.extend({
-  name: 'FloatingActionButton',
-  data() {
-    return {
-      isDarkModeSelected: false,
-      darkModeLoaded: false,
-    }
-  },
-  computed: {
-    ...darkModeGetters,
-    darkModeEnabled(): boolean {
-      return featureFlags.darkModeEnabled
-    },
-  },
-  mounted() {
-    this.initDarkModePreference()
-    this.darkModeLoaded = true
-  },
-  methods: {
-    ...darkModeActions,
-    fabClicked(): void {
-      this.isDarkModeSelected = !this.isDarkModeSelected
+const { setDarkModePreference, disableDarkMode, isDarkModeEnabled } = useDarkMode()
 
-      window.localStorage.setItem(
-        'darkModeEnabled',
-        `${this.isDarkModeSelected}`
-      )
+const isDarkModeSelected = ref(false)
+const darkModeLoaded = ref(false)
 
-      this.setDarkModePreference(this.isDarkModeSelected)
+const darkModeEnabled = computed(() => featureFlags.darkModeEnabled)
 
-      if (this.isDarkModeSelected) {
-        toastController.activateToast({ message: 'Dark mode activated!' })
-        return
-      }
-
-      toastController.activateToast({ message: 'Dark mode turned off' })
-    },
-    initDarkModePreference(): void {
-      const savedDarkModePreference = window.localStorage.getItem(
-        'darkModeEnabled'
-      )
-
-      if (!savedDarkModePreference || !this.darkModeEnabled) {
-        this.isDarkModeSelected = false
-        this.disableDarkMode()
-        return
-      }
-
-      this.isDarkModeSelected = JSON.parse(savedDarkModePreference)
-      this.setDarkModePreference(JSON.parse(savedDarkModePreference))
-    },
-  },
+onMounted(() => {
+  initDarkModePreference()
+  darkModeLoaded.value = true
 })
+
+function fabClicked(): void {
+  isDarkModeSelected.value = !isDarkModeSelected.value
+
+  window.localStorage.setItem(
+    'darkModeEnabled',
+    `${isDarkModeSelected.value}`
+  )
+
+  setDarkModePreference(isDarkModeSelected.value)
+
+  if (isDarkModeSelected.value) {
+    toastController.activateToast({ message: 'Dark mode activated!' })
+    return
+  }
+
+  toastController.activateToast({ message: 'Dark mode turned off' })
+}
+
+function initDarkModePreference(): void {
+  const savedDarkModePreference = window.localStorage.getItem(
+    'darkModeEnabled'
+  )
+
+  if (!savedDarkModePreference || !darkModeEnabled) {
+    isDarkModeSelected.value = false
+    disableDarkMode()
+    return
+  }
+
+  isDarkModeSelected.value = JSON.parse(savedDarkModePreference)
+  setDarkModePreference(JSON.parse(savedDarkModePreference))
+}
 </script>
 
 .<style lang="scss" scoped>

@@ -11,10 +11,10 @@
   </transition>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script setup lang="ts">
+import { computed, ComputedRef } from 'vue'
 import { toastController, ToastType } from '@/classes/toastController'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+import { useDarkMode } from '@/observables/darkMode'
 
 enum ToastClass {
   Success = 'success',
@@ -22,32 +22,23 @@ enum ToastClass {
   Error = 'error',
 }
 
-export default Vue.extend({
-  name: 'BkjToast',
-  data() {
-    return {
-      toastController,
-    }
-  },
-  computed: {
-    ...darkModeGetters,
-    toastClass(): ToastClass {
-      switch (
-        this.toastController.currentToast
-          ? this.toastController.currentToast.type
-          : ToastType.Success
-      ) {
-        case ToastType.Success:
-          return ToastClass.Success
-        case ToastType.Warning:
-          return ToastClass.Warning
-        case ToastType.Error:
-          return ToastClass.Error
-        default:
-          return ToastClass.Success
-      }
-    },
-  },
+const { isDarkModeEnabled } = useDarkMode()
+
+const toastClass: ComputedRef<ToastClass> = computed(() =>  {
+  switch (
+    toastController.currentToast
+      ? toastController.currentToast.type
+      : ToastType.Success
+  ) {
+    case ToastType.Success:
+      return ToastClass.Success
+    case ToastType.Warning:
+      return ToastClass.Warning
+    case ToastType.Error:
+      return ToastClass.Error
+    default:
+      return ToastClass.Success
+  }
 })
 </script>
 

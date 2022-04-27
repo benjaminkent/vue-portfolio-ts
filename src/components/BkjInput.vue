@@ -19,47 +19,26 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import { useDarkMode } from '@/observables/darkMode'
 
-export default Vue.extend({
-  name: 'BkjInput',
-  props: {
-    value: {
-      type: [String, Number],
-      required: true,
-    },
-    inputType: {
-      type: String,
-      required: false,
-      default: 'text',
-    },
-    placeholder: {
-      type: String,
-      required: false,
-      default: 'Descriptive Placeholder',
-    },
-    isTextArea: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    error: {
-      type: String,
-      required: false,
-      default: '',
-    },
-  },
-  computed: {
-    ...darkModeGetters,
-  },
-  methods: {
-    handleInput(event: any) {
-      this.$emit('input', event.target.value)
-    },
-  },
-})
+const emit = defineEmits<{
+  (e: 'input', value: any ): void
+}>()
+
+const { isDarkModeEnabled } = useDarkMode()
+
+function handleInput(event: any) {
+  emit('input', event.target.value)
+}
+
+defineProps<{
+  value: string | number
+  inputType: string
+  placeholder: string
+  isTextArea: boolean
+  error: string
+}>()
 </script>
 
 <style lang="scss" scoped>
