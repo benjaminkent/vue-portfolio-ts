@@ -1,23 +1,16 @@
 <template>
-<div class="about-container" id="about" :style="backgroundColor">
+<div :class="['about-container', { 'dark-container': isDarkModeEnabled}]" id="about">
     <Headshot></Headshot>
     <Philosophy></Philosophy>
 </div>
 </template>
 
 <script setup lang="ts">
-import {computed} from 'vue'
 import { useDarkMode } from '@/observables/darkMode'
 import Headshot from '@/components/about/Headshot.vue'
 import Philosophy from '@/components/about/Philosophy.vue'
 
-const { isDarkModeEnabled, darkModeBackgroundColor } = useDarkMode()
-
-const backgroundColor = computed(() => {
-  if (isDarkModeEnabled) {
-        return `background-color: ${darkModeBackgroundColor};`
-      }
-})
+const { isDarkModeEnabled } = useDarkMode()
 </script>
 
 <style lang="scss" scoped>
@@ -25,5 +18,8 @@ const backgroundColor = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.dark-container {
+  background-color: #222;
 }
 </style>

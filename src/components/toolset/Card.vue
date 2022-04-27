@@ -1,5 +1,5 @@
 <template>
-<div :class="{card, 'dark-mode': isDarkModeEnabled}">
+<div :class="['card', {'dark-mode': isDarkModeEnabled}]">
     <div class="card-content"><img class="logo" v-for="logo in card.logoURL" :src="require(`../../assets/${logo}`)" />
         <h3>{{ card.name }}</h3>
         <p>{{ card.description }}</p>
