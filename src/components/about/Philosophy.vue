@@ -38,16 +38,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import { useDarkMode } from '@/observables/darkMode'
 
-export default Vue.extend({
-  name: 'Philosophy',
-  computed: {
-    ...darkModeGetters,
-  },
-})
+const { isDarkModeEnabled } = useDarkMode()
 </script>
 
 <style lang="scss" scoped>

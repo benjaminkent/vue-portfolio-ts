@@ -31,24 +31,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue, { PropType } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import { ProjectInterface } from '@/interfaces/interfaces'
 
-export default Vue.extend({
-  name: 'Project',
-  props: {
-    project: {
-      type: Object as PropType<ProjectInterface>,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      showCopy: false,
-    }
-  },
-})
+const showCopy = ref(false)
+
+defineProps<{ project: ProjectInterface }>()
 </script>
 
 <style lang="scss" scoped>

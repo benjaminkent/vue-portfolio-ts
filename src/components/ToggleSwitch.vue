@@ -11,37 +11,25 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue, { PropType } from 'vue'
-
+<script setup lang="ts">
 export interface ToggleSwitchColors {
   background: string
   toggle: string
 }
 
-export default Vue.extend({
-  name: 'ToggleSwitch',
-  props: {
-    toggleColors: {
-      type: Object as PropType<ToggleSwitchColors>,
-      required: false,
-      default: () => ({
-        background: '#222',
-        toggle: '#eee',
-      }),
-    },
-    value: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  methods: {
-    toggled(): void {
-      this.$emit('input', !this.value)
-      this.$emit('toggled')
-    },
-  },
+const props = withDefaults(defineProps<{ toggleColors: ToggleSwitchColors, value: boolean }>(), {
+  toggleColors: () => ({ background: '#222', toggle: '#eee' })
 })
+
+const emit = defineEmits<{
+  (e: 'input', value: boolean): void
+  (e: 'toggled'): void
+}>()
+
+function toggled(): void {
+  emit('input', !props.value)
+  emit('toggled')
+}
 </script>
 
 <style lang="scss" scoped>

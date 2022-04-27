@@ -18,25 +18,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import { computed, ComputedRef } from 'vue'
+import { useDarkMode } from '@/observables/darkMode'
 import { projectData } from '@/data/data'
 import { ProjectInterface } from '@/interfaces/interfaces'
 import Project from '@/components/portfolio/Project.vue'
 
-export default Vue.extend({
-  name: 'Portfolio',
-  components: {
-    Project,
-  },
-  computed: {
-    ...darkModeGetters,
-    projects(): ProjectInterface[] {
-      return projectData
-    },
-  },
-})
+const { isDarkModeEnabled } = useDarkMode()
+
+const projects: ComputedRef<ProjectInterface[]> = computed(() => projectData)
 </script>
 
 <style lang="scss" scoped>

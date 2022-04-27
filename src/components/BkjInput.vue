@@ -33,7 +33,7 @@ function handleInput(event: any) {
 }
 
 defineProps<{
-  value: string | number
+  value?: string | number
   inputType: string
   placeholder: string
   isTextArea: boolean
