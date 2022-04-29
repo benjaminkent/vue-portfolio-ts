@@ -89,7 +89,7 @@ defineProps<{ project: ProjectInterface }>()
 .slide-up-leave-active {
   transition: all 0.4s ease-in-out;
 }
-.slide-up-enter,
+.slide-up-enter-from,
 .slide-up-leave-to {
   transform: translateY(20px);
   opacity: 0;
@@ -100,7 +100,7 @@ defineProps<{ project: ProjectInterface }>()
 .fade-in-leave-active {
   transition: all 0.4s ease-in-out;
 }
-.fade-in-enter,
+.fade-in-enter-from,
 .fade-in-leave-to {
   opacity: 0;
 }

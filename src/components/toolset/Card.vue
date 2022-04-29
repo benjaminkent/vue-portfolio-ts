@@ -77,12 +77,12 @@ const showArrow = ref(false)
   }
 }
 .slide-right-enter-active {
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 .slide-right-leave-active {
   transition: all 0.3s ease-in-out;
 }
-.slide-right-enter,
+.slide-right-enter-from,
 .slide-right-leave-to {
   transform: translateX(-20px);
   opacity: 0;
