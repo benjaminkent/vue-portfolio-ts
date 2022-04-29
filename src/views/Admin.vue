@@ -1,63 +1,61 @@
-<template lang="pug">
-  .admin-container
-    .header
-      router-link(to='/') Back to main app
-      h1 Admin View
-    .enter-password-container(v-if='!showPage')
-      form(@submit.prevent='enterAdmin')
-        label(for='password') Password
-        input(id='password', type='password' v-model='password' placeholder='Password')
-        button.margin-top(type='submit') Enter
-    .admin-page(v-if='showPage')
-      button.margin-left(@click='logOut') Log Out
-      .header
-        button(@click='fetchMessages') Fetch Messages
-        h2 Messages
-      .messages-container
-        Message(
-          v-for='message in messages'
-          :message='message'
-          :deleteMessage='deleteMessage'
-          :key='message.id'
-        )
+<template>
+<div class="admin-container">
+    <div class="header">
+        <router-link to="/">Back to main app</router-link>
+        <h1>Admin View</h1>
+    </div>
+    <div class="enter-password-container" v-if="!showPage">
+        <form @submit.prevent="enterAdmin">
+          <label for="password">Password</label>
+          <input id="password" type="password" v-model="password" placeholder="Password" />
+          <button class="margin-top" type="submit">Enter</button>
+        </form>
+    </div>
+    <div class="admin-page" v-if="showPage">
+      <button class="margin-left" @click="logOut">Log Out</button>
+      <div class="header">
+          <button @click="fetchMessages">Fetch Messages</button>
+          <h2>Messages</h2>
+      </div>
+      <div class="messages-container">
+          <Message v-for="message in messages" :message="message" :deleteMessage="localDelete" :key="message.id" />
+      </div>
+    </div>
+</div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script setup lang="ts">
+import { ref, Ref } from 'vue'
 import Message from '@/components/admin/Message.vue'
 import { FetchedMessageInterface } from '@/interfaces/interfaces'
 import { loadMessages, deleteMessage } from '@/api/api'
 
-@Component({
-  components: {
-    Message,
-  },
-})
-export default class Admin extends Vue {
-  showPage: boolean = false
-  showMessages: boolean = false
-  password: string = ''
-  messages: FetchedMessageInterface[] = []
+const showPage = ref(false)
+const password = ref('')
+const messages: Ref<FetchedMessageInterface[]> = ref([])
 
-  enterAdmin(): void {
-    if (this.password === process.env.VUE_APP_ADMIN_PASSWORD) {
-      this.showPage = true
-    } else {
-      alert('Incorrect Password')
-    }
-    this.password = ''
+function enterAdmin(): void {
+  if (password.value === process.env.VUE_APP_ADMIN_PASSWORD) {
+    showPage.value = true
+  } else {
+    alert('Incorrect Password')
   }
-  async fetchMessages() {
-    const response = await loadMessages()
-    this.messages = response.data.messages
-  }
-  logOut(): void {
-    this.showPage = false
-  }
-  deleteMessage(message: FetchedMessageInterface) {
-    deleteMessage(message.id)
-    this.messages.splice(this.messages.indexOf(message), 1)
-  }
+  password.value = ''
+}
+
+async function fetchMessages() {
+  const response = await loadMessages()
+  messages.value = response.data.messages
+}
+
+function logOut(): void {
+  showPage.value = false
+}
+
+function localDelete(message: FetchedMessageInterface) {
+  deleteMessage(message.id)
+
+  messages.value.splice(messages.value.indexOf(message), 1)
 }
 </script>
 

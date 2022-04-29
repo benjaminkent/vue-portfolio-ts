@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { ref } from 'vue'
 
 export enum ToastType {
   Success,
@@ -21,36 +21,36 @@ class Toast {
 }
 
 class ToastController {
-  private toastState = Vue.observable({
+  private toastState = ref({
     isActive: false,
     currentToast: null as null | Toast,
     toastTimeoutId: 0,
   })
 
   public activateToast(toastOptions: ToastOptions) {
-    this.toastState.currentToast = new Toast(
+    this.toastState.value.currentToast = new Toast(
       toastOptions.message,
       toastOptions.type,
       toastOptions.duration
     )
 
-    if (this.toastState.isActive) {
-      clearTimeout(this.toastState.toastTimeoutId)
+    if (this.toastState.value.isActive) {
+      clearTimeout(this.toastState.value.toastTimeoutId)
     }
 
-    this.toastState.isActive = true
+    this.toastState.value.isActive = true
 
-    this.toastState.toastTimeoutId = setTimeout(() => {
-      this.toastState.isActive = false
-    }, this.toastState.currentToast.duration)
+    this.toastState.value.toastTimeoutId = setTimeout(() => {
+      this.toastState.value.isActive = false
+    }, this.toastState.value.currentToast.duration)
   }
 
   get isToastActive() {
-    return this.toastState.isActive
+    return this.toastState.value.isActive
   }
 
   get currentToast() {
-    return this.toastState.currentToast
+    return this.toastState.value.currentToast
   }
 }
 

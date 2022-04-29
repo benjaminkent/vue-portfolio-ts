@@ -1,10 +1,7 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import { router } from './router'
 import VueScrollTo from 'vue-scrollto'
-import VueMeta from 'vue-meta'
-import Cloudinary, { CldImage, CldTransformation } from 'cloudinary-vue'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -65,19 +62,8 @@ library.add(
   fasHeart
 )
 
-Vue.component('fa-icon', FontAwesomeIcon)
-
-Vue.config.productionTip = false
-
-Vue.use(VueMeta)
-Vue.use(VueScrollTo)
-Vue.use(Cloudinary, {
-  configuration: { cloudName: 'benkent' },
-  components: [CldImage, CldTransformation],
-})
-
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+createApp(App)
+  .use(router)
+  .use(VueScrollTo)
+  .component('fa-icon', FontAwesomeIcon)
+  .mount('#app')

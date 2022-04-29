@@ -5,11 +5,8 @@
     @mouseleave="showCopy = false"
   >
     <div class="image-box">
-      <cld-image
-        :public-id="project.image"
-        quality="auto"
-        :alt="project.description"
-      />
+      <img v-if="project.name === 'BrewLo'" src="../../assets/cycle.jpg" />
+      <img v-else src="../../assets/gtr.png" />
     </div>
     <div class="name-box">
       <transition name="slide-up">
@@ -31,24 +28,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue, { PropType } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import { ProjectInterface } from '@/interfaces/interfaces'
 
-export default Vue.extend({
-  name: 'Project',
-  props: {
-    project: {
-      type: Object as PropType<ProjectInterface>,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      showCopy: false,
-    }
-  },
-})
+const showCopy = ref(false)
+
+defineProps<{ project: ProjectInterface }>()
 </script>
 
 <style lang="scss" scoped>
@@ -103,7 +89,7 @@ export default Vue.extend({
 .slide-up-leave-active {
   transition: all 0.4s ease-in-out;
 }
-.slide-up-enter,
+.slide-up-enter-from,
 .slide-up-leave-to {
   transform: translateY(20px);
   opacity: 0;
@@ -114,7 +100,7 @@ export default Vue.extend({
 .fade-in-leave-active {
   transition: all 0.4s ease-in-out;
 }
-.fade-in-enter,
+.fade-in-enter-from,
 .fade-in-leave-to {
   opacity: 0;
 }

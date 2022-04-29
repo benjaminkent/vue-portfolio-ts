@@ -1,19 +1,19 @@
 <template>
   <div class="header-container">
     <div class="big-header">
-      <header :class="{ 'scrolled-header': scrolledPosition &gt; 150}">
+      <header :class="{ 'scrolled-header': scrolledPosition > 150}">
         <div class="logo">
           <fa-icon
             :icon="['fad', 'narwhal']"
             v-scroll-to="'#home'"
-            :class="['logo-icon', {'scrolled-nav-content': scrolledPosition &gt; 150}]"
+            :class="['logo-icon', {'scrolled-nav-content': scrolledPosition > 150}]"
           ></fa-icon>
         </div>
         <ul>
           <li>
             <p
               v-scroll-to="'#home'"
-              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             >
               Home
             </p>
@@ -21,7 +21,7 @@
           <li>
             <p
               v-scroll-to="'#about'"
-              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             >
               About
             </p>
@@ -29,7 +29,7 @@
           <li>
             <p
               v-scroll-to="'#toolset'"
-              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             >
               Toolset
             </p>
@@ -37,7 +37,7 @@
           <li>
             <p
               v-scroll-to="'#portfolio'"
-              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             >
               Portfolio
             </p>
@@ -45,7 +45,7 @@
           <li>
             <p
               v-scroll-to="'#contact'"
-              :class="{'scrolled-nav-content': scrolledPosition &gt; 150}"
+              :class="{'scrolled-nav-content': scrolledPosition > 150}"
             >
               Contact
             </p>
@@ -98,26 +98,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 
-export default Vue.extend({
-  name: 'AppHeader',
-  data() {
-    return {
-      showMenu: false,
-      scrolledPosition: null as number | null,
-    }
-  },
-  mounted() {
-    window.addEventListener('scroll', this.updateScroll)
-  },
-  methods: {
-    updateScroll(): void {
-      this.scrolledPosition = window.scrollY
-    },
-  },
-})
+const showMenu = ref(false)
+const scrolledPosition = ref(0)
+
+onMounted(() => window.addEventListener('scroll', updateScroll))
+
+function updateScroll(): void {
+  scrolledPosition.value = window.scrollY
+}
 </script>
 
 <style lang="scss" scoped>
@@ -263,7 +254,7 @@ export default Vue.extend({
 .slide-down-leave-active {
   transition: all 0.3s ease-in-out;
 }
-.slide-down-enter,
+.slide-down-enter-from,
 .slide-down-leave-to {
   transform: translateY(-300px);
 }

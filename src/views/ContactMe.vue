@@ -17,12 +17,16 @@
             v-model="message.firstName"
             class="contact-form__first-name-input"
             placeholder="First Name"
+            :is-text-area="false"
+            input-type="text"
             :error="errors.firstName"
           />
           <bkj-input
             v-model="message.lastName"
             class="contact-form__form-input"
             placeholder="Last Name"
+            input-type="text"
+            :is-text-area="false"
             :error="errors.lastName"
           />
         </div>
@@ -30,6 +34,8 @@
           v-model="message.email"
           class="contact-form__form-input"
           placeholder="Email"
+          input-type="text"
+          :is-text-area="false"
           :error="errors.email"
         />
         <bkj-input
@@ -37,6 +43,7 @@
           class="contact-form__form-input"
           :is-text-area="true"
           placeholder="Message"
+          input-type="text-area"
           :error="errors.messageText"
         />
         <bkj-button :disabled="isFormDisabled">Send Message</bkj-button>
@@ -45,9 +52,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import { computed, ref, watchEffect } from 'vue'
+import { useDarkMode } from '@/observables/darkMode'
 import { postMessage } from '@/api/api'
 import { toastController } from '@/classes/toastController'
 import BkjInput from '@/components/BkjInput.vue'
@@ -58,108 +65,90 @@ enum ErrorMessage {
   Email = 'Please provide a valid email address',
 }
 
-export default Vue.extend({
-  name: 'ContactMe',
-  components: {
-    BkjInput,
-    BkjButton,
-  },
-  data() {
-    return {
-      message: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        messageText: '',
-      },
-      messageSent: false,
-      errors: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        messageText: '',
-      },
-    }
-  },
-  computed: {
-    ...darkModeGetters,
-    isFormDisabled(): boolean {
-      return !Object.values(this.errors).every(
-        errorMessage => errorMessage === ''
-      )
-    },
-  },
-  watch: {
-    message: {
-      deep: true,
-      handler(newVal) {
-        if (newVal.firstName) {
-          this.errors.firstName = ''
-        }
-        if (newVal.lastName) {
-          this.errors.lastName = ''
-        }
-        if (newVal.email && newVal.email.includes('@')) {
-          this.errors.email = ''
-        }
-        if (newVal.messageText) {
-          this.errors.messageText = ''
-        }
-      },
-    },
-  },
-  methods: {
-    errorCheck(): void {
-      if (!this.message.firstName) {
-        this.errors.firstName = ErrorMessage.Blank
-      }
-      if (!this.message.lastName) {
-        this.errors.lastName = ErrorMessage.Blank
-      }
-      if (!this.message.email.includes('@')) {
-        this.errors.email = ErrorMessage.Email
-      }
-      if (!this.message.email) {
-        this.errors.email = ErrorMessage.Blank
-      }
-      if (!this.message.messageText) {
-        this.errors.messageText = ErrorMessage.Blank
-      }
-    },
-    sendMessage(): void {
-      this.errorCheck()
-      if (this.isFormDisabled) {
-        return
-      }
+const { isDarkModeEnabled } = useDarkMode()
 
-      try {
-        postMessage({
-          first_name: this.message.firstName,
-          last_name: this.message.lastName,
-          email: this.message.email,
-          message_text: this.message.messageText,
-        })
-        toastController.activateToast({
-          message: 'Message sent successfully!',
-        })
-      } catch (error) {
-        toastController.activateToast({
-          message: 'Error! Failed to send message',
-        })
-      } finally {
-        this.clearForm()
-      }
-    },
-    clearForm() {
-      this.message = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        messageText: '',
-      }
-    },
-  },
+const message = ref({
+  firstName: '',
+  lastName: '',
+  email: '',
+  messageText: '',
 })
+const errors = ref({
+  firstName: '',
+  lastName: '',
+  email: '',
+  messageText: '',
+})
+
+const isFormDisabled = computed(() => !Object.values(errors.value).every(errorMessage => errorMessage === ''))
+
+watchEffect(() => {
+  if (message.value.firstName) {
+    errors.value.firstName = ''
+  }
+  if (message.value.lastName) {
+    errors.value.lastName = ''
+  }
+  if (message.value.email && message.value.email.includes('@')) {
+    errors.value.email = ''
+  }
+  if (message.value.messageText) {
+    errors.value.messageText = ''
+  }
+})
+
+function errorCheck(): void {
+  if (!message.value.firstName) {
+    errors.value.firstName = ErrorMessage.Blank
+  }
+  if (!message.value.lastName) {
+    errors.value.lastName = ErrorMessage.Blank
+  }
+  if (!message.value.email.includes('@')) {
+    errors.value.email = ErrorMessage.Email
+  }
+  if (!message.value.email) {
+    errors.value.email = ErrorMessage.Blank
+  }
+  if (!message.value.messageText) {
+    errors.value.messageText = ErrorMessage.Blank
+  }
+}
+
+function clearForm() {
+  message.value = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    messageText: '',
+  }
+}
+
+function sendMessage(): void {
+  errorCheck()
+  if (isFormDisabled) {
+    return
+  }
+
+  try {
+    postMessage({
+      first_name: message.value.firstName,
+      last_name: message.value.lastName,
+      email: message.value.email,
+      message_text: message.value.messageText,
+    })
+
+    toastController.activateToast({
+      message: 'Message sent successfully!',
+    })
+  } catch (error) {
+    toastController.activateToast({
+      message: 'Error! Failed to send message',
+    })
+  } finally {
+    clearForm()
+  }
+}
 </script>
 
 <style lang="scss" scoped>

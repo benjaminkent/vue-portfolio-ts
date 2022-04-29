@@ -1,29 +1,24 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Admin from './views/Admin.vue'
-import EasterEgg from './views/EasterEgg.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('./views/Home.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import ('./views/Admin.vue')
+  },
+  {
+    path: '/ee',
+    name: 'easterEgg',
+    component: () => import('./views/EasterEgg.vue')
+  }
+]
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: Admin
-    },
-    {
-      path: '/ee',
-      name: 'easterEgg',
-      component: EasterEgg
-    }
-  ]
+export const router = createRouter({
+  history: createWebHistory(),
+  routes
 })

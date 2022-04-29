@@ -1,74 +1,76 @@
-<template lang="pug">
-  .jumbotron
-    .weather-box
-      .weather-content(v-if='weatherInfo.city')
-        p.city {{ weatherInfo.city }}
-        p {{ weatherInfo.temp }}°F
-        .weather-condition-container
-          p {{ weatherInfo.condition }}
-          fa-icon(v-if="weatherInfo.icon === '01d'" :icon="['fad', 'sun']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '01n'" :icon="['fad', 'moon']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '02d'" :icon="['fad', 'clouds-sun']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '02n'" :icon="['fad', 'clouds-moon']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '03d'" :icon="['fad', 'clouds']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '03n'" :icon="['fad', 'clouds']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '04d'" :icon="['fad', 'clouds']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '04n'" :icon="['fad', 'clouds']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '09d'" :icon="['fad', 'cloud-drizzle']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '10d'" :icon="['fad', 'cloud-showers-heavy']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '11d'" :icon="['fad', 'thunderstorm']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '13d'" :icon="['fad', 'snowflakes']" class="weather-icon")
-          fa-icon(v-if="weatherInfo.icon === '50d'" :icon="['fad', 'smoke']" class="weather-icon")
-    .background-box-container
-      .background-style-box
-    .name-box
-      h1 Benjamin Jehl
-    .job-title-box
-      h2 Software Engineer
-    .call-to-action-box
-      .buttons-container
-        button
-          a(href='#' v-scroll-to="'#portfolio'") View Portfolio
-        button
-          a(href='#' v-scroll-to="'#contact'") Contact Me
+<template>
+<div class="jumbotron">
+    <div class="weather-box">
+        <div class="weather-content" v-if="weatherInfo.city">
+            <p class="city">{{ weatherInfo.city }}</p>
+            <p>{{ weatherInfo.temp }}°F</p>
+            <div class="weather-condition-container">
+                <p>{{ weatherInfo.condition }}</p>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '01d'" :icon="['fad', 'sun']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '01n'" :icon="['fad', 'moon']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '02d'" :icon="['fad', 'clouds-sun']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '02n'" :icon="['fad', 'clouds-moon']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '03d'" :icon="['fad', 'clouds']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '03n'" :icon="['fad', 'clouds']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '04d'" :icon="['fad', 'clouds']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '04n'" :icon="['fad', 'clouds']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '09d'" :icon="['fad', 'cloud-drizzle']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '10d'" :icon="['fad', 'cloud-showers-heavy']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '11d'" :icon="['fad', 'thunderstorm']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '13d'" :icon="['fad', 'snowflakes']"></fa-icon>
+                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '50d'" :icon="['fad', 'smoke']"></fa-icon>
+            </div>
+        </div>
+    </div>
+    <div class="background-box-container">
+        <div class="background-style-box"></div>
+    </div>
+    <div class="name-box">
+        <h1>Benjamin Jehl</h1>
+    </div>
+    <div class="job-title-box">
+        <h2>Software Engineer</h2>
+    </div>
+    <div class="call-to-action-box">
+        <div class="buttons-container"><button><a href="#" v-scroll-to="'#portfolio'">View Portfolio</a></button><button><a href="#" v-scroll-to="'#contact'">Contact Me</a></button></div>
+    </div>
+</div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script setup lang="ts">
+import {onMounted, ref, Ref} from 'vue'
 import { WeatherDataInterface } from '@/interfaces/interfaces'
 import { loadWeatherData } from '@/api/api'
 
-@Component({})
-export default class Jumbotron extends Vue {
-  weatherInfo: WeatherDataInterface = {
+  const weatherInfo: Ref<WeatherDataInterface> = ref({
     temp: 0,
     condition: '',
     city: '',
     icon: '',
-  }
+  })
 
-  mounted(): void {
-    this.fetchLocationAndWeather()
-  }
-  fetchLocationAndWeather(): void {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.fetchWeather(position.coords.latitude, position.coords.longitude)
-    })
-  }
-  async fetchWeather(lat: number, long: number): Promise<void> {
+  async function fetchWeather(lat: number, long: number): Promise<void> {
     const response = await loadWeatherData(
       lat,
       long,
       process.env.VUE_APP_WEATHER_KEY
     )
-    this.weatherInfo = {
+
+    weatherInfo.value = {
       temp: Math.floor(response.data.main.temp),
       city: response.data.name,
       condition: response.data.weather[0].main,
       icon: response.data.weather[0].icon,
     }
   }
-}
+
+  function fetchLocationAndWeather(): void {
+    navigator.geolocation.getCurrentPosition(position => {
+      fetchWeather(position.coords.latitude, position.coords.longitude)
+    })
+  }
+
+  onMounted(() => fetchLocationAndWeather())
 </script>
 
 <style lang="scss" scoped>

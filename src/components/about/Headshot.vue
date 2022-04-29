@@ -5,12 +5,7 @@
       <h2>Forward Thinking Engineer</h2>
     </div>
     <div class="headshot-info-container">
-      <cld-image
-        public-id="headshot_llvqua"
-        quality="auto"
-        class="headshot"
-        alt="Ben Jehl's headshot"
-      />
+      <img class="headshot" src="../../assets/headshot.jpg" />
       <div class="info">
         <h3>Benjamin Kent Jehl</h3>
         <p class="job-title">Software Engineer</p>
@@ -49,31 +44,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import { computed, ComputedRef } from 'vue'
+import { useDarkMode } from '@/observables/darkMode'
 import { SocialMedia } from '@/interfaces/interfaces'
 import { socialMediaData } from '@/data/data'
 
-export default Vue.extend({
-  name: 'Headshot',
-  data() {
-    return {
-      wordList: [
-        'Developer',
-        'Responsive Design',
-        'Full-stack',
-        'Avid Learner',
-      ],
-    }
-  },
-  computed: {
-    ...darkModeGetters,
-    socialMedia(): SocialMedia[] {
-      return socialMediaData
-    },
-  },
-})
+const { isDarkModeEnabled } = useDarkMode()
+
+const wordList = [
+  'Developer',
+  'Responsive Design',
+  'Full-stack',
+  'Avid Learner',
+]
+
+const socialMedia: ComputedRef<SocialMedia[]> = computed(() => socialMediaData)
 </script>
 
 <style lang="scss" scoped>

@@ -9,23 +9,14 @@
   </button>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { getters as darkModeGetters } from '@/observables/darkMode'
+<script setup lang="ts">
+import { useDarkMode } from '@/observables/darkMode'
 
-export default Vue.extend({
-  name: 'BkjButton',
-  props: {
-    disabled: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
-  computed: {
-    ...darkModeGetters,
-  },
-})
+const { isDarkModeEnabled } = useDarkMode()
+
+defineProps<{
+  disabled: boolean
+}>()
 </script>
 
 <style lang="scss" scoped>

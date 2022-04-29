@@ -1,35 +1,31 @@
-<template lang="pug">
-  .toolset-container(id='toolset' :class="{'dark-mode': isDarkModeEnabled}")
-    .toolset-grid
-      .message-box
-        .message
-          h3 EXPERIENCE
-          h2 A few technologies in my toolset
-      .card-container-box
-        Card(v-for='card in cards' :card='card' :key='card.id')
-      .background-color-box
-        .background-color
+<template>
+<div class="toolset-container" id="toolset" :class="{'dark-mode': isDarkModeEnabled}">
+    <div class="toolset-grid">
+        <div class="message-box">
+            <div class="message">
+                <h3>EXPERIENCE</h3>
+                <h2>A few technologies in my toolset</h2>
+            </div>
+        </div>
+        <div class="card-container-box">
+            <Card v-for="card in cards" :card="card" :key="card.id"></Card>
+        </div>
+        <div class="background-color-box">
+            <div class="background-color"></div>
+        </div>
+    </div>
+</div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script setup lang="ts">
+import { computed, ComputedRef } from 'vue'
+import Card from '@/components/toolset/Card.vue'
 import { CardInterface } from '@/interfaces/interfaces'
 import { cardData } from '@/data/data'
-import { getters as darkModeGetters } from '@/observables/darkMode'
-import Card from '@/components/toolset/Card.vue'
+import { useDarkMode } from '@/observables/darkMode'
 
-export default Vue.extend({
-  name: 'Toolset',
-  components: {
-    Card,
-  },
-  computed: {
-    ...darkModeGetters,
-    cards(): CardInterface[] {
-      return cardData
-    },
-  },
-})
+const { isDarkModeEnabled } = useDarkMode()
+const cards: ComputedRef<CardInterface[]> = computed(() => cardData)
 </script>
 
 <style lang="scss" scoped>
