@@ -254,7 +254,7 @@ function updateScroll(): void {
 .slide-down-leave-active {
   transition: all 0.3s ease-in-out;
 }
-.slide-down-enter,
+.slide-down-enter-from,
 .slide-down-leave-to {
   transform: translateY(-300px);
 }
