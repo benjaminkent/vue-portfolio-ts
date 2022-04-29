@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef } from 'vue'
-import { toastController, ToastType } from '@/classes/toastController'
-import { useDarkMode } from '@/observables/darkMode'
+import { toastController, ToastType } from '@classes'
+import { useDarkMode } from '@observables'
 
 enum ToastClass {
   Success = 'success',

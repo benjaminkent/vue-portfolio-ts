@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { PostMessage } from '@/interfaces/interfaces'
+import { PostMessage } from '@interfaces'
 
 export const weatherApi = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5',
@@ -10,7 +10,7 @@ export const loadWeatherData = (lat: number, long: number, key: string) => {
 }
 
 export const contactApi = axios.create({
-  baseURL: `${process.env.VUE_APP_CONTACT_API}`,
+  baseURL: `${(import.meta as any).env.VUE_APP_CONTACT_API}`,
 })
 
 export const localContactApi = axios.create({

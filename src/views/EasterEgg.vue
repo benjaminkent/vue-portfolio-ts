@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { ref, Ref, onMounted } from 'vue'
-import { cats } from '@/data/data'
+import { cats } from '@data'
 
 const catList: Ref<string[]> = ref([])
 const randomNumber = ref(0)

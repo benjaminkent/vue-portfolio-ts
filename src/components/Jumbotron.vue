@@ -39,8 +39,8 @@
 
 <script setup lang="ts">
 import {onMounted, ref, Ref} from 'vue'
-import { WeatherDataInterface } from '@/interfaces/interfaces'
-import { loadWeatherData } from '@/api/api'
+import { WeatherDataInterface } from '@interfaces'
+import { loadWeatherData } from '@api'
 
   const weatherInfo: Ref<WeatherDataInterface> = ref({
     temp: 0,
@@ -53,7 +53,7 @@ import { loadWeatherData } from '@/api/api'
     const response = await loadWeatherData(
       lat,
       long,
-      process.env.VUE_APP_WEATHER_KEY
+      (import.meta as any).env.VUE_APP_WEATHER_KEY
     )
 
     weatherInfo.value = {

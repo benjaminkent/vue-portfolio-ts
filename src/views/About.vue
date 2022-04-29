@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import { useDarkMode } from '@/observables/darkMode'
-import Headshot from '@/components/about/Headshot.vue'
-import Philosophy from '@/components/about/Philosophy.vue'
+import { useDarkMode } from '@observables'
+import Headshot from '../components/about/Headshot.vue'
+import Philosophy from '../components/about/Philosophy.vue'
 
 const { isDarkModeEnabled } = useDarkMode()
 </script>

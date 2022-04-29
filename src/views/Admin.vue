@@ -26,16 +26,16 @@
 
 <script setup lang="ts">
 import { ref, Ref } from 'vue'
-import Message from '@/components/admin/Message.vue'
-import { FetchedMessageInterface } from '@/interfaces/interfaces'
-import { loadMessages, deleteMessage } from '@/api/api'
+import Message from '../components/admin/Message.vue'
+import { FetchedMessageInterface } from '@interfaces'
+import { loadMessages, deleteMessage } from '@api'
 
 const showPage = ref(false)
 const password = ref('')
 const messages: Ref<FetchedMessageInterface[]> = ref([])
 
 function enterAdmin(): void {
-  if (password.value === process.env.VUE_APP_ADMIN_PASSWORD) {
+  if (password.value === (import.meta as any).env.VITE_ADMIN_PASSWORD) {
     showPage.value = true
   } else {
     alert('Incorrect Password')

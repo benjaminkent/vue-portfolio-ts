@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useDarkMode } from '@/observables/darkMode'
+import { useDarkMode } from '@observables'
 
 const emit = defineEmits<{
   (e: 'input', value: any ): void
