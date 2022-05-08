@@ -57,8 +57,8 @@ import { computed, ref, watchEffect } from 'vue'
 import { useDarkMode } from '@observables'
 import { postMessage } from '@api'
 import { toastController } from '@classes'
-import BkjInput from '../components/BkjInput.vue'
-import BkjButton from '../components/BkjButton.vue'
+import BkjInput from '@components/BkjInput.vue'
+import BkjButton from '@components/BkjButton.vue'
 
 enum ErrorMessage {
   Blank = 'This field cannot be blank',

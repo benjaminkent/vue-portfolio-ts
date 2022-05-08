@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref, Ref } from 'vue'
-import Message from '../components/admin/Message.vue'
+import Message from '@components/admin/Message.vue'
 import { FetchedMessageInterface } from '@interfaces'
 import { loadMessages, deleteMessage } from '@api'
 

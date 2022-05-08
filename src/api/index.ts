@@ -10,7 +10,7 @@ export const loadWeatherData = (lat: number, long: number, key: string) => {
 }
 
 export const contactApi = axios.create({
-  baseURL: `${(import.meta as any).env.VUE_APP_CONTACT_API}`,
+  baseURL: `${(import.meta as any).env.VITE_CONTACT_API}`,
 })
 
 export const localContactApi = axios.create({

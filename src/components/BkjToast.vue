@@ -80,7 +80,7 @@ const toastClass: ComputedRef<ToastClass> = computed(() =>  {
 .toast-fade-leave-active {
   transition: all 0.3s ease;
 }
-.toast-fade-enter,
+.toast-fade-enter-from,
 .toast-fade-leave-to {
   opacity: 0;
   transform: translateY(50px);

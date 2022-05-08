@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef } from 'vue'
-import Card from '../components/toolset/Card.vue'
+import Card from '@components/toolset/Card.vue'
 import { CardInterface } from '@interfaces'
 import { cardData } from '@data'
 import { useDarkMode } from '@observables'

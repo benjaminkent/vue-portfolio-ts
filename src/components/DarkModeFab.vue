@@ -107,7 +107,7 @@ function initDarkModePreference(): void {
 .fade-leave-active {
   transition: all 0.3s ease-in;
 }
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   transform: rotateY(90deg);
 }
