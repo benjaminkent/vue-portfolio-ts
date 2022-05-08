@@ -1,76 +1,132 @@
 <template>
-<div class="jumbotron">
+  <div class="jumbotron">
     <div class="weather-box">
-        <div class="weather-content" v-if="weatherInfo.city">
-            <p class="city">{{ weatherInfo.city }}</p>
-            <p>{{ weatherInfo.temp }}°F</p>
-            <div class="weather-condition-container">
-                <p>{{ weatherInfo.condition }}</p>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '01d'" :icon="['fad', 'sun']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '01n'" :icon="['fad', 'moon']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '02d'" :icon="['fad', 'clouds-sun']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '02n'" :icon="['fad', 'clouds-moon']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '03d'" :icon="['fad', 'clouds']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '03n'" :icon="['fad', 'clouds']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '04d'" :icon="['fad', 'clouds']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '04n'" :icon="['fad', 'clouds']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '09d'" :icon="['fad', 'cloud-drizzle']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '10d'" :icon="['fad', 'cloud-showers-heavy']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '11d'" :icon="['fad', 'thunderstorm']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '13d'" :icon="['fad', 'snowflakes']"></fa-icon>
-                <fa-icon class="weather-icon" v-if="weatherInfo.icon === '50d'" :icon="['fad', 'smoke']"></fa-icon>
-            </div>
+      <div class="weather-content" v-if="weatherInfo.city">
+        <p class="city">{{ weatherInfo.city }}</p>
+        <p>{{ weatherInfo.temp }}°F</p>
+        <div class="weather-condition-container">
+          <p>{{ weatherInfo.condition }}</p>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '01d'"
+            :icon="['fad', 'sun']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '01n'"
+            :icon="['fad', 'moon']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '02d'"
+            :icon="['fad', 'clouds-sun']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '02n'"
+            :icon="['fad', 'clouds-moon']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '03d'"
+            :icon="['fad', 'clouds']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '03n'"
+            :icon="['fad', 'clouds']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '04d'"
+            :icon="['fad', 'clouds']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '04n'"
+            :icon="['fad', 'clouds']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '09d'"
+            :icon="['fad', 'cloud-drizzle']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '10d'"
+            :icon="['fad', 'cloud-showers-heavy']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '11d'"
+            :icon="['fad', 'thunderstorm']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '13d'"
+            :icon="['fad', 'snowflakes']"
+          ></fa-icon>
+          <fa-icon
+            class="weather-icon"
+            v-if="weatherInfo.icon === '50d'"
+            :icon="['fad', 'smoke']"
+          ></fa-icon>
         </div>
+      </div>
     </div>
     <div class="background-box-container">
-        <div class="background-style-box"></div>
+      <div class="background-style-box"></div>
     </div>
     <div class="name-box">
-        <h1>Benjamin Jehl</h1>
+      <h1>Benjamin Jehl</h1>
     </div>
     <div class="job-title-box">
-        <h2>Software Engineer</h2>
+      <h2>Software Engineer</h2>
     </div>
     <div class="call-to-action-box">
-        <div class="buttons-container"><button><a href="#" v-scroll-to="'#portfolio'">View Portfolio</a></button><button><a href="#" v-scroll-to="'#contact'">Contact Me</a></button></div>
+      <div class="buttons-container">
+        <button>
+          <a href="#" v-scroll-to="'#portfolio'">View Portfolio</a></button
+        ><button><a href="#" v-scroll-to="'#contact'">Contact Me</a></button>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref, Ref} from 'vue'
+import { onMounted, ref, Ref } from 'vue'
 import { WeatherDataInterface } from '@interfaces'
 import { loadWeatherData } from '@api'
 
-  const weatherInfo: Ref<WeatherDataInterface> = ref({
-    temp: 0,
-    condition: '',
-    city: '',
-    icon: '',
+const weatherInfo: Ref<WeatherDataInterface> = ref({
+  temp: 0,
+  condition: '',
+  city: '',
+  icon: '',
+})
+
+async function fetchWeather(lat: number, long: number): Promise<void> {
+  const response = await loadWeatherData(
+    lat,
+    long,
+    import.meta.env.VUE_APP_WEATHER_KEY
+  )
+
+  weatherInfo.value = {
+    temp: Math.floor(response.data.main.temp),
+    city: response.data.name,
+    condition: response.data.weather[0].main,
+    icon: response.data.weather[0].icon,
+  }
+}
+
+function fetchLocationAndWeather(): void {
+  navigator.geolocation.getCurrentPosition((position) => {
+    fetchWeather(position.coords.latitude, position.coords.longitude)
   })
+}
 
-  async function fetchWeather(lat: number, long: number): Promise<void> {
-    const response = await loadWeatherData(
-      lat,
-      long,
-      (import.meta as any).env.VUE_APP_WEATHER_KEY
-    )
-
-    weatherInfo.value = {
-      temp: Math.floor(response.data.main.temp),
-      city: response.data.name,
-      condition: response.data.weather[0].main,
-      icon: response.data.weather[0].icon,
-    }
-  }
-
-  function fetchLocationAndWeather(): void {
-    navigator.geolocation.getCurrentPosition(position => {
-      fetchWeather(position.coords.latitude, position.coords.longitude)
-    })
-  }
-
-  onMounted(() => fetchLocationAndWeather())
+onMounted(() => fetchLocationAndWeather())
 </script>
 
 <style lang="scss" scoped>

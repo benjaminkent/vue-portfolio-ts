@@ -1,27 +1,37 @@
 <template>
-<div class="admin-container">
+  <div class="admin-container">
     <div class="header">
-        <router-link to="/">Back to main app</router-link>
-        <h1>Admin View</h1>
+      <router-link to="/">Back to main app</router-link>
+      <h1>Admin View</h1>
     </div>
     <div class="enter-password-container" v-if="!showPage">
-        <form @submit.prevent="enterAdmin">
-          <label for="password">Password</label>
-          <input id="password" type="password" v-model="password" placeholder="Password" />
-          <button class="margin-top" type="submit">Enter</button>
-        </form>
+      <form @submit.prevent="enterAdmin">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          v-model="password"
+          placeholder="Password"
+        />
+        <button class="margin-top" type="submit">Enter</button>
+      </form>
     </div>
     <div class="admin-page" v-if="showPage">
       <button class="margin-left" @click="logOut">Log Out</button>
       <div class="header">
-          <button @click="fetchMessages">Fetch Messages</button>
-          <h2>Messages</h2>
+        <button @click="fetchMessages">Fetch Messages</button>
+        <h2>Messages</h2>
       </div>
       <div class="messages-container">
-          <Message v-for="message in messages" :message="message" :deleteMessage="localDelete" :key="message.id" />
+        <Message
+          v-for="message in messages"
+          :message="message"
+          :deleteMessage="localDelete"
+          :key="message.id"
+        />
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -35,7 +45,7 @@ const password = ref('')
 const messages: Ref<FetchedMessageInterface[]> = ref([])
 
 function enterAdmin(): void {
-  if (password.value === (import.meta as any).env.VITE_ADMIN_PASSWORD) {
+  if (password.value === import.meta.env.VITE_ADMIN_PASSWORD) {
     showPage.value = true
   } else {
     alert('Incorrect Password')
