@@ -29,14 +29,8 @@ import { ref } from 'vue'
 import { useDarkMode } from '@observables'
 import { CardInterface } from '@interfaces'
 
-function getBaseUrl() {
-  return import.meta.env.DEV
-    ? import.meta.url.replace('/components/toolset', '')
-    : import.meta.url
-}
-
 function getLogoUrl(logoName: string) {
-  return new URL(`./assets/${logoName}`, getBaseUrl()).href
+  return new URL(`../../assets/${logoName}`, import.meta.url).href
 }
 
 const { isDarkModeEnabled } = useDarkMode()
