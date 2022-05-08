@@ -2,7 +2,7 @@ import {
   CardInterface,
   ProjectInterface,
   SocialMedia,
-} from '@/interfaces/interfaces'
+} from '@interfaces'
 
 /* tslint:disable:max-line-length */
 export const cardData: CardInterface[] = [

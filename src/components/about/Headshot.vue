@@ -46,9 +46,9 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef } from 'vue'
-import { useDarkMode } from '@/observables/darkMode'
-import { SocialMedia } from '@/interfaces/interfaces'
-import { socialMediaData } from '@/data/data'
+import { useDarkMode } from '@observables'
+import { SocialMedia } from '@interfaces'
+import { socialMediaData } from '@data'
 
 const { isDarkModeEnabled } = useDarkMode()
 

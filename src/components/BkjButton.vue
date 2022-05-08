@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { useDarkMode } from '@/observables/darkMode'
+import { useDarkMode } from '@observables'
 
 const { isDarkModeEnabled } = useDarkMode()
 

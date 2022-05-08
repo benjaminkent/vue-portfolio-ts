@@ -1,21 +1,37 @@
 <template>
-<div :class="['card', {'dark-mode': isDarkModeEnabled}]">
-    <div class="card-content"><img class="logo" v-for="logo in card.logoURL" :src="require(`../../assets/${logo}`)" />
-        <h3>{{ card.name }}</h3>
-        <p>{{ card.description }}</p>
-        <div class="link" @mouseover="showArrow = true" @mouseleave="showArrow = false"><a :href="card.linkURL" target="_blank" rel="noreferrer noopener">LEARN MORE</a>
-            <transition name="slide-right">
-                <fa-icon class="arrow" v-if="showArrow" :icon="['far', 'arrow-right']" />
-            </transition>
-        </div>
+  <div :class="['card', { 'dark-mode': isDarkModeEnabled }]">
+    <div class="card-content">
+      <img class="logo" v-for="logo in card.logoURL" :src="getLogoUrl(logo)" />
+      <h3>{{ card.name }}</h3>
+      <p>{{ card.description }}</p>
+      <div
+        class="link"
+        @mouseover="showArrow = true"
+        @mouseleave="showArrow = false"
+      >
+        <a :href="card.linkURL" target="_blank" rel="noreferrer noopener"
+          >LEARN MORE</a
+        >
+        <transition name="slide-right">
+          <fa-icon
+            class="arrow"
+            v-if="showArrow"
+            :icon="['far', 'arrow-right']"
+          />
+        </transition>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useDarkMode } from '@/observables/darkMode'
-import { CardInterface } from '@/interfaces/interfaces'
+import { useDarkMode } from '@observables'
+import { CardInterface } from '@interfaces'
+
+function getLogoUrl(logoName: string) {
+  return new URL(`../../assets/${logoName}`, import.meta.url).href
+}
 
 const { isDarkModeEnabled } = useDarkMode()
 

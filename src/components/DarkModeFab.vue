@@ -23,9 +23,8 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useDarkMode } from '@/observables/darkMode'
-import { featureFlags } from '@/observables/featureFlags'
-import { toastController } from '@/classes/toastController'
+import { useDarkMode, featureFlags } from '@observables'
+import { toastController } from '@classes'
 
 const { setDarkModePreference, disableDarkMode, isDarkModeEnabled } = useDarkMode()
 
@@ -108,7 +107,7 @@ function initDarkModePreference(): void {
 .fade-leave-active {
   transition: all 0.3s ease-in;
 }
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   transform: rotateY(90deg);
 }

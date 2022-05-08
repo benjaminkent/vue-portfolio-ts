@@ -10,24 +10,24 @@
     </div>
     <div class="cat-image">
       <button @click="generateRandomNumber">New Cat</button>
-      <img class="cat" :src="require(`../assets/${catList[randomNumber]}`)" />
+      <img class="cat" :src="catAssetUrls[randomNumber]" />
     </div>
 </div>
 </template>
 
 <script setup lang="ts">
-import { ref, Ref, onMounted } from 'vue'
-import { cats } from '@/data/data'
+import { ref, computed, onMounted } from 'vue'
+import { cats } from '@data'
 
-const catList: Ref<string[]> = ref([])
 const randomNumber = ref(0)
 
 function generateRandomNumber(): void {
   randomNumber.value = Math.floor(Math.random() * 12)
 }
 
+const catAssetUrls = computed(() => cats.map(cat => new URL(`../assets/${cat}`, import.meta.url).href))
+
 onMounted(() => {
-  catList.value = cats
   generateRandomNumber()
 })
 </script>
@@ -88,13 +88,9 @@ $box-shadow: ();
 $box-shadow2: ();
 @for $i from 0 through $particles {
   $box-shadow: $box-shadow,
-    random($width)-$width /
-      2 +
-      px
-      random($height)-$height /
-      1.2 +
-      px
-      hsl(random(360), 100, 50);
+    calc(random($width) - $width / 2) + px
+    calc(random($height) - $height / 1.2) + px
+    hsl(random(360), 100%, 50%);
   $box-shadow2: $box-shadow2, 0 0 #fff;
 }
 @mixin keyframes($fireworks) {

@@ -66,8 +66,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref, Ref } from 'vue'
-import { socialMediaData} from '@/data/data'
-import { SocialMedia } from '@/interfaces/interfaces'
+import { socialMediaData} from '@data'
+import { SocialMedia } from '@interfaces'
 
    const socialMedia: Ref<SocialMedia[]> = ref([])
 

@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ProjectInterface } from '@/interfaces/interfaces'
+import { ProjectInterface } from '@interfaces'
 
 const showCopy = ref(false)
 

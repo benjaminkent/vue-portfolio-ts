@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef } from 'vue'
-import { toastController, ToastType } from '@/classes/toastController'
-import { useDarkMode } from '@/observables/darkMode'
+import { toastController, ToastType } from '@classes'
+import { useDarkMode } from '@observables'
 
 enum ToastClass {
   Success = 'success',
@@ -80,7 +80,7 @@ const toastClass: ComputedRef<ToastClass> = computed(() =>  {
 .toast-fade-leave-active {
   transition: all 0.3s ease;
 }
-.toast-fade-enter,
+.toast-fade-enter-from,
 .toast-fade-leave-to {
   opacity: 0;
   transform: translateY(50px);

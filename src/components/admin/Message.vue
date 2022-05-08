@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { FetchedMessageInterface } from '@/interfaces/interfaces'
+import { FetchedMessageInterface } from '@interfaces'
 
 defineProps<{
   message: FetchedMessageInterface

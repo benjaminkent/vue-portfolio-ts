@@ -20,10 +20,10 @@
 
 <script setup lang="ts">
 import { computed, ComputedRef } from 'vue'
-import { useDarkMode } from '@/observables/darkMode'
-import { projectData } from '@/data/data'
-import { ProjectInterface } from '@/interfaces/interfaces'
-import Project from '@/components/portfolio/Project.vue'
+import { useDarkMode } from '@observables'
+import { projectData } from '@data'
+import { ProjectInterface } from '@interfaces'
+import Project from '@components/portfolio/Project.vue'
 
 const { isDarkModeEnabled } = useDarkMode()
 

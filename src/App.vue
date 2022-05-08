@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import Toast from '@/components/BkjToast.vue'
+import Toast from '@components/BkjToast.vue'
 </script>
 
 <style lang="scss">
