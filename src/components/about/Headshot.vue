@@ -21,7 +21,7 @@
         </p>
         <a
           class="resume-link"
-          href="https://drive.google.com/file/d/1kO0nA6XSKfpMOKB8TKt73T93Xc7UnX5N/view?usp=sharing"
+          href="https://drive.google.com/file/d/1oNZc32_7-9uFM2YxIrdAhrlGIDivy-KL/view?usp=sharing"
           target="_blank"
           rel="noreferrer noopener"
           >VIEW MY RESUME</a
