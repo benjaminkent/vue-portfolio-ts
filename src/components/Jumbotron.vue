@@ -81,7 +81,7 @@
       <h1>Benjamin Jehl</h1>
     </div>
     <div class="job-title-box">
-      <h2>Software Engineer</h2>
+      <h2>Principal Software Engineer</h2>
     </div>
     <div class="call-to-action-box">
       <div class="buttons-container">
@@ -271,8 +271,8 @@ onMounted(() => fetchLocationAndWeather())
     }
     .background-style-box {
       background-color: $primary;
-      height: 70px;
-      width: 300px;
+      height: 90px;
+      width: 320px;
       transform: rotate(-10deg);
       opacity: 0.8;
       z-index: 0;

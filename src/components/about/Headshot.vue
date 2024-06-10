@@ -8,7 +8,14 @@
       <img class="headshot" src="../../assets/headshot.jpg" />
       <div class="info">
         <h3>Benjamin Kent Jehl</h3>
-        <p class="job-title">Software Engineer</p>
+        <p class="job-title">Principal Software Engineer</p>
+        <a
+          href="https://certificates.dev/c/9a726dd0-b89f-4026-8976-ae9a9dde8475"
+          rel="noopener noreferrer"
+          target="_blank"
+          class="cert"
+          >Certified Vue Developer</a
+        >
         <p class="about">
           Located in the Tampa Bay Area and a former Financial Advisor, I have
           followed my love of the tech industry and learned the skills that
@@ -53,6 +60,7 @@ import { socialMediaData } from '@data'
 const { isDarkModeEnabled } = useDarkMode()
 
 const wordList = [
+  'Technical Leader',
   'Developer',
   'Responsive Design',
   'Full-stack',
@@ -78,6 +86,9 @@ const socialMedia: ComputedRef<SocialMedia[]> = computed(() => socialMediaData)
       h3 {
         color: $dm-text;
       }
+      .cert {
+        color: $dm-secondary;
+      }
       .resume-link {
         color: $dm-secondary;
       }
@@ -85,6 +96,9 @@ const socialMedia: ComputedRef<SocialMedia[]> = computed(() => socialMediaData)
         color: $dm-text;
       }
     }
+  }
+  .cert {
+    color: $dm-secondary;
   }
 }
 .about-message {
@@ -122,6 +136,9 @@ const socialMedia: ComputedRef<SocialMedia[]> = computed(() => socialMediaData)
     }
     .job-title {
       margin: 0;
+    }
+    .cert {
+      color: $secondary;
     }
     .about {
       margin-bottom: 0;
