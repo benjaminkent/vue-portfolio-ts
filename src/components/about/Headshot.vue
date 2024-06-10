@@ -7,7 +7,7 @@
     <div class="headshot-info-container">
       <img class="headshot" src="../../assets/headshot.jpg" />
       <div class="info">
-        <h3>Benjamin Kent Jehl</h3>
+        <h3>Ben Jehl</h3>
         <p class="job-title">Principal Software Engineer</p>
         <a
           href="https://certificates.dev/c/9a726dd0-b89f-4026-8976-ae9a9dde8475"
@@ -89,6 +89,9 @@ const socialMedia: ComputedRef<SocialMedia[]> = computed(() => socialMediaData)
       .cert {
         color: $dm-secondary;
       }
+      .cert:hover {
+        color: $dm-text;
+      }
       .resume-link {
         color: $dm-secondary;
       }
@@ -139,6 +142,10 @@ const socialMedia: ComputedRef<SocialMedia[]> = computed(() => socialMediaData)
     }
     .cert {
       color: $secondary;
+    }
+    .cert:hover {
+      color: #222;
+      transition: 0.3s all ease-in-out;
     }
     .about {
       margin-bottom: 0;

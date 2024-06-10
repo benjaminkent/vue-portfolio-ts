@@ -78,10 +78,11 @@
       <div class="background-style-box"></div>
     </div>
     <div class="name-box">
-      <h1>Benjamin Jehl</h1>
+      <h1>Ben Jehl</h1>
     </div>
     <div class="job-title-box">
-      <h2>Principal Software Engineer</h2>
+      <h3>Principal Software Engineer</h3>
+      <h3>Certified Vue Developer</h3>
     </div>
     <div class="call-to-action-box">
       <div class="buttons-container">
@@ -168,7 +169,7 @@ onMounted(() => fetchLocationAndWeather())
       align-self: center;
       .background-style-box {
         background-color: $primary;
-        height: 100px;
+        height: 130px;
         width: 450px;
         transform: rotate(-10deg);
         opacity: 0.8;
@@ -196,6 +197,12 @@ onMounted(() => fetchLocationAndWeather())
         margin: 0;
         font-size: 28px;
       }
+      h3 {
+        margin: 0;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .call-to-action-box {
       grid-area: 3 / 2 / 4 / 5;
@@ -271,7 +278,7 @@ onMounted(() => fetchLocationAndWeather())
     }
     .background-style-box {
       background-color: $primary;
-      height: 90px;
+      height: 115px;
       width: 320px;
       transform: rotate(-10deg);
       opacity: 0.8;
@@ -294,6 +301,13 @@ onMounted(() => fetchLocationAndWeather())
       h2 {
         margin: 0;
       }
+      h3 {
+        margin: 0;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .call-to-action-box {
       grid-area: 4 / 1 / 5 / 6;
@@ -302,6 +316,7 @@ onMounted(() => fetchLocationAndWeather())
       display: flex;
       justify-content: center;
       .buttons-container {
+        margin-top: 50px;
         width: 100%;
         display: flex;
         justify-content: space-between;
