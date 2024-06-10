@@ -6,8 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "yarn build && aws s3 sync ./dist s3://www.benjehl.com",
-    "sync": "git push && yarn deploy"
+    "deploy": "npm run build && aws s3 sync ./dist s3://www.benjehl.com",
+    "sync": "git push && npm run deploy"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
