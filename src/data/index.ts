@@ -1,8 +1,4 @@
-import {
-  CardInterface,
-  ProjectInterface,
-  SocialMedia,
-} from '@interfaces'
+import { CardInterface, ProjectInterface, SocialMedia } from '@interfaces'
 
 /* tslint:disable:max-line-length */
 export const cardData: CardInterface[] = [
@@ -48,11 +44,11 @@ export const cardData: CardInterface[] = [
   },
   {
     id: 6,
-    logoURL: ['bootstrap.svg'],
-    name: 'Bootstrap',
+    logoURL: ['tailwind-logo.svg'],
+    name: 'Tailwind CSS',
     description:
-      'Bootstrap is built on HTML, CSS, and JS to facilitate the development of responsive, mobile-first sites and apps.',
-    linkURL: 'https://getbootstrap.com/',
+      'A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.',
+    linkURL: 'https://tailwindcss.com/',
   },
 ]
 
