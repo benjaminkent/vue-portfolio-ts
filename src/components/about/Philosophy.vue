@@ -7,20 +7,26 @@
           <h2>Tech Philosophy</h2>
         </div>
         <p>
-          This website was designed, coded and styled completely from scratch by
-          myself using the Vue.js JavaScript framework. With many of my personal
-          projects, I prefer to write all of the code from scratch including
-          CSS. Although I have used CSS and component library frameworks such as
-          Quasar, Vue Bootstrap (Bootstrap), Buefy (Bulma) and Tailwind CSS to
-          style websites as well; in my professional career I have worked
-          extensivly with Bootstrap and Syncfusion. I believe in solving
-          problems the right way. Which means writing easily maintainable code
-          that doesn't add to tech debt and actively seeks to eliminate it. I am
-          extremely excited about where the tech industry is heading and look
-          forward to the many challenges and breakthroughs that lie before us.
+          This website was designed, developed, and styled entirely from scratch
+          using the Vue.js framework. For many personal projects, I prefer
+          writing custom, maintainable code - including CSS - while remaining
+          fluent in modern UI frameworks and component libraries such as Quasar,
+          Bootstrap, Buefy, Tailwind CSS, and Syncfusion.
+        </p>
+        <p>
+          Professionally, I focus on building scalable, maintainable systems
+          that minimize technical debt and improve long-term velocity. I believe
+          in solving problems correctly the first time, with an emphasis on
+          clarity, simplicity, and sustainability. I’m energized by the
+          direction of the tech industry and motivated by the challenges and
+          opportunities ahead.
         </p>
       </div>
-      <img v-if="isDarkModeEnabled" class="code-img" src="../../assets/code-two.jpeg" />
+      <img
+        v-if="isDarkModeEnabled"
+        class="code-img"
+        src="../../assets/code-two.jpeg"
+      />
       <img v-else class="code-img" src="../../assets/desk-one.jpeg" />
     </div>
   </div>

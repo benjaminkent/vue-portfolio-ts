@@ -17,18 +17,20 @@
           >Certified Vue Developer</a
         >
         <p class="about">
-          Located in the Tampa Bay Area and a former Financial Advisor, I have
-          followed my love of the tech industry and learned the skills that
-          enable me to write full stack web applications. I am the
-          Creator/Organizer of the Vue.js Tampa Bay meetup group and am
-          passionate about sharing with others the technologies that will shape
-          the future. When I'm not writing code I enjoy playing guitar, sports,
-          cooking, traveling... and learning how to be a better Software
-          Engineer!
+          Based in the Tampa Bay Area, I’m a former financial advisor who
+          transitioned into software engineering through a passion for
+          technology and problem-solving. I build full-stack web applications
+          and enjoy tackling challenges across the entire stack.
+        </p>
+        <p>
+          I’m the creator and organizer of the Vue.js Tampa Bay meetup, where I
+          help foster a local community focused on modern web development. When
+          I’m not coding, I enjoy golfing, cooking, working out, watchmaking,
+          and sharpening my engineering skills.
         </p>
         <a
           class="resume-link"
-          href="https://drive.google.com/file/d/1oNZc32_7-9uFM2YxIrdAhrlGIDivy-KL/view?usp=sharing"
+          href="https://www.dropbox.com/scl/fi/5b6afjgooh00mwfmntr7r/Ben_Jehl_Resume_2026.pdf?rlkey=dhv7smtsnl9pzeg12q3ix3778&st=x0vffkyo&dl=0"
           target="_blank"
           rel="noreferrer noopener"
           >VIEW MY RESUME</a

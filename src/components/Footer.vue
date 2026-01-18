@@ -4,14 +4,16 @@
       <div class="about-content">
         <h2 class="header">About Me</h2>
         <p>
-          Located in the Tampa Bay Area and a former Financial Advisor, I have
-          followed my love of the tech industry and learned the skills that
-          enable me to write full stack web applications. I am the
-          Creator/Organizer of the Vue.js Tampa Bay meetup group and am
-          passionate about sharing with others the technologies that will shape
-          the future. When I'm not writing code I enjoy playing guitar, sports,
-          cooking, traveling... and learning how to be a better Software
-          Engineer!
+          Based in the Tampa Bay Area, I’m a former financial advisor who
+          transitioned into software engineering through a passion for
+          technology and problem-solving. I build full-stack web applications
+          and enjoy tackling challenges across the entire stack.
+        </p>
+        <p>
+          I’m the creator and organizer of the Vue.js Tampa Bay meetup, where I
+          help foster a local community focused on modern web development. When
+          I’m not coding, I enjoy golfing, cooking, working out, watchmaking,
+          and sharpening my engineering skills.
         </p>
       </div>
       <div class="nav-container">
@@ -48,7 +50,7 @@
       <p>
         Made with
         <fa-icon :icon="['fas', 'heart']"></fa-icon>
-         in St. Petersburg, FL
+        in St. Petersburg, FL
       </p>
       <p>
         2019 Benjamin Kent.
@@ -66,12 +68,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref, Ref } from 'vue'
-import { socialMediaData} from '@data'
+import { socialMediaData } from '@data'
 import { SocialMedia } from '@interfaces'
 
-   const socialMedia: Ref<SocialMedia[]> = ref([])
+const socialMedia: Ref<SocialMedia[]> = ref([])
 
-  onMounted(() => socialMedia.value = socialMediaData)
+onMounted(() => (socialMedia.value = socialMediaData))
 </script>
 
 <style lang="scss" scoped>
@@ -182,4 +184,3 @@ import { SocialMedia } from '@interfaces'
   }
 }
 </style>
-
