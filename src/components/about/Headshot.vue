@@ -8,7 +8,7 @@
       <img class="headshot" src="../../assets/headshot.jpg" />
       <div class="info">
         <h3>Ben Jehl</h3>
-        <p class="job-title">Principal Software Engineer</p>
+        <p class="job-title">VP Software Engineering Manager</p>
         <a
           href="https://certificates.dev/c/9a726dd0-b89f-4026-8976-ae9a9dde8475"
           rel="noopener noreferrer"
@@ -60,11 +60,11 @@ import { socialMediaData } from '@data'
 const { isDarkModeEnabled } = useDarkMode()
 
 const wordList = [
-  'Technical Leader',
-  'Developer',
+  'Technical Leadership',
+  'Full-Stack Development',
+  'Scalable Architecture',
   'Responsive Design',
-  'Full-stack',
-  'Avid Learner',
+  'Lifelong Learner',
 ]
 
 const socialMedia: ComputedRef<SocialMedia[]> = computed(() => socialMediaData)

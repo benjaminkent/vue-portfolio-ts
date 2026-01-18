@@ -81,7 +81,7 @@
       <h1>Ben Jehl</h1>
     </div>
     <div class="job-title-box">
-      <h3>Principal Software Engineer</h3>
+      <h3>Software Engineering Manager</h3>
       <h3>Certified Vue Developer</h3>
     </div>
     <div class="call-to-action-box">
@@ -95,9 +95,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, Ref } from 'vue'
+import { ref, Ref } from 'vue'
 import { WeatherDataInterface } from '@interfaces'
-import { loadWeatherData } from '@api'
+// import { loadWeatherData } from '@api'
 
 const weatherInfo: Ref<WeatherDataInterface> = ref({
   temp: 0,
@@ -106,28 +106,29 @@ const weatherInfo: Ref<WeatherDataInterface> = ref({
   icon: '',
 })
 
-async function fetchWeather(lat: number, long: number): Promise<void> {
-  const response = await loadWeatherData(
-    lat,
-    long,
-    import.meta.env.VUE_APP_WEATHER_KEY
-  )
+// I'd like to bring this back -- need to get new api key
+// async function fetchWeather(lat: number, long: number): Promise<void> {
+//   const response = await loadWeatherData(
+//     lat,
+//     long,
+//     import.meta.env.VUE_APP_WEATHER_KEY
+//   )
 
-  weatherInfo.value = {
-    temp: Math.floor(response.data.main.temp),
-    city: response.data.name,
-    condition: response.data.weather[0].main,
-    icon: response.data.weather[0].icon,
-  }
-}
+//   weatherInfo.value = {
+//     temp: Math.floor(response.data.main.temp),
+//     city: response.data.name,
+//     condition: response.data.weather[0].main,
+//     icon: response.data.weather[0].icon,
+//   }
+// }
 
-function fetchLocationAndWeather(): void {
-  navigator.geolocation.getCurrentPosition((position) => {
-    fetchWeather(position.coords.latitude, position.coords.longitude)
-  })
-}
+// function fetchLocationAndWeather(): void {
+//   navigator.geolocation.getCurrentPosition((position) => {
+//     fetchWeather(position.coords.latitude, position.coords.longitude)
+//   })
+// }
 
-onMounted(() => fetchLocationAndWeather())
+// onMounted(() => fetchLocationAndWeather())
 </script>
 
 <style lang="scss" scoped>
@@ -203,6 +204,7 @@ onMounted(() => fetchLocationAndWeather())
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
     .call-to-action-box {
       grid-area: 3 / 2 / 4 / 5;
